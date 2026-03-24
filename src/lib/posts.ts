@@ -1,9 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const CONTENT_DIR = path.join(__dirname, '..', '..', 'content');
+const CONTENT_DIR = path.join(process.cwd(), 'content');
 
 export interface Post {
   slug: string;
