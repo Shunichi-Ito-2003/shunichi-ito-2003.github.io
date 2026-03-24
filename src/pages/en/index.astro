@@ -35,7 +35,6 @@ const works = [
 <Layout title="ITO SHUNICHI" description="Actor and medical student based in Okinawa, Japan. Official portfolio of Shunichi Ito.">
   <!-- ── HERO ─────────────────────────────── -->
   <section class="min-h-[92vh] grid md:grid-cols-2 overflow-hidden">
-    <!-- Left: Text -->
     <div class="relative flex flex-col justify-center px-8 md:px-16 py-20 bg-[var(--color-cream)] order-2 md:order-1 overflow-hidden">
       <span class="absolute -left-4 top-1/2 -translate-y-1/2 font-display text-[18rem] font-bold text-[var(--color-gold)] opacity-[0.04] leading-none select-none pointer-events-none">
         IS
@@ -53,7 +52,7 @@ const works = [
 
         <p class="font-japanese text-base text-[var(--color-ink-muted)]">伊藤 駿一</p>
 
-        <p class="font-display text-sm text-[var(--color-ink-muted)] leading-loose">
+        <p class="text-sm text-[var(--color-ink-muted)] leading-loose">
           A medical student and actor based in Okinawa,<br />
           pursuing the belief that "theater brings peace to the world."
         </p>
@@ -64,29 +63,18 @@ const works = [
         </div>
 
         <div class="flex flex-col sm:flex-row gap-3 pt-2">
-          <a
-            href="#works"
-            class="px-8 py-3.5 bg-[var(--color-gold)] text-white font-display text-xs tracking-[0.2em] hover:bg-[var(--color-gold-dark)] transition-all duration-300 text-center"
-          >
+          <a href="#works" class="px-8 py-3.5 bg-[var(--color-gold)] text-white font-display text-xs tracking-[0.2em] hover:bg-[var(--color-gold-dark)] transition-all duration-300 text-center">
             WORKS
           </a>
-          <a
-            href="/en/blog"
-            class="px-8 py-3.5 border border-[var(--color-border)] text-[var(--color-ink-muted)] font-display text-xs tracking-[0.2em] hover:border-[var(--color-ink)] hover:text-[var(--color-ink)] transition-all duration-300 text-center"
-          >
+          <a href="/en/blog" class="px-8 py-3.5 border border-[var(--color-border)] text-[var(--color-ink-muted)] font-display text-xs tracking-[0.2em] hover:border-[var(--color-ink)] hover:text-[var(--color-ink)] transition-all duration-300 text-center">
             BLOG
           </a>
         </div>
       </div>
     </div>
 
-    <!-- Right: Photo -->
     <div class="relative h-[70vw] md:h-auto order-1 md:order-2 overflow-hidden">
-      <img
-        src="/写真、画像/my portfolio/hero.jpg"
-        alt="ITO SHUNICHI"
-        class="w-full h-full object-cover object-center"
-      />
+      <img src="/写真、画像/my portfolio/hero.jpg" alt="ITO SHUNICHI" class="w-full h-full object-cover object-center" />
       <div class="absolute inset-4 border border-[var(--color-gold)]/30 pointer-events-none hidden md:block"></div>
       <div class="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[var(--color-cream)] to-transparent hidden md:block"></div>
     </div>
@@ -123,7 +111,7 @@ const works = [
             <div class="absolute -left-[1.45rem] top-9 w-3 h-3 rounded-full border-2 border-[var(--color-gold)] bg-white group-hover:bg-[var(--color-gold)] transition-colors"></div>
             <time class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] block mb-1">{item.date}</time>
             <span class="font-display text-xs tracking-widest text-[var(--color-gold)] block mb-2">{item.cat}</span>
-            <h3 class="font-display text-sm text-[var(--color-ink)] group-hover:text-[var(--color-gold-dark)] transition-colors leading-relaxed">
+            <h3 class="text-sm text-[var(--color-ink)] group-hover:text-[var(--color-gold-dark)] transition-colors leading-relaxed">
               {item.title}
             </h3>
           </article>
@@ -148,17 +136,13 @@ const works = [
       <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10">
         {works.map((work, i) => (
           <a href={work.href} class="group relative overflow-hidden aspect-[3/4] block">
-            <img
-              src={work.image}
-              alt={work.title}
-              class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-            />
+            <img src={work.image} alt={work.title} class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
             <div class="absolute top-5 right-5 font-display text-3xl text-white/20">{String(i+1).padStart(2,'0')}</div>
             <div class="absolute bottom-0 left-0 right-0 p-6">
               <span class="font-display text-xs tracking-[0.2em] text-[var(--color-gold)] block mb-2">{work.category}</span>
               <h3 class="font-display text-base text-white mb-2 leading-snug">{work.title}</h3>
-              <p class="font-display text-xs text-white/60 leading-relaxed line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <p class="text-xs text-white/60 leading-relaxed line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 {work.description}
               </p>
             </div>
@@ -187,15 +171,12 @@ const works = [
         </a>
       </header>
 
-      <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] mb-8">* Articles are written in Japanese</p>
+      <p class="text-xs text-[var(--color-ink-muted)] mb-8">* Articles are written in Japanese</p>
 
       {recentPosts.length > 0 ? (
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           {recentPosts.map((post, i) => (
-            <a
-              href={`/blog/${post.slug}`}
-              class="group flex flex-col bg-white border border-[var(--color-border)] hover:border-[var(--color-gold)] transition-all duration-300 overflow-hidden"
-            >
+            <a href={`/blog/${post.slug}`} class="group flex flex-col bg-white border border-[var(--color-border)] hover:border-[var(--color-gold)] transition-all duration-300 overflow-hidden">
               <div class="h-1 bg-[var(--color-gold)] opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div class="p-6 flex flex-col flex-grow">
                 <div class="flex items-center gap-3 mb-4">
@@ -215,7 +196,7 @@ const works = [
         </div>
       ) : (
         <div class="text-center py-16">
-          <p class="font-display text-xs text-[var(--color-ink-muted)]">No articles yet</p>
+          <p class="text-xs text-[var(--color-ink-muted)]">No articles yet</p>
         </div>
       )}
     </div>
@@ -229,14 +210,11 @@ const works = [
         <h2 class="font-display text-4xl md:text-5xl tracking-[0.12em] text-white">CONTACT</h2>
       </div>
       <div class="h-px w-12 bg-[var(--color-gold)] mx-auto"></div>
-      <p class="font-display text-sm text-white/60 leading-loose tracking-wider">
+      <p class="text-sm text-white/60 leading-loose">
         For casting inquiries, interviews, or any other questions,<br class="hidden md:block" />
         please feel free to reach out via email.
       </p>
-      <a
-        href="mailto:changeupandshake@gmail.com"
-        class="inline-block px-10 py-4 border border-[var(--color-gold)] text-[var(--color-gold)] font-display tracking-[0.2em] text-sm hover:bg-[var(--color-gold)] hover:text-white transition-all duration-300"
-      >
+      <a href="mailto:changeupandshake@gmail.com" class="inline-block px-10 py-4 border border-[var(--color-gold)] text-[var(--color-gold)] font-display tracking-[0.2em] text-sm hover:bg-[var(--color-gold)] hover:text-white transition-all duration-300">
         Send Email
       </a>
     </div>

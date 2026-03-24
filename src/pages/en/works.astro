@@ -37,7 +37,6 @@ const works = [
 
 <Layout title="WORKS" description="Works and projects by Shunichi Ito — actor and medical student.">
   <div class="max-w-5xl mx-auto px-6 py-16">
-    <!-- Header -->
     <header class="mb-16">
       <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">ARCHIVE</p>
       <h1 class="font-display text-4xl md:text-5xl tracking-[0.15em] text-[var(--color-ink)] mb-6">WORKS</h1>
@@ -48,11 +47,7 @@ const works = [
       {works.map((work, i) => (
         <a href={`/en/works/${work.id}`} class="fade-in group grid md:grid-cols-[280px_1fr] border border-[var(--color-border)] bg-white hover:border-[var(--color-gold)] transition-all duration-300 overflow-hidden">
           <div class="relative h-48 md:h-auto overflow-hidden">
-            <img
-              src={work.image}
-              alt={work.title}
-              class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-            />
+            <img src={work.image} alt={work.title} class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
             <div class="absolute inset-0 bg-gradient-to-r from-transparent to-white/20"></div>
             <div class="absolute top-4 left-4">
               <span class="font-display text-2xl text-white/60">{String(i + 1).padStart(2, '0')}</span>
@@ -67,12 +62,12 @@ const works = [
               </h2>
               <span class="font-display text-xs tracking-widest text-[var(--color-ink-muted)]">{work.role}</span>
             </div>
-            <p class="font-display text-sm text-[var(--color-ink-muted)] leading-loose">
+            <p class="text-sm text-[var(--color-ink-muted)] leading-relaxed">
               {work.description}
             </p>
             <div class="flex flex-wrap gap-2">
               {work.tags.map((tag) => (
-                <span class="font-display text-xs text-[var(--color-ink-muted)] border border-[var(--color-border)] px-3 py-1">
+                <span class="text-xs text-[var(--color-ink-muted)] border border-[var(--color-border)] px-3 py-1">
                   {tag}
                 </span>
               ))}

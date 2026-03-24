@@ -5,7 +5,7 @@ import { getPostsByKeyword } from '../../../lib/posts';
 const relatedPosts = getPostsByKeyword('サンタ').slice(0, 8);
 
 const highlights = [
-  { date: '2025.11', text: 'Project launches. Born from the wish: "Let\'s make sure no child spends Christmas alone."' },
+  { date: '2025.11', text: "Project launches. Born from the wish: \"Let's make sure no child spends Christmas alone.\"" },
   { date: '2025.12.01', text: 'Fundraising and recruitment begins. Support spreads through social media and word of mouth.' },
   { date: '2025.12.24', text: 'Christmas Eve. Mission accomplished — cakes delivered to 120 families dressed as Santa Claus.' },
   { date: '2025.12.25', text: 'Photos and messages from the children arrive. Their voices say "Come again next year."' },
@@ -18,19 +18,13 @@ const highlights = [
 >
   <!-- Hero -->
   <section class="relative h-[70vh] overflow-hidden">
-    <img
-      src="/写真、画像/みんながサンタ/2025/劇中の一枚.jpeg"
-      alt="Everyone Is Santa!"
-      class="w-full h-full object-cover object-top"
-    />
+    <img src="/写真、画像/みんながサンタ/2025/劇中の一枚.jpeg" alt="Everyone Is Santa!" class="w-full h-full object-cover object-top" />
     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
     <div class="absolute bottom-0 left-0 right-0 p-8 md:p-16 max-w-4xl">
       <a href="/en/works" class="font-display text-xs tracking-[0.2em] text-white/50 hover:text-[var(--color-gold)] transition-colors mb-6 block">← Works</a>
       <span class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] block mb-3">CHARITY PROJECT · 2025</span>
       <h1 class="font-display text-4xl md:text-6xl text-white leading-tight mb-4">Everyone Is Santa!</h1>
-      <p class="font-display text-sm text-white/70 leading-relaxed tracking-wider">
-        The night a Christmas miracle was delivered to 120 families
-      </p>
+      <p class="text-sm text-white/70 leading-relaxed">The night a Christmas miracle was delivered to 120 families</p>
     </div>
   </section>
 
@@ -41,12 +35,10 @@ const highlights = [
       <div class="space-y-6">
         <div>
           <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">OVERVIEW</p>
-          <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">About the Project</h2>
+          <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">About the project</h2>
         </div>
-        <div class="space-y-4 font-display text-sm text-[var(--color-ink-muted)] leading-loose">
-          <p>
-            "I want zero children spending Christmas alone" — a charity project born from a single sentence.
-          </p>
+        <div class="space-y-4 text-sm text-[var(--color-ink-muted)] leading-loose text-justify">
+          <p>"I want zero children spending Christmas alone" — a charity project born from a single sentence.</p>
           <p>
             Dressed as Santa Claus, we visited 120 homes with Christmas cakes, delivering a special evening to children and families who needed support.
           </p>
@@ -56,7 +48,6 @@ const highlights = [
         </div>
       </div>
 
-      <!-- Info card -->
       <div class="border border-[var(--color-border)] divide-y divide-[var(--color-border)] h-fit">
         {[
           { label: 'ROLE', value: 'Organizer / Producer / Santa Claus' },
@@ -66,7 +57,7 @@ const highlights = [
         ].map((item) => (
           <div class="px-5 py-3">
             <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] mb-0.5">{item.label}</p>
-            <p class="font-display text-sm text-[var(--color-ink)]">{item.value}</p>
+            <p class="text-sm text-[var(--color-ink)]">{item.value}</p>
           </div>
         ))}
       </div>
@@ -75,8 +66,8 @@ const highlights = [
     <!-- My role -->
     <section class="fade-in border-l-2 border-[var(--color-gold)] pl-8 space-y-4">
       <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)]">MY ROLE</p>
-      <h2 class="font-display text-xl text-[var(--color-ink)]">The Belief That Everyone Can Be Santa</h2>
-      <div class="space-y-4 font-display text-sm text-[var(--color-ink-muted)] leading-loose">
+      <h2 class="font-display text-xl text-[var(--color-ink)]">The belief that everyone can be Santa</h2>
+      <div class="space-y-4 text-sm text-[var(--color-ink-muted)] leading-loose text-justify">
         <p>
           What mattered most in this project was not a structure of "some people helping others," but the idea that <strong class="text-[var(--color-ink)]">"everyone can be Santa for someone."</strong>
         </p>
@@ -94,16 +85,8 @@ const highlights = [
       <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">GALLERY</p>
       <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">Photos</h2>
       <div class="grid grid-cols-2 gap-4">
-        <img
-          src="/写真、画像/みんながサンタ/2025/国際通りに流れるみんながサンタの広告.JPG"
-          alt="Everyone Is Santa — Advertisement on Kokusai Street"
-          class="w-full aspect-[4/3] object-cover border border-[var(--color-border)]"
-        />
-        <img
-          src="/写真、画像/みんながサンタ/2025/劇中の一枚_シングルマザーのモノローグ.JPG"
-          alt="Performance scene"
-          class="w-full aspect-[4/3] object-cover border border-[var(--color-border)]"
-        />
+        <img src="/写真、画像/みんながサンタ/2025/国際通りに流れるみんながサンタの広告.JPG" alt="Everyone Is Santa — Advertisement on Kokusai Street" class="w-full aspect-[4/3] object-cover border border-[var(--color-border)]" />
+        <img src="/写真、画像/みんながサンタ/2025/劇中の一枚_シングルマザーのモノローグ.JPG" alt="Performance scene" class="w-full aspect-[4/3] object-cover border border-[var(--color-border)]" />
       </div>
     </section>
 
@@ -116,7 +99,7 @@ const highlights = [
           <div class="relative py-5 group">
             <div class="absolute -left-[1.45rem] top-7 w-3 h-3 rounded-full border-2 border-[var(--color-gold)] bg-white group-hover:bg-[var(--color-gold)] transition-colors"></div>
             <time class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] block mb-1">{h.date}</time>
-            <p class="font-display text-sm text-[var(--color-ink)] leading-relaxed">{h.text}</p>
+            <p class="text-sm text-[var(--color-ink)] leading-relaxed">{h.text}</p>
           </div>
         ))}
       </div>
@@ -126,18 +109,13 @@ const highlights = [
     {relatedPosts.length > 0 && (
       <section class="fade-in">
         <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">DOCUMENT</p>
-        <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-4">Activity Journal</h2>
-        <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] mb-8">* Written in Japanese</p>
+        <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-4">Activity journal</h2>
+        <p class="text-xs text-[var(--color-ink-muted)] mb-8">* Written in Japanese</p>
         <div class="divide-y divide-[var(--color-border)]">
           {relatedPosts.map((post) => (
-            <a
-              href={`/blog/${post.slug}`}
-              class="group flex gap-6 py-5 hover:bg-[var(--color-cream)] px-2 -mx-2 transition-colors"
-            >
+            <a href={`/blog/${post.slug}`} class="group flex gap-6 py-5 hover:bg-[var(--color-cream)] px-2 -mx-2 transition-colors">
               <time class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] shrink-0 pt-1 w-24">{post.date}</time>
-              <h3 class="font-japanese text-[var(--color-ink)] group-hover:text-[var(--color-gold-dark)] transition-colors leading-relaxed line-clamp-2">
-                {post.title}
-              </h3>
+              <h3 class="font-japanese text-[var(--color-ink)] group-hover:text-[var(--color-gold-dark)] transition-colors leading-relaxed line-clamp-2">{post.title}</h3>
               <span class="shrink-0 self-center font-display text-xs text-[var(--color-gold)] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
             </a>
           ))}

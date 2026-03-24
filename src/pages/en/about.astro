@@ -4,21 +4,20 @@ import Layout from '../../layouts/Layout.astro';
 
 <Layout title="PROFILE" description="Profile of Shunichi Ito — actor and medical student based in Okinawa, Japan.">
   <div class="max-w-5xl mx-auto px-6 py-16">
-    <!-- Header -->
     <header class="mb-16">
       <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">ABOUT</p>
       <h1 class="font-display text-4xl md:text-5xl tracking-[0.15em] text-[var(--color-ink)] mb-6">PROFILE</h1>
       <div class="h-px w-16 bg-[var(--color-gold)]"></div>
     </header>
 
-    <!-- Section: The Actor -->
+    <!-- The Actor -->
     <section class="grid md:grid-cols-2 gap-12 items-start mb-20">
       <div class="space-y-6">
         <h2 class="font-display text-xl tracking-[0.2em] text-[var(--color-gold)] flex items-center gap-4">
           <span class="h-px w-8 bg-[var(--color-gold)] inline-block"></span>
           THE ACTOR
         </h2>
-        <div class="space-y-5 font-display text-sm text-[var(--color-ink-muted)] leading-loose">
+        <div class="space-y-5 text-sm text-[var(--color-ink-muted)] leading-loose text-justify">
           <p>
             Driven by the belief that "theater brings peace to the world," Shunichi Ito works as an actor based in Okinawa, Japan. Through performance, he believes people can reconnect with emotions they have suppressed — and that this release is a source of richness in life.
           </p>
@@ -33,22 +32,14 @@ import Layout from '../../layouts/Layout.astro';
       </div>
 
       <div class="aspect-[3/4] overflow-hidden border border-[var(--color-border)]">
-        <img
-          src="/写真、画像/my portfolio/about-actor.jpeg"
-          alt="ITO SHUNICHI - Actor"
-          class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
-        />
+        <img src="/写真、画像/my portfolio/about-actor.jpeg" alt="ITO SHUNICHI - Actor" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" />
       </div>
     </section>
 
-    <!-- Section: The Student -->
+    <!-- The Student -->
     <section class="grid md:grid-cols-2 gap-12 items-start mb-20">
       <div class="aspect-[3/4] overflow-hidden border border-[var(--color-border)] order-2 md:order-1">
-        <img
-          src="/写真、画像/my portfolio/about-student.jpg"
-          alt="ITO SHUNICHI - Student"
-          class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
-        />
+        <img src="/写真、画像/my portfolio/about-student.jpg" alt="ITO SHUNICHI - Student" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" />
       </div>
 
       <div class="space-y-6 order-1 md:order-2">
@@ -56,41 +47,32 @@ import Layout from '../../layouts/Layout.astro';
           <span class="h-px w-8 bg-[var(--color-gold)] inline-block"></span>
           THE STUDENT
         </h2>
-        <div class="space-y-5 font-display text-sm text-[var(--color-ink-muted)] leading-loose">
+        <div class="space-y-5 text-sm text-[var(--color-ink-muted)] leading-loose text-justify">
           <p>
             He studies medicine at the University of the Ryukyus, confronting the mechanisms of life. Living in both the worlds of "logic" and "life," he cultivates an objective lens through which to see the world.
           </p>
         </div>
 
         <div class="border border-[var(--color-border)] divide-y divide-[var(--color-border)]">
-          <div class="flex justify-between px-5 py-3">
-            <span class="font-display text-xs tracking-widest text-[var(--color-ink-muted)]">Name</span>
-            <span class="font-display text-sm text-[var(--color-ink)]">Shunichi Ito</span>
-          </div>
-          <div class="flex justify-between px-5 py-3">
-            <span class="font-display text-xs tracking-widest text-[var(--color-ink-muted)]">Born</span>
-            <span class="font-display text-sm text-[var(--color-ink)]">2003</span>
-          </div>
-          <div class="flex justify-between px-5 py-3">
-            <span class="font-display text-xs tracking-widest text-[var(--color-ink-muted)]">Affiliation</span>
-            <span class="font-display text-sm text-[var(--color-ink)]">University of the Ryukyus, School of Medicine</span>
-          </div>
-          <div class="flex justify-between px-5 py-3">
-            <span class="font-display text-xs tracking-widest text-[var(--color-ink-muted)]">Location</span>
-            <span class="font-display text-sm text-[var(--color-ink)]">Okinawa, Japan</span>
-          </div>
+          {[
+            { label: 'Name', value: 'Shunichi Ito' },
+            { label: 'Born', value: '2003' },
+            { label: 'Affiliation', value: 'University of the Ryukyus, School of Medicine' },
+            { label: 'Location', value: 'Okinawa, Japan' },
+          ].map((item) => (
+            <div class="flex justify-between px-5 py-3">
+              <span class="font-display text-xs tracking-widest text-[var(--color-ink-muted)]">{item.label}</span>
+              <span class="text-sm text-[var(--color-ink)]">{item.value}</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>
 
-    <!-- Okinawa photo -->
+    <!-- Okinawa -->
     <section class="mb-20 grid md:grid-cols-2 border border-[var(--color-border)] overflow-hidden">
       <div class="overflow-hidden">
-        <img
-          src="/写真、画像/my portfolio/okinawa.jpg"
-          alt="Okinawa, Japan"
-          class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-        />
+        <img src="/写真、画像/my portfolio/okinawa.jpg" alt="Okinawa, Japan" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
       </div>
       <div class="flex flex-col justify-center px-10 py-12 bg-[var(--color-cream-dark)] space-y-6">
         <div>
@@ -98,22 +80,19 @@ import Layout from '../../layouts/Layout.astro';
           <h3 class="font-display text-3xl tracking-[0.15em] text-[var(--color-ink)]">OKINAWA<br />JAPAN</h3>
         </div>
         <div class="h-px w-12 bg-[var(--color-gold)]"></div>
-        <p class="font-display text-sm text-[var(--color-ink-muted)] leading-loose">
+        <p class="text-sm text-[var(--color-ink-muted)] leading-loose">
           Based in Okinawa, working as both actor and medical student. Drawing daily energy from the island's culture and people.
         </p>
       </div>
     </section>
 
-    <!-- Contact CTA -->
+    <!-- Contact -->
     <section class="text-center border border-[var(--color-border)] bg-white p-12 space-y-6">
       <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)]">CONTACT</p>
-      <p class="font-display text-sm text-[var(--color-ink-muted)] leading-loose">
+      <p class="text-sm text-[var(--color-ink-muted)] leading-loose">
         For casting, interviews, or other inquiries, please reach out below.
       </p>
-      <a
-        href="mailto:changeupandshake@gmail.com"
-        class="inline-block px-8 py-3 border border-[var(--color-gold)] text-[var(--color-gold)] font-display text-xs tracking-[0.2em] hover:bg-[var(--color-gold)] hover:text-white transition-all duration-300"
-      >
+      <a href="mailto:changeupandshake@gmail.com" class="inline-block px-8 py-3 border border-[var(--color-gold)] text-[var(--color-gold)] font-display text-xs tracking-[0.2em] hover:bg-[var(--color-gold)] hover:text-white transition-all duration-300">
         Send Email
       </a>
     </section>

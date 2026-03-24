@@ -6,7 +6,7 @@ const relatedPosts = getPostsByKeyword('島守').slice(0, 8);
 
 const highlights = [
   { date: '2026.01', text: 'Rehearsals begin. Committed to the role of Jyun Urasaki surrounded by senior actors.' },
-  { date: '2026.02.08', text: 'Kobe performance. Delivering the story in Governor Shimada\'s hometown.' },
+  { date: '2026.02.08', text: "Kobe performance. Delivering the story in Governor Shimada's hometown." },
   { date: '2026.02.09', text: 'Visited the former residence of Shimada Akira. Pledged: "Act, and it shall be done."' },
 ];
 ---
@@ -17,19 +17,13 @@ const highlights = [
 >
   <!-- Hero -->
   <section class="relative h-[70vh] overflow-hidden">
-    <img
-      src="/写真、画像/島守のうた/LINE_ALBUM_神戸⚓️_260324_1.jpg"
-      alt="Shimamori no Uta — Kobe Performance"
-      class="w-full h-full object-cover object-top"
-    />
+    <img src="/写真、画像/島守のうた/LINE_ALBUM_神戸⚓️_260324_1.jpg" alt="Shimamori no Uta — Kobe Performance" class="w-full h-full object-cover object-top" />
     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
     <div class="absolute bottom-0 left-0 right-0 p-8 md:p-16 max-w-4xl">
       <a href="/en/works" class="font-display text-xs tracking-[0.2em] text-white/50 hover:text-[var(--color-gold)] transition-colors mb-6 block">← Works</a>
       <span class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] block mb-3">STAGE / ACTING · 2026</span>
       <h1 class="font-display text-4xl md:text-6xl text-white leading-tight mb-4">Shimamori no Uta</h1>
-      <p class="font-display text-sm text-white/70 leading-relaxed tracking-wider">
-        Island Guardian's Song — A touring stage production
-      </p>
+      <p class="text-sm text-white/70 leading-relaxed">Island Guardian's Song — A touring stage production</p>
     </div>
   </section>
 
@@ -40,9 +34,9 @@ const highlights = [
       <div class="space-y-6">
         <div>
           <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">OVERVIEW</p>
-          <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">About the Production</h2>
+          <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">About the production</h2>
         </div>
-        <div class="space-y-4 font-display text-sm text-[var(--color-ink-muted)] leading-loose">
+        <div class="space-y-4 text-sm text-[var(--color-ink-muted)] leading-loose text-justify">
           <p>
             Wartime Okinawa. A story of life and peace, woven by those who supported Governor Akira Shimada and Police Chief Taizo Arai — men who continued to cry "Live!" in the face of hopeless circumstances.
           </p>
@@ -56,7 +50,6 @@ const highlights = [
         </div>
       </div>
 
-      <!-- Info card -->
       <div class="border border-[var(--color-border)] divide-y divide-[var(--color-border)] h-fit">
         {[
           { label: 'ROLE', value: 'Jyun Urasaki (Population Section Chief / Secretary to Governor)' },
@@ -67,7 +60,7 @@ const highlights = [
         ].map((item) => (
           <div class="px-5 py-3">
             <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] mb-0.5">{item.label}</p>
-            <p class="font-display text-sm text-[var(--color-ink)]">{item.value}</p>
+            <p class="text-sm text-[var(--color-ink)]">{item.value}</p>
           </div>
         ))}
       </div>
@@ -77,7 +70,7 @@ const highlights = [
     <section class="fade-in border-l-2 border-[var(--color-gold)] pl-8 space-y-4">
       <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)]">MY ROLE</p>
       <h2 class="font-display text-xl text-[var(--color-ink)]">Playing Jyun Urasaki</h2>
-      <div class="space-y-4 font-display text-sm text-[var(--color-ink-muted)] leading-loose">
+      <div class="space-y-4 text-sm text-[var(--color-ink-muted)] leading-loose text-justify">
         <p>
           Jyun Urasaki witnessed Governor Shimada's anguish and conviction at closest range, received the order to "live," survived the war, and spent the rest of his life passing on those facts. He was a real person.
         </p>
@@ -93,13 +86,9 @@ const highlights = [
     <!-- Flyer -->
     <section class="fade-in">
       <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">FLYER</p>
-      <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">Production Flyer</h2>
+      <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">Production flyer</h2>
       <div class="flex justify-center">
-        <img
-          src="/写真、画像/島守のうた/島守のうた チラシ.jpg"
-          alt="Shimamori no Uta — Flyer"
-          class="max-w-sm w-full border border-[var(--color-border)]"
-        />
+        <img src="/写真、画像/島守のうた/島守のうた チラシ.jpg" alt="Shimamori no Uta — Flyer" class="max-w-sm w-full border border-[var(--color-border)]" />
       </div>
     </section>
 
@@ -112,7 +101,7 @@ const highlights = [
           <div class="relative py-5 group">
             <div class="absolute -left-[1.45rem] top-7 w-3 h-3 rounded-full border-2 border-[var(--color-gold)] bg-white group-hover:bg-[var(--color-gold)] transition-colors"></div>
             <time class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] block mb-1">{h.date}</time>
-            <p class="font-display text-sm text-[var(--color-ink)] leading-relaxed">{h.text}</p>
+            <p class="text-sm text-[var(--color-ink)] leading-relaxed">{h.text}</p>
           </div>
         ))}
       </div>
@@ -122,18 +111,13 @@ const highlights = [
     {relatedPosts.length > 0 && (
       <section class="fade-in">
         <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">DOCUMENT</p>
-        <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-4">Production Journal</h2>
-        <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] mb-8">* Written in Japanese</p>
+        <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-4">Production journal</h2>
+        <p class="text-xs text-[var(--color-ink-muted)] mb-8">* Written in Japanese</p>
         <div class="divide-y divide-[var(--color-border)]">
           {relatedPosts.map((post) => (
-            <a
-              href={`/blog/${post.slug}`}
-              class="group flex gap-6 py-5 hover:bg-[var(--color-cream)] px-2 -mx-2 transition-colors"
-            >
+            <a href={`/blog/${post.slug}`} class="group flex gap-6 py-5 hover:bg-[var(--color-cream)] px-2 -mx-2 transition-colors">
               <time class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] shrink-0 pt-1 w-24">{post.date}</time>
-              <h3 class="font-japanese text-[var(--color-ink)] group-hover:text-[var(--color-gold-dark)] transition-colors leading-relaxed line-clamp-2">
-                {post.title}
-              </h3>
+              <h3 class="font-japanese text-[var(--color-ink)] group-hover:text-[var(--color-gold-dark)] transition-colors leading-relaxed line-clamp-2">{post.title}</h3>
               <span class="shrink-0 self-center font-display text-xs text-[var(--color-gold)] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
             </a>
           ))}

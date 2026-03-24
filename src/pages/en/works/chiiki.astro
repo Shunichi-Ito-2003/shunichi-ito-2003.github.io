@@ -55,19 +55,13 @@ const highlights = [
 >
   <!-- Hero -->
   <section class="relative h-[70vh] overflow-hidden">
-    <img
-      src="/写真、画像/地域を応援する演劇/season1　まぁさん堂/チーム恵比寿集合写真.JPG"
-      alt="Theater to Support the Community"
-      class="w-full h-full object-cover object-center"
-    />
+    <img src="/写真、画像/地域を応援する演劇/season1　まぁさん堂/チーム恵比寿集合写真.JPG" alt="Theater to Support the Community" class="w-full h-full object-cover object-center" />
     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
     <div class="absolute bottom-0 left-0 right-0 p-8 md:p-16 max-w-4xl">
       <a href="/en/works" class="font-display text-xs tracking-[0.2em] text-white/50 hover:text-[var(--color-gold)] transition-colors mb-6 block">← Works</a>
       <span class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] block mb-3">COMMUNITY / STAGE · 2026</span>
       <h1 class="font-display text-3xl md:text-5xl text-white leading-tight mb-4">Theater to Support<br />the Community</h1>
-      <p class="font-display text-sm text-white/70 leading-relaxed tracking-wider">
-        "Theater for someone" — starting from Okinawa
-      </p>
+      <p class="text-sm text-white/70 leading-relaxed">"Theater for someone" — starting from Okinawa</p>
     </div>
   </section>
 
@@ -77,9 +71,9 @@ const highlights = [
     <section class="fade-in space-y-6">
       <div>
         <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">OVERVIEW</p>
-        <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">About the Project</h2>
+        <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">About the project</h2>
       </div>
-      <div class="space-y-4 font-display text-sm text-[var(--color-ink-muted)] leading-loose">
+      <div class="space-y-4 text-sm text-[var(--color-ink-muted)] leading-loose text-justify">
         <p>
           "Why doesn't theater reach more of society?" — the answer was simple: <strong class="text-[var(--color-ink)]">"Because there's not enough theater made for someone else."</strong>
         </p>
@@ -95,7 +89,7 @@ const highlights = [
     <!-- Teams -->
     <section class="fade-in">
       <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">3 TEAMS</p>
-      <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-8">Teams & Supported Venues</h2>
+      <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-8">Teams & supported venues</h2>
       <div class="space-y-4">
         {teams.map((team) => (
           <div class={`border ${team.me ? 'border-[var(--color-gold)] bg-[var(--color-cream)]' : 'border-[var(--color-border)] bg-white'} p-6`}>
@@ -103,9 +97,7 @@ const highlights = [
               <div class="space-y-1">
                 <div class="flex items-center gap-3 flex-wrap">
                   <h3 class="font-display text-sm tracking-widest text-[var(--color-ink)]">{team.name}</h3>
-                  {team.me && (
-                    <span class="font-display text-xs tracking-widest text-white bg-[var(--color-gold)] px-2 py-0.5">MY TEAM</span>
-                  )}
+                  {team.me && <span class="font-display text-xs tracking-widest text-white bg-[var(--color-gold)] px-2 py-0.5">MY TEAM</span>}
                   <span class={`font-display text-xs tracking-widest px-2 py-0.5 ${team.status === 'Completed' ? 'text-[var(--color-ink-muted)] border border-[var(--color-border)]' : 'text-[var(--color-gold)] border border-[var(--color-gold)]'}`}>
                     {team.status}
                   </span>
@@ -117,7 +109,7 @@ const highlights = [
             <div class="mt-4 pt-4 border-t border-[var(--color-border)]">
               <p class="font-display text-xs tracking-widest text-[var(--color-gold)] mb-1">SUPPORTING</p>
               <p class="font-display text-sm font-bold text-[var(--color-ink)] mb-1">{team.target}</p>
-              <p class="font-display text-xs text-[var(--color-ink-muted)] leading-relaxed">{team.targetDesc}</p>
+              <p class="text-xs text-[var(--color-ink-muted)] leading-relaxed">{team.targetDesc}</p>
             </div>
           </div>
         ))}
@@ -127,8 +119,8 @@ const highlights = [
     <!-- My role -->
     <section class="fade-in border-l-2 border-[var(--color-gold)] pl-8 space-y-4">
       <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)]">MY ROLE</p>
-      <h2 class="font-display text-xl text-[var(--color-ink)]">Team Ebisu — Supporting Maasan-do</h2>
-      <div class="space-y-4 font-display text-sm text-[var(--color-ink-muted)] leading-loose">
+      <h2 class="font-display text-xl text-[var(--color-ink)]">Team Ebisu — supporting Maasan-do</h2>
+      <div class="space-y-4 text-sm text-[var(--color-ink-muted)] leading-loose text-justify">
         <p>
           I belong to Team Ebisu, a team of 16. For Season 1, we chose to support <strong class="text-[var(--color-ink)]">Maasan-do</strong>, a community diner in Haebaru Town that has been running since 2008. One of our team members, Reemi, has parents who run the diner. We chose them because we wanted to start by supporting someone close to us.
         </p>
@@ -144,18 +136,10 @@ const highlights = [
     <!-- Flyer -->
     <section class="fade-in">
       <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">FLYER</p>
-      <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">Season 1 Flyer</h2>
+      <h2 class="font-display text-2xl tracking-widests text-[var(--color-ink)] mb-6">Season 1 flyer</h2>
       <div class="grid grid-cols-2 gap-4 max-w-lg">
-        <img
-          src="/写真、画像/地域を応援する演劇/season1　まぁさん堂/フライヤー表.JPG"
-          alt="Flyer — Front"
-          class="w-full border border-[var(--color-border)]"
-        />
-        <img
-          src="/写真、画像/地域を応援する演劇/season1　まぁさん堂/フライヤー裏.JPG"
-          alt="Flyer — Back"
-          class="w-full border border-[var(--color-border)]"
-        />
+        <img src="/写真、画像/地域を応援する演劇/season1　まぁさん堂/フライヤー表.JPG" alt="Flyer — Front" class="w-full border border-[var(--color-border)]" />
+        <img src="/写真、画像/地域を応援する演劇/season1　まぁさん堂/フライヤー裏.JPG" alt="Flyer — Back" class="w-full border border-[var(--color-border)]" />
       </div>
     </section>
 
@@ -168,7 +152,7 @@ const highlights = [
           <div class="relative py-5 group">
             <div class="absolute -left-[1.45rem] top-7 w-3 h-3 rounded-full border-2 border-[var(--color-gold)] bg-white group-hover:bg-[var(--color-gold)] transition-colors"></div>
             <time class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] block mb-1">{h.date}</time>
-            <p class="font-display text-sm text-[var(--color-ink)] leading-relaxed">{h.text}</p>
+            <p class="text-sm text-[var(--color-ink)] leading-relaxed">{h.text}</p>
           </div>
         ))}
       </div>
@@ -178,18 +162,13 @@ const highlights = [
     {relatedPosts.length > 0 && (
       <section class="fade-in">
         <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">DOCUMENT</p>
-        <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-4">Production Journal (29-part series)</h2>
-        <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] mb-8">* Written in Japanese</p>
+        <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-4">Production journal (29-part series)</h2>
+        <p class="text-xs text-[var(--color-ink-muted)] mb-8">* Written in Japanese</p>
         <div class="divide-y divide-[var(--color-border)]">
           {relatedPosts.map((post) => (
-            <a
-              href={`/blog/${post.slug}`}
-              class="group flex gap-6 py-5 hover:bg-[var(--color-cream)] px-2 -mx-2 transition-colors"
-            >
+            <a href={`/blog/${post.slug}`} class="group flex gap-6 py-5 hover:bg-[var(--color-cream)] px-2 -mx-2 transition-colors">
               <time class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] shrink-0 pt-1 w-24">{post.date}</time>
-              <h3 class="font-japanese text-[var(--color-ink)] group-hover:text-[var(--color-gold-dark)] transition-colors leading-relaxed line-clamp-2">
-                {post.title}
-              </h3>
+              <h3 class="font-japanese text-[var(--color-ink)] group-hover:text-[var(--color-gold-dark)] transition-colors leading-relaxed line-clamp-2">{post.title}</h3>
               <span class="shrink-0 self-center font-display text-xs text-[var(--color-gold)] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
             </a>
           ))}
