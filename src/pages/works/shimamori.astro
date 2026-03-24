@@ -6,8 +6,7 @@ const relatedPosts = getPostsByKeyword('島守').slice(0, 8);
 
 const highlights = [
   { date: '2026.01', text: '稽古開始。先輩方に囲まれながら浦崎純役を務める決意' },
-  { date: '2026.01', text: '沖縄・栃木公演を経て、島田叡の故郷・神戸公演へ向けて準備' },
-  { date: '2026.02.08', text: '神戸公演本番。2043席の劇場で物語を届ける' },
+  { date: '2026.02.08', text: '神戸公演本番。島田叡の故郷・神戸で物語を届ける' },
   { date: '2026.02.09', text: '島田叡さんの住居跡を訪れ、「断じて行えば」を誓う' },
 ];
 ---
@@ -19,8 +18,8 @@ const highlights = [
   <!-- Hero -->
   <section class="relative h-[70vh] overflow-hidden">
     <img
-      src="/写真、画像/島守のうた/語りの役の山城さんが出ている時の画像.jpg"
-      alt="島守のうた"
+      src="/写真、画像/島守のうた/LINE_ALBUM_神戸⚓️_260324_1.jpg"
+      alt="島守のうた 神戸公演"
       class="w-full h-full object-cover object-top"
     />
     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
@@ -53,8 +52,9 @@ const highlights = [
             最後まで「命どぅ宝（命こそ宝）」を貫いた人物です。
           </p>
           <p>
-            沖縄→栃木→兵庫（神戸）と、二人の英雄の故郷を巡るこの巡回公演は、
-            鎮魂と希望の物語として多くの方の心に届けられました。
+            沖縄→栃木→兵庫（神戸）と、二人の英雄の故郷を巡るこの巡回公演。
+            沖縄・栃木は数年前に上演されており、
+            伊藤駿一が参加したのは2026年2月8日の<strong class="text-[var(--color-ink)]">神戸公演</strong>です。
           </p>
         </div>
       </div>
@@ -63,9 +63,9 @@ const highlights = [
       <div class="border border-[var(--color-border)] divide-y divide-[var(--color-border)] h-fit">
         {[
           { label: 'ROLE', value: '浦崎純（人口課長・島田知事の秘書）' },
-          { label: 'YEAR', value: '2026年' },
-          { label: 'VENUE', value: '沖縄・栃木・兵庫（神戸）' },
-          { label: 'TYPE', value: '巡回舞台公演' },
+          { label: 'DATE', value: '2026年2月8日' },
+          { label: 'VENUE', value: '兵庫（神戸）※駿一参加は神戸公演のみ' },
+          { label: 'TYPE', value: '巡回舞台公演（沖縄・栃木は数年前に上演）' },
           { label: 'COMPANY', value: '01ENTERTAINMENT' },
         ].map((item) => (
           <div class="px-5 py-3">
@@ -95,6 +95,19 @@ const highlights = [
           それでも、島田知事を支え続けた浦崎さんのように、
           自分にできる最大限を全うしたいと稽古に臨みました。
         </p>
+      </div>
+    </section>
+
+    <!-- Flyer -->
+    <section class="fade-in">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">FLYER</p>
+      <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">公演チラシ</h2>
+      <div class="flex justify-center">
+        <img
+          src="/写真、画像/島守のうた/島守のうた チラシ.jpg"
+          alt="島守のうた 公演チラシ"
+          class="max-w-sm w-full border border-[var(--color-border)]"
+        />
       </div>
     </section>
 

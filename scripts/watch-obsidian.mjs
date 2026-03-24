@@ -4,6 +4,9 @@
  * 使い方:
  *   npm run watch        # 監視開始（Mac起動時に自動スタートも設定可）
  *   npm run sync         # 一回だけ同期して終了
+ *
+ * 公開の仕方:
+ *   Obsidianのプロパティパネルで published チェックボックスをONにして保存するだけ
  */
 
 import chokidar from 'chokidar';
@@ -81,7 +84,10 @@ function fullSync() {
   const files = fs.readdirSync(OBSIDIAN_DIR);
   let synced = 0;
   for (const file of files) {
-    if (processFile(path.join(OBSIDIAN_DIR, file))) synced++;
+    const fullPath = path.join(OBSIDIAN_DIR, file);
+    if (fs.statSync(fullPath).isFile()) {
+      if (processFile(fullPath)) synced++;
+    }
   }
   console.log(`✅ 同期完了: ${synced}件の変更`);
   return synced;
@@ -109,7 +115,7 @@ function gitPush(message) {
 // ── メイン処理 ──────────────────────────────
 
 // 起動時にまず全件同期
-const changed = fullSync();
+fullSync();
 gitPush('Sync published posts from Obsidian');
 
 // --sync フラグがあれば監視せずに終了
@@ -130,6 +136,7 @@ const watcher = chokidar.watch(OBSIDIAN_DIR, {
   ignored: /(^|[/\\])\../,   // ドットファイル無視
   persistent: true,
   ignoreInitial: true,
+  depth: 0,                   // サブフォルダは監視しない
   awaitWriteFinish: {
     stabilityThreshold: 2000, // iCloudの同期が落ち着くまで2秒待つ
     pollInterval: 100,
