@@ -1,7 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const CONTENT_DIR = '/Users/itoushunichi/Library/Mobile Documents/iCloud~md~obsidian/Documents/新・Obsidian Starter Kit/07_note原稿';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const CONTENT_DIR = path.join(__dirname, '..', '..', 'content');
 
 export interface Post {
   slug: string;
