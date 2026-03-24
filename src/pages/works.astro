@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const works = [
+  {
+    id: 'shimamori',
+    category: 'STAGE / ACTING',
+    year: '2026',
+    title: '島守のうた',
+    role: '出演',
+    description: '沖縄戦・最後の官選知事・島田叡の物語。沖縄、栃木、兵庫をつなぐ巡回公演。困難な時代に「命どぅ宝」を貫いた人物を演じる。',
+    tags: ['舞台', '歴史劇', '沖縄'],
+    image: '/20240816_02.jpg',
+  },
+  {
+    id: 'santa',
+    category: 'CHARITY PROJECT',
+    year: '2025',
+    title: 'みんながサンタ！',
+    role: '企画・運営・出演',
+    description: 'クリスマスに120家庭へケーキを届けるチャリティー企画。4年目となる2025年は演劇公演のチケット収益をケーキ代に充て、サンタとして子どもたちに届けた。',
+    tags: ['チャリティー', '企画', '演劇'],
+    image: '/809946EF-7DA1-4FEF-9558-CFC09FAF73ED.jpeg',
+  },
+  {
+    id: 'chiiki',
+    category: 'COMMUNITY / STAGE',
+    year: '2026',
+    title: '地域を応援する演劇',
+    role: '企画・脚本・出演',
+    description: '31名が3チームに分かれ、毎月地域の誰かを応援する演劇を上演するプロジェクト。駿一はチーム恵比寿として脚本・出演を担当し、南風原町の地域食堂「まぁさん堂」を応援した。',
+    tags: ['地域連携', '企画', '脚本'],
+    image: '/okinawa.jpg',
+  },
+];
+---
+
+<Layout title="WORKS" description="伊藤駿一の活動・作品一覧">
+  <div class="max-w-5xl mx-auto px-6 py-16">
+    <!-- Header -->
+    <header class="mb-16">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">活動アーカイブ</p>
+      <h1 class="font-display text-4xl md:text-5xl tracking-[0.15em] text-[var(--color-ink)] mb-6">WORKS</h1>
+      <div class="h-px w-16 bg-[var(--color-gold)]"></div>
+    </header>
+
+    <!-- Works list -->
+    <div class="space-y-8">
+      {works.map((work, i) => (
+        <a href={`/works/${work.id}`} class="fade-in group grid md:grid-cols-[280px_1fr] border border-[var(--color-border)] bg-white hover:border-[var(--color-gold)] transition-all duration-300 overflow-hidden">
+          <!-- Image -->
+          <div class="relative h-48 md:h-auto overflow-hidden">
+            <img
+              src={work.image}
+              alt={work.title}
+              class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent to-white/20"></div>
+            <div class="absolute top-4 left-4">
+              <span class="font-display text-2xl text-white/60">{String(i + 1).padStart(2, '0')}</span>
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div class="p-8 space-y-4">
+            <div>
+              <span class="font-display text-xs tracking-[0.2em] text-[var(--color-gold)] block mb-2">{work.category}</span>
+              <h2 class="font-japanese text-2xl font-bold text-[var(--color-ink)] group-hover:text-[var(--color-gold-dark)] transition-colors mb-1">
+                {work.title}
+              </h2>
+              <span class="font-display text-xs tracking-widest text-[var(--color-ink-muted)]">{work.role}</span>
+            </div>
+            <p class="font-japanese text-[var(--color-ink-muted)] leading-relaxed">
+              {work.description}
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {work.tags.map((tag) => (
+                <span class="font-japanese text-xs text-[var(--color-ink-muted)] border border-[var(--color-border)] px-3 py-1">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,143 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getPostsByKeyword } from '../../lib/posts';
+
+const relatedPosts = getPostsByKeyword('島守').slice(0, 8);
+
+const highlights = [
+  { date: '2026.01', text: '稽古開始。先輩方に囲まれながら浦崎純役を務める決意' },
+  { date: '2026.01', text: '沖縄・栃木公演を経て、島田叡の故郷・神戸公演へ向けて準備' },
+  { date: '2026.02.08', text: '神戸公演本番。2043席の劇場で物語を届ける' },
+  { date: '2026.02.09', text: '島田叡さんの住居跡を訪れ、「断じて行えば」を誓う' },
+];
+---
+
+<Layout
+  title="島守のうた"
+  description="沖縄戦・最後の官選知事・島田叡の物語。沖縄・栃木・兵庫をつなぐ巡回公演。伊藤駿一が浦崎純を演じた記録。"
+>
+  <!-- Hero -->
+  <section class="relative h-[70vh] overflow-hidden">
+    <img
+      src="/20240816_02.jpg"
+      alt="島守のうた"
+      class="w-full h-full object-cover object-top"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 p-8 md:p-16 max-w-4xl">
+      <a href="/works" class="font-display text-xs tracking-[0.2em] text-white/50 hover:text-[var(--color-gold)] transition-colors mb-6 block">← WORKS</a>
+      <span class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] block mb-3">STAGE / ACTING · 2026</span>
+      <h1 class="font-japanese text-4xl md:text-6xl font-bold text-white leading-tight mb-4">島守のうた</h1>
+      <p class="font-japanese text-white/70 text-lg leading-relaxed">
+        沖縄・栃木・兵庫をつなぐ巡回舞台
+      </p>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-6 py-16 space-y-20">
+
+    <!-- Overview -->
+    <section class="fade-in grid md:grid-cols-[1fr_280px] gap-12">
+      <div class="space-y-6">
+        <div>
+          <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">OVERVIEW</p>
+          <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">作品について</h2>
+        </div>
+        <div class="space-y-4 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
+          <p>
+            戦時下の沖縄。絶望的な状況の中で「生きろ！」と叫び続けた島田叡知事と荒井退造警察部長。
+            その傍らで彼らを支えた人々が紡ぐ、命と平和の物語。
+          </p>
+          <p>
+            島田叡は兵庫県出身の最後の官選沖縄県知事。県民の命を守るために奔走し、
+            最後まで「命どぅ宝（命こそ宝）」を貫いた人物です。
+          </p>
+          <p>
+            沖縄→栃木→兵庫（神戸）と、二人の英雄の故郷を巡るこの巡回公演は、
+            鎮魂と希望の物語として多くの方の心に届けられました。
+          </p>
+        </div>
+      </div>
+
+      <!-- Info card -->
+      <div class="border border-[var(--color-border)] divide-y divide-[var(--color-border)] h-fit">
+        {[
+          { label: 'ROLE', value: '浦崎純（人口課長・島田知事の秘書）' },
+          { label: 'YEAR', value: '2026年' },
+          { label: 'VENUE', value: '沖縄・栃木・兵庫（神戸）' },
+          { label: 'TYPE', value: '巡回舞台公演' },
+          { label: 'COMPANY', value: '01ENTERTAINMENT' },
+        ].map((item) => (
+          <div class="px-5 py-3">
+            <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] mb-0.5">{item.label}</p>
+            <p class="font-japanese text-sm text-[var(--color-ink)]">{item.value}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- My role -->
+    <section class="fade-in border-l-2 border-[var(--color-gold)] pl-8 space-y-4">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)]">MY ROLE</p>
+      <h2 class="font-japanese text-xl font-bold text-[var(--color-ink)]">浦崎純を演じるということ</h2>
+      <div class="space-y-4 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
+        <p>
+          浦崎純さんは、島田知事の最も近くでその苦悩と信念を見つめ続け、
+          「君たちは生きろ」という命を受け、戦後を生き抜いてその事実を語り継いだ実在の人物です。
+        </p>
+        <p>
+          著書『消えた沖縄県』は沖縄県立図書館にも所蔵されている貴重な記録。
+          この役を託された理由の一つに、僕自身の「実直さ」と浦崎さんの生き方が重なる部分がある、
+          というお話をいただきました。それは役者としてこれ以上ない喜びでした。
+        </p>
+        <p>
+          医学生としての学びと並行しながら、先輩方についていくだけで精一杯の日々。
+          それでも、島田知事を支え続けた浦崎さんのように、
+          自分にできる最大限を全うしたいと稽古に臨みました。
+        </p>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="fade-in">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">TIMELINE</p>
+      <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-8">記録</h2>
+      <div class="relative pl-6 border-l-2 border-[var(--color-border)] space-y-0">
+        {highlights.map((h) => (
+          <div class="relative py-5 group">
+            <div class="absolute -left-[1.45rem] top-7 w-3 h-3 rounded-full border-2 border-[var(--color-gold)] bg-white group-hover:bg-[var(--color-gold)] transition-colors"></div>
+            <time class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] block mb-1">{h.date}</time>
+            <p class="font-japanese text-[var(--color-ink)] leading-relaxed">{h.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Related posts -->
+    {relatedPosts.length > 0 && (
+      <section class="fade-in">
+        <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">DOCUMENT</p>
+        <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-8">制作日誌</h2>
+        <div class="divide-y divide-[var(--color-border)]">
+          {relatedPosts.map((post) => (
+            <a
+              href={`/blog/${post.slug}`}
+              class="group flex gap-6 py-5 hover:bg-[var(--color-cream)] px-2 -mx-2 transition-colors"
+            >
+              <time class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] shrink-0 pt-1 w-24">{post.date}</time>
+              <h3 class="font-japanese text-[var(--color-ink)] group-hover:text-[var(--color-gold-dark)] transition-colors leading-relaxed line-clamp-2">
+                {post.title}
+              </h3>
+              <span class="shrink-0 self-center font-display text-xs text-[var(--color-gold)] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </a>
+          ))}
+        </div>
+        <div class="mt-6">
+          <a href="/blog" class="font-display text-xs tracking-[0.2em] text-[var(--color-ink-muted)] hover:text-[var(--color-gold)] transition-colors">
+            すべての記事を読む →
+          </a>
+        </div>
+      </section>
+    )}
+  </div>
+</Layout>

@@ -1,0 +1,130 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="PROFILE" description="伊藤駿一のプロフィール。俳優・医学生として沖縄を拠点に活動。">
+  <div class="max-w-5xl mx-auto px-6 py-16">
+    <!-- Header -->
+    <header class="mb-16">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">プロフィール</p>
+      <h1 class="font-display text-4xl md:text-5xl tracking-[0.15em] text-[var(--color-ink)] mb-6">PROFILE</h1>
+      <div class="h-px w-16 bg-[var(--color-gold)]"></div>
+    </header>
+
+    <!-- Section: The Actor -->
+    <section class="grid md:grid-cols-2 gap-12 items-start mb-20">
+      <div class="space-y-6">
+        <h2 class="font-display text-xl tracking-[0.2em] text-[var(--color-gold)] flex items-center gap-4">
+          <span class="h-px w-8 bg-[var(--color-gold)] inline-block"></span>
+          THE ACTOR
+        </h2>
+        <div class="space-y-5 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
+          <p>
+            「演劇は世界を平和にする」という信念のもと、沖縄を拠点に俳優として活動しています。
+            演劇を通して自分が押し殺していた感情を知るだけで、ふっと肩の力が抜けることがあります。
+            私は演劇を広く普及させることが、たくさんの人の豊かさにつながると信じています。
+          </p>
+          <p>
+            2024年、実際にカンヌ国際映画祭の現地を訪れ、そのエネルギーに圧倒されました。
+            「今度は作品といっしょにこの地に立つ」という決意を胸に、日々邁進しています。
+          </p>
+          <div class="border-l-2 border-[var(--color-gold)] pl-5 mt-6">
+            <p class="font-display text-xs tracking-[0.2em] text-[var(--color-gold)] mb-2">GOAL</p>
+            <p class="font-japanese text-[var(--color-ink)] font-bold">カンヌ国際映画祭 主演男優賞</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo -->
+      <div class="aspect-[3/4] overflow-hidden border border-[var(--color-border)]">
+        <img
+          src="/about-actor.jpeg"
+          alt="ITO SHUNICHI - Actor"
+          class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
+        />
+      </div>
+    </section>
+
+    <!-- Section: The Student -->
+    <section class="grid md:grid-cols-2 gap-12 items-start mb-20">
+      <!-- Photo -->
+      <div class="aspect-[3/4] overflow-hidden border border-[var(--color-border)] order-2 md:order-1">
+        <img
+          src="/about-student.jpg"
+          alt="ITO SHUNICHI - Student"
+          class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
+        />
+      </div>
+
+      <div class="space-y-6 order-1 md:order-2">
+        <h2 class="font-display text-xl tracking-[0.2em] text-[var(--color-gold)] flex items-center gap-4">
+          <span class="h-px w-8 bg-[var(--color-gold)] inline-block"></span>
+          THE STUDENT
+        </h2>
+        <div class="space-y-5 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
+          <p>
+            普段は医学部に通い、生命の仕組みと向き合っています。「論理」と「生命」の世界に身を置くことで、世界を客観的に捉える視座を養っています。
+          </p>
+        </div>
+
+        <!-- Info table -->
+        <div class="border border-[var(--color-border)] divide-y divide-[var(--color-border)]">
+          <div class="flex justify-between px-5 py-3">
+            <span class="font-display text-xs tracking-widest text-[var(--color-ink-muted)]">Name</span>
+            <span class="font-japanese text-sm text-[var(--color-ink)]">伊藤 駿一</span>
+          </div>
+          <div class="flex justify-between px-5 py-3">
+            <span class="font-display text-xs tracking-widest text-[var(--color-ink-muted)]">Born</span>
+            <span class="font-japanese text-sm text-[var(--color-ink)]">2003</span>
+          </div>
+          <div class="flex justify-between px-5 py-3">
+            <span class="font-display text-xs tracking-widest text-[var(--color-ink-muted)]">Affiliation</span>
+            <span class="font-japanese text-sm text-[var(--color-ink)]">琉球大学 医学部</span>
+          </div>
+          <div class="flex justify-between px-5 py-3">
+            <span class="font-display text-xs tracking-widest text-[var(--color-ink-muted)]">Location</span>
+            <span class="font-japanese text-sm text-[var(--color-ink)]">Okinawa, Japan</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Okinawa photo -->
+    <section class="mb-20 grid md:grid-cols-2 border border-[var(--color-border)] overflow-hidden">
+      <!-- Photo: natural portrait ratio -->
+      <div class="overflow-hidden">
+        <img
+          src="/okinawa.jpg"
+          alt="Okinawa, Japan"
+          class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+        />
+      </div>
+      <!-- Location info -->
+      <div class="flex flex-col justify-center px-10 py-12 bg-[var(--color-cream-dark)] space-y-6">
+        <div>
+          <span class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] block mb-3">LOCATION</span>
+          <h3 class="font-display text-3xl tracking-[0.15em] text-[var(--color-ink)]">OKINAWA<br />JAPAN</h3>
+        </div>
+        <div class="h-px w-12 bg-[var(--color-gold)]"></div>
+        <p class="font-japanese text-[var(--color-ink-muted)] leading-loose text-sm">
+          沖縄を拠点に、俳優・医学生として活動中。
+          島の文化と人々から、日々エネルギーをもらっています。
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="text-center border border-[var(--color-border)] bg-white p-12 space-y-6">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)]">CONTACT</p>
+      <p class="font-japanese text-[var(--color-ink-muted)] leading-loose">
+        出演依頼・取材・その他お問い合わせはこちら
+      </p>
+      <a
+        href="mailto:changeupandshake@gmail.com"
+        class="inline-block px-8 py-3 border border-[var(--color-gold)] text-[var(--color-gold)] font-display text-xs tracking-[0.2em] hover:bg-[var(--color-gold)] hover:text-white transition-all duration-300"
+      >
+        SEND EMAIL
+      </a>
+    </section>
+  </div>
+</Layout>

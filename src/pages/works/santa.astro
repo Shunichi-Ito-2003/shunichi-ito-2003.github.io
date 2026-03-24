@@ -1,0 +1,141 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getPostsByKeyword } from '../../lib/posts';
+
+const relatedPosts = getPostsByKeyword('サンタ').slice(0, 8);
+
+const highlights = [
+  { date: '2025.11', text: '企画スタート。「クリスマスを、ひとりで迎える子どもたちをなくしたい」という思いから始動' },
+  { date: '2025.12.01', text: '寄付・協力者の募集開始。SNSと口コミで広がり、多くの方から応援を受ける' },
+  { date: '2025.12.24', text: 'クリスマスイブ当日。サンタに扮して120家庭へケーキを届けるミッション完遂' },
+  { date: '2025.12.25', text: '子どもたちの笑顔の写真・メッセージが届く。「また来年も」という声に次回への誓い' },
+];
+---
+
+<Layout
+  title="みんながサンタ！"
+  description="120家庭にクリスマスケーキを届けるチャリティープロジェクト。伊藤駿一が企画・運営・サンタ役として参加した2025年のクリスマス活動記録。"
+>
+  <!-- Hero -->
+  <section class="relative h-[70vh] overflow-hidden">
+    <img
+      src="/809946EF-7DA1-4FEF-9558-CFC09FAF73ED.jpeg"
+      alt="みんながサンタ！"
+      class="w-full h-full object-cover object-top"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 p-8 md:p-16 max-w-4xl">
+      <a href="/works" class="font-display text-xs tracking-[0.2em] text-white/50 hover:text-[var(--color-gold)] transition-colors mb-6 block">← WORKS</a>
+      <span class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] block mb-3">CHARITY PROJECT · 2025</span>
+      <h1 class="font-japanese text-4xl md:text-6xl font-bold text-white leading-tight mb-4">みんながサンタ！</h1>
+      <p class="font-japanese text-white/70 text-lg leading-relaxed">
+        120家庭へ、クリスマスの奇跡を届けた夜
+      </p>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-6 py-16 space-y-20">
+
+    <!-- Overview -->
+    <section class="fade-in grid md:grid-cols-[1fr_280px] gap-12">
+      <div class="space-y-6">
+        <div>
+          <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">OVERVIEW</p>
+          <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">プロジェクトについて</h2>
+        </div>
+        <div class="space-y-4 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
+          <p>
+            「クリスマスを、ひとりぼっちで過ごす子どもをゼロにしたい」——そんな一言から生まれたチャリティープロジェクト。
+          </p>
+          <p>
+            サンタクロースに扮した僕たちが、クリスマスケーキを持って120の家庭を訪問。
+            支援を必要とする子どもたちと家族に、少しでも特別な夜を届けました。
+          </p>
+          <p>
+            企画・運営・資金調達から当日のサンタ役まで、チームメンバーとともに
+            ゼロから立ち上げた、想いが形になった瞬間です。
+          </p>
+        </div>
+      </div>
+
+      <!-- Info card -->
+      <div class="border border-[var(--color-border)] divide-y divide-[var(--color-border)] h-fit">
+        {[
+          { label: 'ROLE', value: '企画・運営・サンタ役' },
+          { label: 'YEAR', value: '2025年' },
+          { label: 'SCALE', value: '120家庭へのケーキ配達' },
+          { label: 'TYPE', value: 'チャリティープロジェクト' },
+        ].map((item) => (
+          <div class="px-5 py-3">
+            <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] mb-0.5">{item.label}</p>
+            <p class="font-japanese text-sm text-[var(--color-ink)]">{item.value}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- My role -->
+    <section class="fade-in border-l-2 border-[var(--color-gold)] pl-8 space-y-4">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)]">MY ROLE</p>
+      <h2 class="font-japanese text-xl font-bold text-[var(--color-ink)]">「全員がサンタになれる」という信念</h2>
+      <div class="space-y-4 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
+        <p>
+          このプロジェクトで大切にしたのは、「一部の誰かが助けてあげる」という構図ではなく、
+          「みんなが誰かにとってのサンタになれる」という発想でした。
+        </p>
+        <p>
+          寄付をしてくれた人も、ケーキを作ってくれた人も、当日一緒に走り回ったメンバーも、
+          全員がサンタ。子どもたちの笑顔を目撃した瞬間は、演劇の舞台で得る感動と同じくらい
+          深いものがありました。
+        </p>
+        <p>
+          「演劇は世界を平和にする」という僕の信念は、
+          こういう活動と地続きでつながっています。
+          行動すれば、世界は少しずつ変えられる。そのことを体で感じた2025年のクリスマスでした。
+        </p>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="fade-in">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">TIMELINE</p>
+      <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-8">記録</h2>
+      <div class="relative pl-6 border-l-2 border-[var(--color-border)] space-y-0">
+        {highlights.map((h) => (
+          <div class="relative py-5 group">
+            <div class="absolute -left-[1.45rem] top-7 w-3 h-3 rounded-full border-2 border-[var(--color-gold)] bg-white group-hover:bg-[var(--color-gold)] transition-colors"></div>
+            <time class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] block mb-1">{h.date}</time>
+            <p class="font-japanese text-[var(--color-ink)] leading-relaxed">{h.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Related posts -->
+    {relatedPosts.length > 0 && (
+      <section class="fade-in">
+        <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">DOCUMENT</p>
+        <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-8">活動記録</h2>
+        <div class="divide-y divide-[var(--color-border)]">
+          {relatedPosts.map((post) => (
+            <a
+              href={`/blog/${post.slug}`}
+              class="group flex gap-6 py-5 hover:bg-[var(--color-cream)] px-2 -mx-2 transition-colors"
+            >
+              <time class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] shrink-0 pt-1 w-24">{post.date}</time>
+              <h3 class="font-japanese text-[var(--color-ink)] group-hover:text-[var(--color-gold-dark)] transition-colors leading-relaxed line-clamp-2">
+                {post.title}
+              </h3>
+              <span class="shrink-0 self-center font-display text-xs text-[var(--color-gold)] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </a>
+          ))}
+        </div>
+        <div class="mt-6">
+          <a href="/blog" class="font-display text-xs tracking-[0.2em] text-[var(--color-ink-muted)] hover:text-[var(--color-gold)] transition-colors">
+            すべての記事を読む →
+          </a>
+        </div>
+      </section>
+    )}
+  </div>
+</Layout>

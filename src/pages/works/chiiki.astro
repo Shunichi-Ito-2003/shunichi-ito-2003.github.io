@@ -1,0 +1,196 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getPostsByKeyword } from '../../lib/posts';
+
+const relatedPosts = getPostsByKeyword('地域を応援する演劇').slice(0, 8);
+
+const teams = [
+  {
+    name: 'チーム恵比寿',
+    theme: '商売繁盛',
+    members: '16名',
+    target: '汁処まぁさん堂',
+    targetDesc: '沖縄県南風原町の地域食堂。2008年創業、もうすぐ20年。',
+    date: '2026.03.15',
+    status: '公演終了',
+    me: true,
+  },
+  {
+    name: 'チーム大黒天',
+    theme: '幸福・財産・長寿',
+    members: '7名',
+    target: '保育園の保育士',
+    targetDesc: '01ENTERTAINMENTメンバーの知り合いが経営する保育園。作品タイトル『保育園戦争』。',
+    date: '2026.04.05',
+    status: '公演予定',
+    me: false,
+  },
+  {
+    name: 'チーム弁財天',
+    theme: '健康・医療・長寿',
+    members: '8名',
+    target: 'ひろきの餃子',
+    targetDesc: '障害者割引を設け、障害者と健常者の接点を作る沖縄の餃子屋。',
+    date: '2026.05.03',
+    status: '公演予定',
+    me: false,
+  },
+];
+
+const highlights = [
+  { date: '2025.12', text: '「誰かのための演劇が少ない」という問いから「地域を応援する演劇」構想スタート' },
+  { date: '2026.01.04', text: '31名が3チームに分かれる新体制発表。チーム恵比寿（16名）に駿一が参加' },
+  { date: '2026.01.08', text: '応援先決定会議。チーム恵比寿の応援先が「汁処まぁさん堂」に決定' },
+  { date: '2026.01', text: 'まぁさん堂の店主・しげのりさんご夫婦への取材インタビュー実施' },
+  { date: '2026.01〜02', text: '脚本執筆開始。15人の個性を活かした配役を考えながら物語を紡ぐ' },
+  { date: '2026.02.18', text: '脚本完成・配役確定。15名の俳優たちに役を割り当てる' },
+  { date: '2026.03.07', text: '本番1週間前。申込者ゼロという現実と向き合い、泥臭い集客活動' },
+  { date: '2026.03.15', text: '本番当日。「一生懸命を応援する時間」を届け、Season 1 完走' },
+];
+---
+
+<Layout
+  title="地域を応援する演劇"
+  description="01ENTERTAINMENTが始めた演劇×社会貢献プロジェクト。31名が3チームに分かれ、毎月地域の誰かを応援する公演を行う。伊藤駿一はチーム恵比寿として脚本・出演を担当し、汁処まぁさん堂を応援した。"
+>
+  <!-- Hero -->
+  <section class="relative h-[70vh] overflow-hidden">
+    <img
+      src="/okinawa.jpg"
+      alt="地域を応援する演劇"
+      class="w-full h-full object-cover object-center"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 p-8 md:p-16 max-w-4xl">
+      <a href="/works" class="font-display text-xs tracking-[0.2em] text-white/50 hover:text-[var(--color-gold)] transition-colors mb-6 block">← WORKS</a>
+      <span class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] block mb-3">COMMUNITY / STAGE · 2026</span>
+      <h1 class="font-japanese text-4xl md:text-6xl font-bold text-white leading-tight mb-4">地域を応援する演劇</h1>
+      <p class="font-japanese text-white/70 text-lg leading-relaxed">
+        「誰かのための演劇」が、沖縄から始まる
+      </p>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-6 py-16 space-y-20">
+
+    <!-- Overview -->
+    <section class="fade-in space-y-6">
+      <div>
+        <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">OVERVIEW</p>
+        <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">プロジェクトについて</h2>
+      </div>
+      <div class="space-y-4 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
+        <p>
+          「なぜ、演劇はもっと社会に浸透しないのか」——答えはシンプルだった。<strong class="text-[var(--color-ink)]">「誰かのための演劇が少ないからだ」</strong>
+        </p>
+        <p>
+          この問いをもとに生まれたのが、「地域を応援する演劇」プロジェクト。
+          01ENTERTAINMENT所属の俳優31名が3つのチームに分かれ、毎月1公演を行い、
+          <strong class="text-[var(--color-ink)]">売上の25%を地域の応援先へ還元</strong>する仕組みを作りました。
+        </p>
+        <p>
+          応援先はチームが自ら選び、取材し、インタビューして物語を作る。
+          チームが違えば、応援先も、物語も、お客さんも違う。
+          それが連鎖して、演劇が地域へと広がっていく——そんな循環を目指しています。
+        </p>
+      </div>
+    </section>
+
+    <!-- Teams -->
+    <section class="fade-in">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">3 TEAMS</p>
+      <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-8">チームと応援先</h2>
+      <div class="space-y-4">
+        {teams.map((team) => (
+          <div class={`border ${team.me ? 'border-[var(--color-gold)] bg-[var(--color-cream)]' : 'border-[var(--color-border)] bg-white'} p-6`}>
+            <div class="flex flex-wrap items-start justify-between gap-4">
+              <div class="space-y-1">
+                <div class="flex items-center gap-3 flex-wrap">
+                  <h3 class="font-display text-sm tracking-widest text-[var(--color-ink)]">{team.name}</h3>
+                  {team.me && (
+                    <span class="font-display text-xs tracking-widest text-white bg-[var(--color-gold)] px-2 py-0.5">MY TEAM</span>
+                  )}
+                  <span class={`font-display text-xs tracking-widest px-2 py-0.5 ${team.status === '公演終了' ? 'text-[var(--color-ink-muted)] border border-[var(--color-border)]' : 'text-[var(--color-gold)] border border-[var(--color-gold)]'}`}>
+                    {team.status}
+                  </span>
+                </div>
+                <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)]">{team.members}　{team.theme}</p>
+              </div>
+              <time class="font-display text-xs tracking-widest text-[var(--color-ink-muted)]">{team.date}</time>
+            </div>
+            <div class="mt-4 pt-4 border-t border-[var(--color-border)]">
+              <p class="font-display text-xs tracking-widest text-[var(--color-gold)] mb-1">応援先</p>
+              <p class="font-japanese font-bold text-[var(--color-ink)] mb-1">{team.target}</p>
+              <p class="font-japanese text-sm text-[var(--color-ink-muted)] leading-relaxed">{team.targetDesc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- My role -->
+    <section class="fade-in border-l-2 border-[var(--color-gold)] pl-8 space-y-4">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)]">MY ROLE</p>
+      <h2 class="font-japanese text-xl font-bold text-[var(--color-ink)]">チーム恵比寿、まぁさん堂を応援する</h2>
+      <div class="space-y-4 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
+        <p>
+          僕が所属するのは、16名からなる「チーム恵比寿」。
+          Season 1の応援先に選んだのは、沖縄県南風原町で2008年から続く地域食堂・<strong class="text-[var(--color-ink)]">汁処まぁさん堂</strong>です。
+          チームメンバーの一人、れえみちゃんのご両親が経営しており、「まず身近な人から応援したい」という気持ちで選びました。
+        </p>
+        <p>
+          取材・インタビューを経て書いた脚本は、店主のしげのりさんが内装をほぼ自力で作り上げた話、
+          常連客の顔を見ただけで注文がわかるほどの関係性、
+          子どもを常連客に見てもらいながら切り盛りしてきた夫婦の歩みを物語にしたものです。
+        </p>
+        <p>
+          「演じる」だけでなく「書く」「取材する」「届ける」——
+          俳優として全工程に関わったこのプロジェクトは、
+          演劇が社会の中でどう生きていけるかを体で学んだ経験になりました。
+        </p>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="fade-in">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">TIMELINE</p>
+      <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-8">記録</h2>
+      <div class="relative pl-6 border-l-2 border-[var(--color-border)] space-y-0">
+        {highlights.map((h) => (
+          <div class="relative py-5 group">
+            <div class="absolute -left-[1.45rem] top-7 w-3 h-3 rounded-full border-2 border-[var(--color-gold)] bg-white group-hover:bg-[var(--color-gold)] transition-colors"></div>
+            <time class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] block mb-1">{h.date}</time>
+            <p class="font-japanese text-[var(--color-ink)] leading-relaxed">{h.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Related posts -->
+    {relatedPosts.length > 0 && (
+      <section class="fade-in">
+        <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">DOCUMENT</p>
+        <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-8">制作日誌（全29回連載）</h2>
+        <div class="divide-y divide-[var(--color-border)]">
+          {relatedPosts.map((post) => (
+            <a
+              href={`/blog/${post.slug}`}
+              class="group flex gap-6 py-5 hover:bg-[var(--color-cream)] px-2 -mx-2 transition-colors"
+            >
+              <time class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] shrink-0 pt-1 w-24">{post.date}</time>
+              <h3 class="font-japanese text-[var(--color-ink)] group-hover:text-[var(--color-gold-dark)] transition-colors leading-relaxed line-clamp-2">
+                {post.title}
+              </h3>
+              <span class="shrink-0 self-center font-display text-xs text-[var(--color-gold)] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </a>
+          ))}
+        </div>
+        <div class="mt-6">
+          <a href="/blog" class="font-display text-xs tracking-[0.2em] text-[var(--color-ink-muted)] hover:text-[var(--color-gold)] transition-colors">
+            すべての記事を読む →
+          </a>
+        </div>
+      </section>
+    )}
+  </div>
+</Layout>

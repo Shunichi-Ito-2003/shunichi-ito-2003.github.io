@@ -1,0 +1,140 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getPublishedPosts } from '../../lib/posts';
+
+export async function getStaticPaths({ paginate }: { paginate: Function }) {
+  const posts = getPublishedPosts();
+  return paginate(posts, { pageSize: 20 });
+}
+
+const { page } = Astro.props;
+const posts = page.data;
+
+// カテゴリ一覧を抽出（重複除去）
+const allPosts = getPublishedPosts();
+const categories = ['すべて', ...Array.from(new Set(allPosts.map((p) => p.category).filter(Boolean)))];
+---
+
+<Layout title="BLOG" description="伊藤駿一のブログ。俳優・医学生としての日々の思考と記録。">
+  <div class="max-w-4xl mx-auto px-6 py-16">
+    <!-- Header -->
+    <header class="mb-16">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">思考の庭</p>
+      <h1 class="font-display text-4xl md:text-5xl tracking-[0.15em] text-[var(--color-ink)] mb-6">MONOLOGUE</h1>
+      <div class="h-px w-16 bg-[var(--color-gold)]"></div>
+      <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] mt-4">
+        {page.total} 記事 — {page.currentPage} / {page.lastPage} ページ
+      </p>
+    </header>
+
+    <!-- Category filter -->
+    <div class="flex flex-wrap gap-2 mb-10" id="category-filter">
+      {categories.map((cat) => (
+        <button
+          data-category={cat}
+          class={`category-btn font-display text-xs tracking-[0.15em] px-4 py-2 border transition-colors ${
+            cat === 'すべて'
+              ? 'border-[var(--color-gold)] text-[var(--color-gold)] bg-transparent'
+              : 'border-[var(--color-border)] text-[var(--color-ink-muted)] hover:border-[var(--color-gold)] hover:text-[var(--color-gold)]'
+          }`}
+        >
+          {cat}
+        </button>
+      ))}
+    </div>
+
+    {posts.length > 0 ? (
+      <div class="divide-y divide-[var(--color-border)]" id="posts-list">
+        {posts.map((post) => (
+          <a
+            href={`/blog/${post.slug}`}
+            data-category={post.category}
+            class="post-item group flex flex-col md:flex-row gap-4 md:gap-8 py-8 transition-colors"
+          >
+            <div class="shrink-0 md:w-28">
+              <time class="font-display text-xs tracking-widest text-[var(--color-ink-muted)]">{post.date}</time>
+              {post.category && (
+                <span class="block mt-1 font-display text-xs tracking-widest text-[var(--color-gold)]">
+                  {post.category}
+                </span>
+              )}
+            </div>
+            <div class="flex-grow">
+              <h2 class="font-japanese font-bold text-[var(--color-ink)] group-hover:text-[var(--color-gold-dark)] transition-colors leading-relaxed mb-2">
+                {post.title}
+              </h2>
+              <p class="font-japanese text-sm text-[var(--color-ink-muted)] leading-relaxed line-clamp-2">
+                {post.excerpt}
+              </p>
+            </div>
+            <div class="shrink-0 self-center font-display text-xs tracking-widest text-[var(--color-gold)] opacity-0 group-hover:opacity-100 transition-opacity">
+              →
+            </div>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <div class="text-center py-24">
+        <p class="font-japanese text-[var(--color-ink-muted)]">記事はまだありません</p>
+      </div>
+    )}
+
+    <!-- Pagination -->
+    {page.lastPage > 1 && (
+      <nav class="flex items-center justify-between mt-16 pt-8 border-t border-[var(--color-border)]">
+        <div>
+          {page.url.prev
+            ? <a href={page.url.prev} class="font-display text-xs tracking-[0.2em] text-[var(--color-ink-muted)] hover:text-[var(--color-gold)] transition-colors">← 新しい記事</a>
+            : <span />}
+        </div>
+        <div class="flex items-center gap-2">
+          {Array.from({ length: page.lastPage }, (_, i) => i + 1).map((n) => (
+            <a
+              href={n === 1 ? '/blog' : `/blog/${n}`}
+              class={`font-display text-xs w-8 h-8 flex items-center justify-center border transition-colors ${
+                n === page.currentPage
+                  ? 'border-[var(--color-gold)] text-[var(--color-gold)]'
+                  : 'border-[var(--color-border)] text-[var(--color-ink-muted)] hover:border-[var(--color-gold)] hover:text-[var(--color-gold)]'
+              }`}
+            >
+              {n}
+            </a>
+          ))}
+        </div>
+        <div>
+          {page.url.next
+            ? <a href={page.url.next} class="font-display text-xs tracking-[0.2em] text-[var(--color-ink-muted)] hover:text-[var(--color-gold)] transition-colors">古い記事 →</a>
+            : <span />}
+        </div>
+      </nav>
+    )}
+  </div>
+</Layout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.category-btn');
+  const items = document.querySelectorAll<HTMLElement>('.post-item');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const selected = btn.dataset.category ?? 'すべて';
+
+      // ボタンのスタイル更新
+      buttons.forEach((b) => {
+        b.classList.remove('border-[var(--color-gold)]', 'text-[var(--color-gold)]');
+        b.classList.add('border-[var(--color-border)]', 'text-[var(--color-ink-muted)]');
+      });
+      btn.classList.add('border-[var(--color-gold)]', 'text-[var(--color-gold)]');
+      btn.classList.remove('border-[var(--color-border)]', 'text-[var(--color-ink-muted)]');
+
+      // 記事の表示/非表示
+      items.forEach((item) => {
+        if (selected === 'すべて' || item.dataset.category === selected) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

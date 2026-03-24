@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-gold: #C9A84C;
+  --color-gold-light: #E8D5A0;
+  --color-gold-dark: #A0802A;
+  --color-cream: #FAFAF7;
+  --color-cream-dark: #F2EFE8;
+  --color-ink: #1C1C1C;
+  --color-ink-muted: #6B6B6B;
+  --color-border: #E5E0D5;
+
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-japanese: 'Noto Serif JP', serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Fixed header offset for anchor links */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+/* Scroll animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Prose styles for blog posts */
+.prose-article h2 {
+  font-family: var(--font-japanese);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-ink);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.5rem;
+}
+
+.prose-article h3 {
+  font-family: var(--font-japanese);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-ink);
+}
+
+.prose-article p {
+  font-family: var(--font-japanese);
+  line-height: 2;
+  margin-bottom: 1.5rem;
+  color: #3a3a3a;
+}
+
+.prose-article blockquote {
+  border-left: 3px solid var(--color-gold);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  color: var(--color-ink-muted);
+  font-style: italic;
+}
+
+.prose-article hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 2.5rem 0;
+}
+
+.prose-article a {
+  color: var(--color-gold-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose-article ul, .prose-article ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.prose-article li {
+  font-family: var(--font-japanese);
+  line-height: 2;
+  margin-bottom: 0.25rem;
+}
+
+.prose-article strong {
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.prose-article em {
+  font-style: italic;
+}
+
+.prose-article code {
+  background: var(--color-cream-dark);
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.prose-article pre {
+  background: var(--color-ink);
+  color: #f0f0f0;
+  padding: 1.5rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+.prose-article ul {
+  list-style-type: disc;
+}
+
+.prose-article ol {
+  list-style-type: decimal;
+}

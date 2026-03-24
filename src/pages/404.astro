@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404 - Page Not Found" description="ページが見つかりません">
+  <div class="min-h-[80vh] flex flex-col items-center justify-center px-6 text-center space-y-8">
+    <div class="space-y-4">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)]">PAGE NOT FOUND</p>
+      <h1 class="font-display text-8xl md:text-9xl tracking-widest text-[var(--color-ink)] opacity-10">404</h1>
+      <p class="font-japanese text-[var(--color-ink-muted)] leading-loose">
+        お探しのページは見つかりませんでした。<br />
+        URLをご確認のうえ、もう一度お試しください。
+      </p>
+    </div>
+    <div class="h-px w-12 bg-[var(--color-gold)]"></div>
+    <a
+      href="/"
+      class="font-display text-xs tracking-[0.2em] text-[var(--color-gold)] border border-[var(--color-gold)] px-8 py-3 hover:bg-[var(--color-gold)] hover:text-white transition-all duration-300"
+    >
+      HOME へ戻る
+    </a>
+  </div>
+</Layout>
