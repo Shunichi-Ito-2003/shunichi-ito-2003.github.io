@@ -1,0 +1,85 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const works = [
+  {
+    id: 'shimamori',
+    category: 'STAGE / ACTING',
+    year: '2026',
+    title: 'Shimamori no Uta',
+    role: 'Actor',
+    description: 'A stage production depicting the last governor of Okinawa during WWII. Part of a touring production across Okinawa, Tochigi, and Hyogo. Shunichi performed the role of Jyun Urasaki in the Kobe performance.',
+    tags: ['Stage', 'Historical Drama', 'Okinawa'],
+    image: '/写真、画像/島守のうた/島守のうた チラシ.jpg',
+  },
+  {
+    id: 'santa',
+    category: 'CHARITY PROJECT',
+    year: '2025',
+    title: 'Everyone Is Santa!',
+    role: 'Organizer / Producer / Santa',
+    description: 'A Christmas charity project delivering cakes to 120 families. Now in its 4th year, the 2025 edition used proceeds from a theatrical performance to fund the cakes, delivered by the team dressed as Santa Claus.',
+    tags: ['Charity', 'Planning', 'Theater'],
+    image: '/写真、画像/みんながサンタ/2025/劇中の一枚.jpeg',
+  },
+  {
+    id: 'chiiki',
+    category: 'COMMUNITY / STAGE',
+    year: '2026',
+    title: 'Theater to Support the Community',
+    role: 'Planner / Playwright / Actor',
+    description: '31 members divided into 3 teams, each staging a monthly production to support a local business, donating 25% of ticket sales. Shunichi served as playwright and actor for Team Ebisu, supporting Maasan-do, a local diner in Haebaru Town.',
+    tags: ['Community', 'Playwriting', 'Social Impact'],
+    image: '/写真、画像/地域を応援する演劇/season1　まぁさん堂/チーム恵比寿集合写真.JPG',
+  },
+];
+---
+
+<Layout title="WORKS" description="Works and projects by Shunichi Ito — actor and medical student.">
+  <div class="max-w-5xl mx-auto px-6 py-16">
+    <!-- Header -->
+    <header class="mb-16">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">ARCHIVE</p>
+      <h1 class="font-display text-4xl md:text-5xl tracking-[0.15em] text-[var(--color-ink)] mb-6">WORKS</h1>
+      <div class="h-px w-16 bg-[var(--color-gold)]"></div>
+    </header>
+
+    <div class="space-y-8">
+      {works.map((work, i) => (
+        <a href={`/en/works/${work.id}`} class="fade-in group grid md:grid-cols-[280px_1fr] border border-[var(--color-border)] bg-white hover:border-[var(--color-gold)] transition-all duration-300 overflow-hidden">
+          <div class="relative h-48 md:h-auto overflow-hidden">
+            <img
+              src={work.image}
+              alt={work.title}
+              class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent to-white/20"></div>
+            <div class="absolute top-4 left-4">
+              <span class="font-display text-2xl text-white/60">{String(i + 1).padStart(2, '0')}</span>
+            </div>
+          </div>
+
+          <div class="p-8 space-y-4">
+            <div>
+              <span class="font-display text-xs tracking-[0.2em] text-[var(--color-gold)] block mb-2">{work.category}</span>
+              <h2 class="font-display text-xl text-[var(--color-ink)] group-hover:text-[var(--color-gold-dark)] transition-colors mb-1">
+                {work.title}
+              </h2>
+              <span class="font-display text-xs tracking-widest text-[var(--color-ink-muted)]">{work.role}</span>
+            </div>
+            <p class="font-display text-sm text-[var(--color-ink-muted)] leading-loose">
+              {work.description}
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {work.tags.map((tag) => (
+                <span class="font-display text-xs text-[var(--color-ink-muted)] border border-[var(--color-border)] px-3 py-1">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</Layout>

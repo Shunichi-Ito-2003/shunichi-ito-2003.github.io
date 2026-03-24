@@ -1,17 +1,32 @@
 ---
-const navLinks = [
-  { href: '/#news', label: 'NEWS', match: null },
-  { href: '/#works', label: 'WORKS', match: null },
-  { href: '/blog', label: 'BLOG', match: '/blog' },
-  { href: '/about', label: 'PROFILE', match: '/about' },
-  { href: '/#contact', label: 'CONTACT', match: null },
-];
-
 const currentPath = Astro.url.pathname;
+const isEn = currentPath.startsWith('/en');
+const prefix = isEn ? '/en' : '';
+
+const navLinks = [
+  { href: `${prefix}/#news`,  label: 'NEWS',    match: null },
+  { href: `${prefix}/#works`, label: 'WORKS',   match: null },
+  { href: `${prefix}/blog`,   label: 'BLOG',    match: isEn ? '/en/blog' : '/blog' },
+  { href: `${prefix}/about`,  label: 'PROFILE', match: isEn ? '/en/about' : '/about' },
+  { href: `${prefix}/#contact`, label: 'CONTACT', match: null },
+];
 
 function isActive(match: string | null) {
   if (!match) return false;
   return currentPath.startsWith(match);
+}
+
+// 言語切替先URL
+function switchLang(to: 'ja' | 'en') {
+  if (to === 'en') {
+    if (isEn) return currentPath;
+    // ブログ記事（/blog/slug）は英語版なし → /en/blog へ
+    if (currentPath.match(/^\/blog\/.+/)) return '/en/blog';
+    return '/en' + (currentPath === '/' ? '' : currentPath);
+  } else {
+    if (!isEn) return currentPath;
+    return currentPath.replace(/^\/en/, '') || '/';
+  }
 }
 ---
 
@@ -20,7 +35,7 @@ function isActive(match: string | null) {
 
     <!-- Logo -->
     <a
-      href="/"
+      href={isEn ? '/en/' : '/'}
       class="font-display text-sm tracking-[0.25em] text-[var(--color-ink)] hover:text-[var(--color-gold)] transition-colors"
     >
       ITO SHUNICHI
@@ -43,6 +58,26 @@ function isActive(match: string | null) {
           )}
         </a>
       ))}
+
+      <!-- Language switcher -->
+      <div class="flex items-center gap-1 border border-[var(--color-border)] overflow-hidden">
+        <a
+          href={switchLang('ja')}
+          class={`font-display text-xs tracking-widest px-2.5 py-1 transition-colors ${
+            !isEn
+              ? 'bg-[var(--color-gold)] text-white'
+              : 'text-[var(--color-ink-muted)] hover:text-[var(--color-gold)]'
+          }`}
+        >JA</a>
+        <a
+          href={switchLang('en')}
+          class={`font-display text-xs tracking-widest px-2.5 py-1 transition-colors ${
+            isEn
+              ? 'bg-[var(--color-gold)] text-white'
+              : 'text-[var(--color-ink-muted)] hover:text-[var(--color-gold)]'
+          }`}
+        >EN</a>
+      </div>
     </nav>
 
     <!-- Mobile menu button -->
@@ -72,6 +107,21 @@ function isActive(match: string | null) {
           {link.label}
         </a>
       ))}
+      <!-- Mobile language switcher -->
+      <div class="flex items-center gap-1 border border-[var(--color-border)] w-fit overflow-hidden">
+        <a
+          href={switchLang('ja')}
+          class={`font-display text-xs tracking-widest px-3 py-1.5 transition-colors ${
+            !isEn ? 'bg-[var(--color-gold)] text-white' : 'text-[var(--color-ink-muted)]'
+          }`}
+        >JA</a>
+        <a
+          href={switchLang('en')}
+          class={`font-display text-xs tracking-widest px-3 py-1.5 transition-colors ${
+            isEn ? 'bg-[var(--color-gold)] text-white' : 'text-[var(--color-ink-muted)]'
+          }`}
+        >EN</a>
+      </div>
     </nav>
   </div>
 </header>
@@ -85,7 +135,6 @@ function isActive(match: string | null) {
   btn?.addEventListener('click', () => {
     menu?.classList.toggle('hidden');
   });
-  // Close menu on link click
   menu?.querySelectorAll('a').forEach((a) => {
     a.addEventListener('click', () => menu.classList.add('hidden'));
   });
