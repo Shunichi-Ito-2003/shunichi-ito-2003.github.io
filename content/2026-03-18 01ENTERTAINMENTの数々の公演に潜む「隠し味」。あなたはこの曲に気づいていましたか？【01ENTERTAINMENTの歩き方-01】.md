@@ -1,9 +1,9 @@
 ---
 slug: 2026-03-18-1
 note_url: https://note.com/icchi_ito/n/ndd428fd44d7e
-published: true
 published_url: https://note.com/icchi_ito/n/ndd428fd44d7e
-published_date: 2026-03-24
+published_date: 2026-03-18
+published: true
 ---
 沖縄で俳優として活動しています。
 （※今日の一言をここにお願いします。例：今日は雨で少し憂鬱な、）いっちーこと伊藤駿一です。
