@@ -13,18 +13,17 @@ const highlights = [
 ---
 
 <Layout
-  title="一人芝居"
-  description="伊藤駿一の一人芝居。作・演出・出演すべてひとりで手がける舞台。北谷モッズにて88名満員で初演。沖縄本島内どこへでも出張上演中。"
+  title="伊藤駿一の奇劇"
+  description="伊藤駿一の一人芝居『伊藤駿一の奇劇』。作・演出・出演すべてひとりで手がける舞台。北谷モッズにて88名満員で初演。沖縄本島内どこへでも出張上演中。"
 >
   <!-- Hero -->
   <section class="relative h-[70vh] overflow-hidden bg-[var(--color-ink)]">
-    <!-- TODO: 写真が揃い次第 src に差し替え -->
-    <!-- <img src="/写真、画像/一人芝居/hero.jpg" alt="一人芝居" class="w-full h-full object-cover object-top" /> -->
+    <img src="/写真、画像/一人芝居/劇中の僕.JPG" alt="伊藤駿一の奇劇" class="w-full h-full object-cover object-center" />
     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
     <div class="absolute bottom-0 left-0 right-0 p-8 md:p-16 max-w-4xl">
       <a href="/works" class="font-display text-xs tracking-[0.2em] text-white/50 hover:text-[var(--color-gold)] transition-colors mb-6 block">← WORKS</a>
       <span class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] block mb-3">SOLO PERFORMANCE · 2025〜</span>
-      <h1 class="font-japanese text-4xl md:text-6xl font-bold text-white leading-tight mb-4">一人芝居</h1>
+      <h1 class="font-japanese text-4xl md:text-6xl font-bold text-white leading-tight mb-4">伊藤駿一の奇劇</h1>
       <p class="font-japanese text-white/70 text-lg leading-relaxed">
         作・演出・出演、すべてひとりで
       </p>
@@ -95,13 +94,29 @@ const highlights = [
       </div>
     </section>
 
-    <!-- Gallery (placeholder) -->
+    <!-- Flyer -->
+    <section class="fade-in">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">FLYER</p>
+      <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">公演フライヤー</h2>
+      <div class="flex justify-center">
+        <img
+          src="/写真、画像/一人芝居/伊藤駿一の奇劇_フライヤー_初めての一人芝居.PNG"
+          alt="伊藤駿一の奇劇 フライヤー"
+          class="max-w-sm w-full border border-[var(--color-border)]"
+        />
+      </div>
+    </section>
+
+    <!-- Gallery -->
     <section class="fade-in">
       <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">GALLERY</p>
       <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">公演写真</h2>
-      <!-- TODO: 写真が揃い次第追加 -->
-      <div class="border border-dashed border-[var(--color-border)] p-12 text-center">
-        <p class="font-japanese text-sm text-[var(--color-ink-muted)]">写真は準備中です</p>
+      <div class="grid grid-cols-1 gap-4">
+        <img
+          src="/写真、画像/一人芝居/劇中の僕.JPG"
+          alt="伊藤駿一の奇劇 劇中"
+          class="w-full border border-[var(--color-border)]"
+        />
       </div>
     </section>
 
