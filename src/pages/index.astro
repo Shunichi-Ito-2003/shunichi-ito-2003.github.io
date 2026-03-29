@@ -123,6 +123,7 @@ const works = [
           { date: '2026.03.15', cat: 'PROJECT', title: '地域を応援する演劇 Season 1 完走。まぁさん堂（南風原）を応援' },
           { date: '2026.02.08', cat: 'STAGE', title: '舞台『島守のうた』神戸公演。浦崎純役として出演' },
           { date: '2025.12', cat: 'CHARITY', title: 'クリスマスチャリティー企画「みんながサンタ！」120家庭へのケーキ配達完了' },
+          { date: '2025.04', cat: 'SOLO', title: '一人芝居 初演。北谷モッズにて88名満員' },
         ].map((item) => (
           <article class="relative py-7 group">
             <!-- ゴールドの点 -->
@@ -179,6 +180,46 @@ const works = [
         <a href="/works" class="font-display text-xs tracking-[0.2em] text-white/40 hover:text-[var(--color-gold)] transition-colors">
           ALL WORKS →
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SOLO PERFORMANCE ────────────────────── -->
+  <section id="solo" class="fade-in py-24 px-6 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="space-y-7">
+          <div>
+            <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-2">一人芝居</p>
+            <h2 class="font-display text-4xl md:text-5xl tracking-[0.12em] text-[var(--color-ink)]">SOLO<br />PERFORMANCE</h2>
+          </div>
+          <div class="h-px w-12 bg-[var(--color-gold)]"></div>
+          <div class="space-y-3 font-japanese text-[var(--color-ink-muted)] leading-loose">
+            <p>
+              脚本・演出・出演——すべてを一人で担う舞台。
+              2025年4月、北谷モッズにて初演。88名満員。
+            </p>
+            <p>
+              2026年からは<strong class="text-[var(--color-ink)]">「出張一人芝居」</strong>として、
+              沖縄本島内であればどこへでも、1名から届けます。
+            </p>
+          </div>
+          <div class="border-l-2 border-[var(--color-gold)] pl-4 py-1">
+            <p class="font-display text-xs tracking-[0.2em] text-[var(--color-ink-muted)] mb-0.5">作・演出・出演</p>
+            <p class="font-japanese text-sm text-[var(--color-gold-dark)] font-bold">伊藤 駿一</p>
+          </div>
+          <a
+            href="/works/hitorigei"
+            class="inline-block px-8 py-3.5 border border-[var(--color-gold)] text-[var(--color-gold)] font-display text-xs tracking-[0.2em] hover:bg-[var(--color-gold)] hover:text-white transition-all duration-300"
+          >
+            詳しく見る →
+          </a>
+        </div>
+
+        <!-- Photo placeholder — TODO: 写真が揃い次第差し替え -->
+        <div class="aspect-[4/3] md:aspect-auto md:h-96 bg-[var(--color-ink)] border border-[var(--color-border)] overflow-hidden flex items-center justify-center">
+          <p class="font-display text-xs tracking-widest text-white/20">PHOTO COMING SOON</p>
+        </div>
       </div>
     </div>
   </section>

@@ -32,6 +32,16 @@ const works = [
     tags: ['地域連携', '企画', '脚本'],
     image: '/写真、画像/地域を応援する演劇/season1　まぁさん堂/チーム恵比寿集合写真.JPG',
   },
+  {
+    id: 'hitorigei',
+    category: 'SOLO PERFORMANCE',
+    year: '2025〜',
+    title: '一人芝居',
+    role: '作・演出・出演',
+    description: '脚本・演出・出演すべてをひとりで担う一人芝居。2025年12月に北谷モッズにて88名満員で初演。2026年からは出張一人芝居として沖縄本島内どこへでも届ける活動を展開中。',
+    tags: ['一人芝居', '脚本', '出張公演'],
+    image: '',
+  },
 ];
 ---
 
@@ -49,12 +59,14 @@ const works = [
       {works.map((work, i) => (
         <a href={`/works/${work.id}`} class="fade-in group grid md:grid-cols-[280px_1fr] border border-[var(--color-border)] bg-white hover:border-[var(--color-gold)] transition-all duration-300 overflow-hidden">
           <!-- Image -->
-          <div class="relative h-48 md:h-auto overflow-hidden">
-            <img
-              src={work.image}
-              alt={work.title}
-              class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-            />
+          <div class="relative h-48 md:h-auto overflow-hidden bg-[var(--color-ink)]">
+            {work.image && (
+              <img
+                src={work.image}
+                alt={work.title}
+                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+              />
+            )}
             <div class="absolute inset-0 bg-gradient-to-r from-transparent to-white/20"></div>
             <div class="absolute top-4 left-4">
               <span class="font-display text-2xl text-white/60">{String(i + 1).padStart(2, '0')}</span>

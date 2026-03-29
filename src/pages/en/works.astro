@@ -32,6 +32,16 @@ const works = [
     tags: ['Community', 'Playwriting', 'Social Impact'],
     image: '/写真、画像/地域を応援する演劇/season1　まぁさん堂/チーム恵比寿集合写真.JPG',
   },
+  {
+    id: 'hitorigei',
+    category: 'SOLO PERFORMANCE',
+    year: '2025〜',
+    title: 'Solo Performance',
+    role: 'Writer / Director / Performer',
+    description: 'Writing, directing, and performing — all by one person. World premiere at Chatan Mods, December 2025, full house of 88. From 2026, traveling solo performances are available anywhere in Okinawa, for even one audience member.',
+    tags: ['Solo', 'Playwriting', 'Traveling'],
+    image: '',
+  },
 ];
 ---
 
@@ -46,8 +56,10 @@ const works = [
     <div class="space-y-8">
       {works.map((work, i) => (
         <a href={`/en/works/${work.id}`} class="fade-in group grid md:grid-cols-[280px_1fr] border border-[var(--color-border)] bg-white hover:border-[var(--color-gold)] transition-all duration-300 overflow-hidden">
-          <div class="relative h-48 md:h-auto overflow-hidden">
-            <img src={work.image} alt={work.title} class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+          <div class="relative h-48 md:h-auto overflow-hidden bg-[var(--color-ink)]">
+            {work.image && (
+              <img src={work.image} alt={work.title} class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+            )}
             <div class="absolute inset-0 bg-gradient-to-r from-transparent to-white/20"></div>
             <div class="absolute top-4 left-4">
               <span class="font-display text-2xl text-white/60">{String(i + 1).padStart(2, '0')}</span>
