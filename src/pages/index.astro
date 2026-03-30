@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { getPublishedPosts } from '../lib/posts';
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
+import { allWorks } from '../lib/worksData';
 
 const recentPosts = getPublishedPosts().slice(0, 3);
 
@@ -15,32 +16,10 @@ for (const [fullPath, mod] of Object.entries(allImages)) {
   imgMap[fullPath.replace('/src/assets', '')] = mod.default;
 }
 
-const works = [
-  {
-    href: '/works/shimamori',
-    category: 'STAGE / ACTING',
-    title: '島守のうた',
-    description: '沖縄戦・最後の官選知事・島田叡を演じる。沖縄・栃木・兵庫をつなぐ巡回公演。',
-    image: '/写真、画像/島守のうた/島守のうた チラシ.jpg',
-    year: '2026',
-  },
-  {
-    href: '/works/santa',
-    category: 'CHARITY PROJECT',
-    title: 'みんながサンタ！',
-    description: '120家庭にケーキを届けるチャリティー企画。企画・運営・サンタ役として参加。',
-    image: '/写真、画像/みんながサンタ/2025/劇中の一枚.jpeg',
-    year: '2025',
-  },
-  {
-    href: '/works/chiiki',
-    category: 'COMMUNITY / STAGE',
-    title: '地域を応援する演劇',
-    description: '31名が3チームで地域の誰かを応援する演劇を上演。チーム恵比寿として脚本・出演し、まぁさん堂を応援。',
-    image: '/写真、画像/地域を応援する演劇/season1　まぁさん堂/チーム恵比寿集合写真.JPG',
-    year: '2026',
-  },
-];
+// featured: true のものだけトップページに表示
+const works = allWorks
+  .filter(w => w.featured)
+  .map(w => ({ ...w, href: `/works/${w.id}` }));
 ---
 
 <Layout>
@@ -133,7 +112,9 @@ const works = [
       <!-- タイムライン形式 -->
       <div class="relative pl-6 border-l-2 border-[var(--color-border)] space-y-0">
         {[
+          { date: '2026.06.07', cat: 'PROJECT', title: '地域を応援する演劇 Season 4 本番予定。子ども食堂「ニヌファブシ（北極星）」を応援' },
           { date: '2026.03.15', cat: 'PROJECT', title: '地域を応援する演劇 Season 1 完走。まぁさん堂（南風原）を応援' },
+          { date: '2026.02.20', cat: 'FILM', title: '映画『CITIZENs〜戦わないという選択〜』キネカ大森上映。初日20分で完売、全日程ほぼ満席' },
           { date: '2026.02.08', cat: 'STAGE', title: '舞台『島守のうた』神戸公演。浦崎純役として出演' },
           { date: '2025.12', cat: 'CHARITY', title: 'クリスマスチャリティー企画「みんながサンタ！」120家庭へのケーキ配達完了' },
           { date: '2025.04', cat: 'SOLO', title: '一人芝居 初演。北谷モッズにて88名満員' },
@@ -165,7 +146,7 @@ const works = [
         </a>
       </header>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-px bg-white/10">
         {works.map((work, i) => (
           <a href={work.href} class="group relative overflow-hidden aspect-[3/4] block">
             {imgMap[work.image] ? <Image

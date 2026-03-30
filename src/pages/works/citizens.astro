@@ -1,0 +1,207 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getPostsByKeyword } from '../../lib/posts';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+const allImages = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/写真、画像/**/*.{jpg,JPG,jpeg,JPEG,png,PNG}'
+, { eager: true });
+
+const imgMap: Record<string, ImageMetadata> = {};
+for (const [fullPath, mod] of Object.entries(allImages)) {
+  imgMap[fullPath.replace('/src/assets', '')] = mod.default;
+}
+
+const relatedPosts = getPostsByKeyword('CITIZEN').slice(0, 8);
+
+const highlights = [
+  { date: '2024.11', text: '群馬県前橋市にて撮影。エキストラとして参加' },
+  { date: '2025.06.23', text: '沖縄（県立博物館・美術館）にてワールドプレミア上映。沖縄在住のスタッフとしてお手伝い' },
+  { date: '2026.02.20〜26', text: 'キネカ大森「ジーンシアタースタジアム Vol.3」。初日20分でチケット完売、全日程ほぼ満席の熱狂' },
+  { date: '2026.03', text: 'ロンドン国際フィルムメーカー映画祭に5部門ノミネート。監督・主演がロンドンへ' },
+];
+
+const awards = [
+  { festival: 'モナコ国際映画祭', award: '最優秀脚本賞' },
+  { festival: 'トロペア映画祭（イタリア）', award: '最優秀作品賞・最優秀主演男優賞・最優秀主演女優賞（3冠）' },
+  { festival: 'ミラノ国際映画祭', award: '最優秀監督賞・最優秀編集賞・最優秀男優賞・最優秀ヘアメイク賞' },
+  { festival: 'ロンドン国際フィルムメーカー映画祭', award: '最優秀外国語映画監督賞ほか5部門ノミネート' },
+];
+
+const gallery = [
+  { key: '/写真、画像/CITIZENs/cast_group.jpeg', alt: '撮影現場 — キャスト・スタッフ集合写真' },
+  { key: '/写真、画像/CITIZENs/soldiers_group.jpeg', alt: '兵士役エキストラのグループ' },
+  { key: '/写真、画像/CITIZENs/tank_flowers.jpeg', alt: '花で飾られた戦車' },
+  { key: '/写真、画像/CITIZENs/flowers_closeup.jpeg', alt: '戦車に咲き誇る花々' },
+];
+---
+
+<Layout
+  title="映画 CITIZENs〜戦わないという選択〜"
+  description="国際映画祭で海外4冠を達成した短編映画『CITIZENs〜戦わないという選択〜』。撮影参加・沖縄ワールドプレミアのお手伝いなど、さまざまな形で関わった記録。"
+>
+  <!-- Hero -->
+  <section class="relative h-[70vh] overflow-hidden">
+    <Image
+      src={imgMap['/写真、画像/CITIZENs/cast_group.jpeg']}
+      alt="CITIZENs 撮影現場"
+      width={1920}
+      loading="eager"
+      class="w-full h-full object-cover object-center"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 p-8 md:p-16 max-w-4xl">
+      <a href="/works" class="font-display text-xs tracking-[0.2em] text-white/50 hover:text-[var(--color-gold)] transition-colors mb-6 block">← WORKS</a>
+      <span class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] block mb-3">SHORT FILM · 2024〜</span>
+      <h1 class="font-japanese text-3xl md:text-5xl font-bold text-white leading-tight mb-4">CITIZENs〜戦わないという選択〜</h1>
+      <p class="font-japanese text-white/70 text-lg leading-relaxed">
+        海外4冠。「演劇は世界を平和にする」を証明した映画
+      </p>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-6 py-16 space-y-20">
+
+    <!-- Overview -->
+    <section class="fade-in grid md:grid-cols-[1fr_280px] gap-12">
+      <div class="space-y-6">
+        <div>
+          <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">OVERVIEW</p>
+          <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">作品について</h2>
+        </div>
+        <div class="space-y-4 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
+          <p>
+            仮想国ミルドニア共和国が隣国から戦争を仕掛けられる。
+            国は徴兵と愛国心を呼びかけ、町は「最後の一人まで戦おう」と沸き返る。
+            やがて敵国の兵士と市民が「ある選択」をする——。
+          </p>
+          <p>
+            「国民」である前に「市民（CITIZENs）」であれ。
+            国境やイデオロギーに縛られるのではなく、「家族とご飯を食べたい」「日常を守りたい」という
+            ごく当たり前の願いを、銃を持たずに守ることができるか——を問いかけた38分の短編映画。
+          </p>
+          <p>
+            監督・ふるいちやすし。テーマソングは喜納昌吉「花〜すべての人の心に花を〜」。
+            モナコ・イタリアで海外4冠を達成し、ロンドン映画祭にも進出した、
+            言葉と国境を越えたインディペンデント作品です。
+          </p>
+        </div>
+      </div>
+
+      <!-- Info card -->
+      <div class="border border-[var(--color-border)] divide-y divide-[var(--color-border)] h-fit">
+        {[
+          { label: 'ROLE', value: 'エキストラ・撮影スタッフ' },
+          { label: 'SHOOTING', value: '2024年11月' },
+          { label: 'LOCATION', value: '群馬県前橋市' },
+          { label: 'DIRECTOR', value: 'ふるいちやすし' },
+          { label: 'TYPE', value: '短編映画（38分）' },
+          { label: 'PREMIERE', value: '2025年6月23日（沖縄）' },
+        ].map((item) => (
+          <div class="px-5 py-3">
+            <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] mb-0.5">{item.label}</p>
+            <p class="font-japanese text-sm text-[var(--color-ink)]">{item.value}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- My involvement -->
+    <section class="fade-in border-l-2 border-[var(--color-gold)] pl-8 space-y-4">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)]">MY INVOLVEMENT</p>
+      <h2 class="font-japanese text-xl font-bold text-[var(--color-ink)]">現場に立ち、届けることに関わる</h2>
+      <div class="space-y-4 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
+        <p>
+          エキストラとして撮影に参加し、沖縄でのワールドプレミア上映時には
+          沖縄在住者としてお手伝いをしました。
+          クレジットされる形での参加ではないけれど、それでも「最高のメンバーと、最高の熱量で作り上げた」現場の空気を、身体で知っています。
+        </p>
+        <p>
+          キネカ大森での「ジーンシアタースタジアム」上映（2026年2月）では、
+          達成率8.6%という苦境から、チーム全員の泥臭い努力で初日20分完売・全日程ほぼ満席という熱狂を作り上げました。
+          その渦の中に、僕もいました。
+        </p>
+        <p>
+          この映画に関わった人たちがどんどん活躍するほど、作品の価値も上がっていく。
+          だから、僕自身がもっと大きな舞台（カンヌ）で結果を出すことが、
+          『CITIZENs』のメッセージを世界へ届けることにも繋がると信じています。
+        </p>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="fade-in">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">GALLERY</p>
+      <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">撮影現場より</h2>
+      <div class="grid grid-cols-2 gap-3">
+        {gallery.map((item) => imgMap[item.key] && (
+          <div class="overflow-hidden aspect-[4/3]">
+            <Image
+              src={imgMap[item.key]}
+              alt={item.alt}
+              width={800}
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Awards -->
+    <section class="fade-in">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">AWARDS</p>
+      <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">受賞・ノミネート歴</h2>
+      <div class="divide-y divide-[var(--color-border)]">
+        {awards.map((item) => (
+          <div class="py-5 flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-6">
+            <span class="font-display text-xs tracking-widest text-[var(--color-gold)] sm:w-56 shrink-0 pt-0.5">{item.festival}</span>
+            <span class="font-japanese text-sm text-[var(--color-ink-muted)]">{item.award}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="fade-in">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">TIMELINE</p>
+      <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-8">記録</h2>
+      <div class="relative pl-6 border-l-2 border-[var(--color-border)] space-y-0">
+        {highlights.map((h) => (
+          <div class="relative py-5 group">
+            <div class="absolute -left-[1.45rem] top-7 w-3 h-3 rounded-full border-2 border-[var(--color-gold)] bg-white group-hover:bg-[var(--color-gold)] transition-colors"></div>
+            <time class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] block mb-1">{h.date}</time>
+            <p class="font-japanese text-[var(--color-ink)] leading-relaxed">{h.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Related posts -->
+    {relatedPosts.length > 0 && (
+      <section class="fade-in">
+        <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">DOCUMENT</p>
+        <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-8">関連記事</h2>
+        <div class="divide-y divide-[var(--color-border)]">
+          {relatedPosts.map((post) => (
+            <a
+              href={`/blog/${post.slug}`}
+              class="group flex gap-6 py-5 hover:bg-[var(--color-cream)] px-2 -mx-2 transition-colors"
+            >
+              <time class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] shrink-0 pt-1 w-24">{post.date}</time>
+              <h3 class="font-japanese text-[var(--color-ink)] group-hover:text-[var(--color-gold-dark)] transition-colors leading-relaxed line-clamp-2">
+                {post.title}
+              </h3>
+              <span class="shrink-0 self-center font-display text-xs text-[var(--color-gold)] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </a>
+          ))}
+        </div>
+        <div class="mt-6">
+          <a href="/blog" class="font-display text-xs tracking-[0.2em] text-[var(--color-ink-muted)] hover:text-[var(--color-gold)] transition-colors">
+            すべての記事を読む →
+          </a>
+        </div>
+      </section>
+    )}
+  </div>
+</Layout>

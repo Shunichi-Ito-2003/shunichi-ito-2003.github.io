@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
+import { allWorks } from '../lib/worksData';
 
 const allImages = import.meta.glob<{ default: ImageMetadata }>(
   '/src/assets/写真、画像/**/*.{jpg,JPG,jpeg,JPEG,png,PNG}'
@@ -12,49 +13,7 @@ for (const [fullPath, mod] of Object.entries(allImages)) {
   imgMap[fullPath.replace('/src/assets', '')] = mod.default;
 }
 
-const works = [
-  {
-    id: 'shimamori',
-    category: 'STAGE / ACTING',
-    year: '2026',
-    title: '島守のうた',
-    role: '出演',
-    description: '沖縄戦・最後の官選知事・島田叡の物語。沖縄、栃木、兵庫をつなぐ巡回公演。困難な時代に「命どぅ宝」を貫いた人物を演じる。',
-    tags: ['舞台', '歴史劇', '沖縄'],
-    image: '/写真、画像/島守のうた/語りの役の山城さんが出ている時の画像.jpg',
-  },
-  {
-    id: 'santa',
-    category: 'CHARITY PROJECT',
-    year: '2025',
-    title: 'みんながサンタ！',
-    role: '企画・運営・出演',
-    description: 'クリスマスに120家庭へケーキを届けるチャリティー企画。4年目となる2025年は演劇公演のチケット収益をケーキ代に充て、サンタとして子どもたちに届けた。',
-    tags: ['チャリティー', '企画', '演劇'],
-    image: '/写真、画像/みんながサンタ/2025/劇中の一枚.jpeg',
-  },
-  {
-    id: 'chiiki',
-    category: 'COMMUNITY / STAGE',
-    year: '2026',
-    title: '地域を応援する演劇',
-    role: '企画・脚本・出演',
-    description: '31名が3チームに分かれ、毎月地域の誰かを応援する演劇を上演するプロジェクト。駿一はチーム恵比寿として脚本・出演を担当し、南風原町の地域食堂「まぁさん堂」を応援した。',
-    tags: ['地域連携', '企画', '脚本'],
-    image: '/写真、画像/地域を応援する演劇/season1　まぁさん堂/チーム恵比寿集合写真.JPG',
-  },
-  {
-    id: 'hitorigei',
-    category: 'SOLO PERFORMANCE',
-    year: '2025〜',
-    title: '一人芝居',
-    role: '作・演出・出演',
-    description: '脚本・演出・出演すべてをひとりで担う一人芝居。2025年12月に北谷モッズにて88名満員で初演。2026年からは出張一人芝居として沖縄本島内どこへでも届ける活動を展開中。',
-    tags: ['一人芝居', '脚本', '出張公演'],
-    image: '/写真、画像/一人芝居/劇中の僕.JPG',
-    objectPosition: '50% 18%',
-  },
-];
+const works = allWorks;
 ---
 
 <Layout title="WORKS" description="伊藤駿一の活動・作品一覧">
