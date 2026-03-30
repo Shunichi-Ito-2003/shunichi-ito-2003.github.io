@@ -1,6 +1,17 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import { getPostsByKeyword } from '../../../lib/posts';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+const allImages = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/写真、画像/**/*.{jpg,JPG,jpeg,JPEG,png,PNG}'
+, { eager: true });
+
+const imgMap: Record<string, ImageMetadata> = {};
+for (const [fullPath, mod] of Object.entries(allImages)) {
+  imgMap[fullPath.replace('/src/assets', '')] = mod.default;
+}
 
 const relatedPosts = getPostsByKeyword('島守').slice(0, 8);
 
@@ -17,7 +28,7 @@ const highlights = [
 >
   <!-- Hero -->
   <section class="relative h-[70vh] overflow-hidden">
-    <img src="/写真、画像/島守のうた/LINE_ALBUM_神戸⚓️_260324_1.jpg" alt="Shimamori no Uta — Kobe Performance" class="w-full h-full object-cover object-top" />
+    <Image src={imgMap['/写真、画像/島守のうた/LINE_ALBUM_神戸⚓️_260324_1.jpg']} alt="Shimamori no Uta — Kobe Performance" width={1920} loading="eager" class="w-full h-full object-cover object-top" />
     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
     <div class="absolute bottom-0 left-0 right-0 p-8 md:p-16 max-w-4xl">
       <a href="/en/works" class="font-display text-xs tracking-[0.2em] text-white/50 hover:text-[var(--color-gold)] transition-colors mb-6 block">← Works</a>
@@ -88,7 +99,7 @@ const highlights = [
       <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">FLYER</p>
       <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">Production flyer</h2>
       <div class="flex justify-center">
-        <img src="/写真、画像/島守のうた/島守のうた チラシ.jpg" alt="Shimamori no Uta — Flyer" class="max-w-sm w-full border border-[var(--color-border)]" />
+        <Image src={imgMap['/写真、画像/島守のうた/島守のうた チラシ.jpg']} alt="Shimamori no Uta — Flyer" width={768} class="max-w-sm w-full border border-[var(--color-border)]" />
       </div>
     </section>
 

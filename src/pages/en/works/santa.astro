@@ -1,6 +1,10 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import { getPostsByKeyword } from '../../../lib/posts';
+import { Image } from 'astro:assets';
+import heroImg from '../../../assets/写真、画像/みんながサンタ/2025/劇中の一枚.jpeg';
+import galleryImg1 from '../../../assets/写真、画像/みんながサンタ/2025/国際通りに流れるみんながサンタの広告.JPG';
+import galleryImg2 from '../../../assets/写真、画像/みんながサンタ/2025/劇中の一枚_シングルマザーのモノローグ.JPG';
 
 const relatedPosts = getPostsByKeyword('サンタ').slice(0, 8);
 
@@ -18,7 +22,7 @@ const highlights = [
 >
   <!-- Hero -->
   <section class="relative h-[70vh] overflow-hidden">
-    <img src="/写真、画像/みんながサンタ/2025/劇中の一枚.jpeg" alt="Everyone Is Santa!" class="w-full h-full object-cover object-top" />
+    <Image src={heroImg} alt="Everyone Is Santa!" width={1920} loading="eager" class="w-full h-full object-cover object-top" />
     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
     <div class="absolute bottom-0 left-0 right-0 p-8 md:p-16 max-w-4xl">
       <a href="/en/works" class="font-display text-xs tracking-[0.2em] text-white/50 hover:text-[var(--color-gold)] transition-colors mb-6 block">← Works</a>
@@ -85,8 +89,8 @@ const highlights = [
       <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">GALLERY</p>
       <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">Photos</h2>
       <div class="grid grid-cols-2 gap-4">
-        <img src="/写真、画像/みんながサンタ/2025/国際通りに流れるみんながサンタの広告.JPG" alt="Everyone Is Santa — Advertisement on Kokusai Street" class="w-full aspect-[4/3] object-cover border border-[var(--color-border)]" />
-        <img src="/写真、画像/みんながサンタ/2025/劇中の一枚_シングルマザーのモノローグ.JPG" alt="Performance scene" class="w-full aspect-[4/3] object-cover border border-[var(--color-border)]" />
+        <Image src={galleryImg1} alt="Everyone Is Santa — Advertisement on Kokusai Street" width={1200} class="w-full aspect-[4/3] object-cover border border-[var(--color-border)]" />
+        <Image src={galleryImg2} alt="Performance scene" width={1200} class="w-full aspect-[4/3] object-cover border border-[var(--color-border)]" />
       </div>
     </section>
 

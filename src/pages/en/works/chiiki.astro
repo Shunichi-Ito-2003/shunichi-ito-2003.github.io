@@ -1,6 +1,17 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import { getPostsByKeyword } from '../../../lib/posts';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+const allImages = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/写真、画像/**/*.{jpg,JPG,jpeg,JPEG,png,PNG}'
+, { eager: true });
+
+const imgMap: Record<string, ImageMetadata> = {};
+for (const [fullPath, mod] of Object.entries(allImages)) {
+  imgMap[fullPath.replace('/src/assets', '')] = mod.default;
+}
 
 const relatedPosts = getPostsByKeyword('地域を応援する演劇').slice(0, 8);
 
@@ -55,7 +66,7 @@ const highlights = [
 >
   <!-- Hero -->
   <section class="relative h-[70vh] overflow-hidden">
-    <img src="/写真、画像/地域を応援する演劇/season1　まぁさん堂/チーム恵比寿集合写真.JPG" alt="Theater to Support the Community" class="w-full h-full object-cover object-center" />
+    <Image src={imgMap['/写真、画像/地域を応援する演劇/season1　まぁさん堂/チーム恵比寿集合写真.JPG']} alt="Theater to Support the Community" width={1920} loading="eager" class="w-full h-full object-cover object-center" />
     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
     <div class="absolute bottom-0 left-0 right-0 p-8 md:p-16 max-w-4xl">
       <a href="/en/works" class="font-display text-xs tracking-[0.2em] text-white/50 hover:text-[var(--color-gold)] transition-colors mb-6 block">← Works</a>
@@ -138,8 +149,8 @@ const highlights = [
       <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">FLYER</p>
       <h2 class="font-display text-2xl tracking-widests text-[var(--color-ink)] mb-6">Season 1 flyer</h2>
       <div class="grid grid-cols-2 gap-4 max-w-lg">
-        <img src="/写真、画像/地域を応援する演劇/season1　まぁさん堂/フライヤー表.JPG" alt="Flyer — Front" class="w-full border border-[var(--color-border)]" />
-        <img src="/写真、画像/地域を応援する演劇/season1　まぁさん堂/フライヤー裏.JPG" alt="Flyer — Back" class="w-full border border-[var(--color-border)]" />
+        <Image src={imgMap['/写真、画像/地域を応援する演劇/season1　まぁさん堂/フライヤー表.JPG']} alt="Flyer — Front" width={768} class="w-full border border-[var(--color-border)]" />
+        <Image src={imgMap['/写真、画像/地域を応援する演劇/season1　まぁさん堂/フライヤー裏.JPG']} alt="Flyer — Back" width={768} class="w-full border border-[var(--color-border)]" />
       </div>
     </section>
 

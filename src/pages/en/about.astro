@@ -1,5 +1,16 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+const allImages = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/写真、画像/**/*.{jpg,JPG,jpeg,JPEG,png,PNG}'
+, { eager: true });
+
+const imgMap: Record<string, ImageMetadata> = {};
+for (const [fullPath, mod] of Object.entries(allImages)) {
+  imgMap[fullPath.replace('/src/assets', '')] = mod.default;
+}
 ---
 
 <Layout title="PROFILE" description="Profile of Shunichi Ito — actor and medical student based in Okinawa, Japan.">
@@ -32,14 +43,14 @@ import Layout from '../../layouts/Layout.astro';
       </div>
 
       <div class="aspect-[3/4] overflow-hidden border border-[var(--color-border)]">
-        <img src="/写真、画像/my portfolio/about-actor.jpeg" alt="ITO SHUNICHI - Actor" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" />
+        <Image src={imgMap['/写真、画像/my portfolio/about-actor.jpeg']} alt="ITO SHUNICHI - Actor" width={600} class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" />
       </div>
     </section>
 
     <!-- The Student -->
     <section class="grid md:grid-cols-2 gap-12 items-start mb-20">
       <div class="aspect-[3/4] overflow-hidden border border-[var(--color-border)] order-2 md:order-1">
-        <img src="/写真、画像/my portfolio/about-student.jpg" alt="ITO SHUNICHI - Student" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" />
+        <Image src={imgMap['/写真、画像/my portfolio/about-student.jpg']} alt="ITO SHUNICHI - Student" width={600} class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" />
       </div>
 
       <div class="space-y-6 order-1 md:order-2">
@@ -72,7 +83,7 @@ import Layout from '../../layouts/Layout.astro';
     <!-- Okinawa -->
     <section class="mb-20 grid md:grid-cols-2 border border-[var(--color-border)] overflow-hidden">
       <div class="overflow-hidden">
-        <img src="/写真、画像/my portfolio/okinawa.jpg" alt="Okinawa, Japan" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+        <Image src={imgMap['/写真、画像/my portfolio/okinawa.jpg']} alt="Okinawa, Japan" width={1200} class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
       </div>
       <div class="flex flex-col justify-center px-10 py-12 bg-[var(--color-cream-dark)] space-y-6">
         <div>

@@ -1,5 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+const allImages = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/写真、画像/**/*.{jpg,JPG,jpeg,JPEG,png,PNG}'
+, { eager: true });
+
+const imgMap: Record<string, ImageMetadata> = {};
+for (const [fullPath, mod] of Object.entries(allImages)) {
+  imgMap[fullPath.replace('/src/assets', '')] = mod.default;
+}
 
 const works = [
   {
@@ -61,10 +72,11 @@ const works = [
         <a href={`/works/${work.id}`} class="fade-in group grid md:grid-cols-[280px_1fr] border border-[var(--color-border)] bg-white hover:border-[var(--color-gold)] transition-all duration-300 overflow-hidden">
           <!-- Image -->
           <div class="relative h-48 md:h-auto overflow-hidden bg-[var(--color-ink)]">
-            {work.image && (
-              <img
-                src={work.image}
+            {work.image && imgMap[work.image] && (
+              <Image
+                src={imgMap[work.image]}
                 alt={work.title}
+                width={560}
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 style={work.objectPosition ? `object-position: ${work.objectPosition}` : 'object-position: top'}
               />

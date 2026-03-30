@@ -1,6 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getPostsByKeyword } from '../../lib/posts';
+import { Image } from 'astro:assets';
+import heroImg from '../../assets/写真、画像/みんながサンタ/2025/劇中の一枚.jpeg';
+import galleryImg1 from '../../assets/写真、画像/みんながサンタ/2025/国際通りに流れるみんながサンタの広告.JPG';
+import galleryImg2 from '../../assets/写真、画像/みんながサンタ/2025/劇中の一枚_シングルマザーのモノローグ.JPG';
 
 const relatedPosts = getPostsByKeyword('サンタ').slice(0, 8);
 
@@ -18,9 +22,11 @@ const highlights = [
 >
   <!-- Hero -->
   <section class="relative h-[70vh] overflow-hidden">
-    <img
-      src="/写真、画像/みんながサンタ/2025/劇中の一枚.jpeg"
+    <Image
+      src={heroImg}
       alt="みんながサンタ！"
+      width={1920}
+      loading="eager"
       class="w-full h-full object-cover object-top"
     />
     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
@@ -101,14 +107,16 @@ const highlights = [
       <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">GALLERY</p>
       <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">記録写真</h2>
       <div class="grid grid-cols-2 gap-4">
-        <img
-          src="/写真、画像/みんながサンタ/2025/国際通りに流れるみんながサンタの広告.JPG"
+        <Image
+          src={galleryImg1}
           alt="国際通りに流れたみんながサンタの広告"
+          width={1200}
           class="w-full aspect-[4/3] object-cover border border-[var(--color-border)]"
         />
-        <img
-          src="/写真、画像/みんながサンタ/2025/劇中の一枚_シングルマザーのモノローグ.JPG"
+        <Image
+          src={galleryImg2}
           alt="公演の様子"
+          width={1200}
           class="w-full aspect-[4/3] object-cover border border-[var(--color-border)]"
         />
       </div>
