@@ -58,6 +58,18 @@ export const allWorks: Work[] = [
     objectPosition: '50% 18%',
   },
   {
+    id: 'pipes',
+    featured: true,
+    category: 'MODEL',
+    year: '2025〜',
+    title: '月桃物語 かりゆしウェア モデル',
+    role: 'モデル',
+    description: '沖縄発のかりゆしウェアブランド「月桃物語」（pipes.co.jp）のモデルを担当。2025年・2026年と2年連続で撮影に参加。沖縄の自然を背景に、かりゆしウェアの魅力を伝える写真撮影。',
+    tags: ['モデル', 'かりゆし', '沖縄'],
+    image: '/写真、画像/月桃物語/2026/06_white_beach.jpeg',
+    objectPosition: '50% 20%',
+  },
+  {
     id: 'citizens',
     featured: true,
     category: 'SHORT FILM',

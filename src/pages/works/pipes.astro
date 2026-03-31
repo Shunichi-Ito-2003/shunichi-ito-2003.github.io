@@ -1,0 +1,192 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getPostsByKeyword } from '../../lib/posts';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+const allImages = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/写真、画像/**/*.{jpg,JPG,jpeg,JPEG,png,PNG}'
+, { eager: true });
+
+const imgMap: Record<string, ImageMetadata> = {};
+for (const [fullPath, mod] of Object.entries(allImages)) {
+  imgMap[fullPath.replace('/src/assets', '')] = mod.default;
+}
+
+const relatedPosts = getPostsByKeyword('月桃').slice(0, 6);
+
+const gallery2025 = [
+  { key: '/写真、画像/月桃物語/2025/01_brown_floral_pose.jpeg', alt: '2025年 かりゆしウェア撮影（ブラウンフローラル）' },
+  { key: '/写真、画像/月桃物語/2025/02_brown_floral_smile.jpeg', alt: '2025年 かりゆしウェア撮影（スマイルカット）' },
+  { key: '/写真、画像/月桃物語/2025/03_teal_floral_sit.jpeg', alt: '2025年 かりゆしウェア撮影（ティールフローラル）' },
+];
+
+const gallery2026 = [
+  { key: '/写真、画像/月桃物語/2026/01_navy_floral_mural.jpeg', alt: '2026年 かりゆしウェア撮影（ネイビーフローラル）' },
+  { key: '/写真、画像/月桃物語/2026/02_wine_leaf_cafe.jpeg', alt: '2026年 かりゆしウェア撮影（ワインカラー）' },
+  { key: '/写真、画像/月桃物語/2026/03_blue_garden.jpeg', alt: '2026年 かりゆしウェア撮影（ブルー・庭園）' },
+  { key: '/写真、画像/月桃物語/2026/04_purple_sea.jpeg', alt: '2026年 かりゆしウェア撮影（パープル・海）' },
+  { key: '/写真、画像/月桃物語/2026/05_navy_coast.jpeg', alt: '2026年 かりゆしウェア撮影（ネイビー・海岸）' },
+  { key: '/写真、画像/月桃物語/2026/06_white_beach.jpeg', alt: '2026年 かりゆしウェア撮影（ホワイト・ビーチ）' },
+];
+---
+
+<Layout
+  title="月桃物語 かりゆしウェア モデル"
+  description="沖縄発のかりゆしウェアブランド「月桃物語」のモデルとして2025年・2026年の2年間撮影に参加。沖縄の風景とともにかりゆしウェアの魅力を届ける。"
+>
+  <!-- Hero -->
+  <section class="relative h-[70vh] overflow-hidden">
+    <Image
+      src={imgMap['/写真、画像/月桃物語/2026/03_blue_garden.jpeg']}
+      alt="月桃物語 モデル撮影"
+      width={1920}
+      loading="eager"
+      class="w-full h-full object-cover"
+      style="object-position: 35% 25%"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 p-8 md:p-16 max-w-4xl">
+      <a href="/works" class="font-display text-xs tracking-[0.2em] text-white/50 hover:text-[var(--color-gold)] transition-colors mb-6 block">← WORKS</a>
+      <span class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] block mb-3">MODEL · 2025〜</span>
+      <h1 class="font-japanese text-3xl md:text-5xl font-bold text-white leading-tight mb-4">月桃物語<br class="md:hidden" /><span class="text-2xl md:text-4xl"> かりゆしウェア</span></h1>
+      <p class="font-japanese text-white/70 text-lg leading-relaxed">
+        沖縄発のかりゆしウェアブランドのモデルとして、2年連続で撮影に参加
+      </p>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-6 py-16 space-y-20">
+
+    <!-- Overview -->
+    <section class="fade-in grid md:grid-cols-[1fr_280px] gap-12">
+      <div class="space-y-6">
+        <div>
+          <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">OVERVIEW</p>
+          <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">ブランドについて</h2>
+        </div>
+        <div class="space-y-4 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
+          <p>
+            「月桃物語」は、那覇市に拠点を置くかりゆしウェアの専門ブランド。
+            沖縄方言で「めでたい」を意味する「かりゆし」の精神を纏ったウェアを、
+            メンズ・レディース・キッズと幅広く展開しています。
+          </p>
+          <p>
+            2000年の九州・沖縄サミットで世界のリーダーたちに着用され世界に知られたかりゆしウェアを、
+            現代のライフスタイルに合わせたデザインで提案し続けているブランドです。
+          </p>
+          <p>
+            このブランドのモデルとしてお声がけいただいたことは、
+            沖縄の文化を身体で表現する俳優としての活動と深くつながるものでした。
+            「沖縄らしさ」を着て、沖縄の風景の中に立つ——それは舞台に立つことと同じように、
+            何かを届けることだと感じています。
+          </p>
+        </div>
+      </div>
+
+      <!-- Info card -->
+      <div class="border border-[var(--color-border)] divide-y divide-[var(--color-border)] h-fit">
+        {[
+          { label: 'ROLE', value: 'モデル' },
+          { label: 'BRAND', value: '月桃物語（Pipes Co., Ltd.）' },
+          { label: 'LOCATION', value: '沖縄県内各所' },
+          { label: 'PERIOD', value: '2025年・2026年（2年間）' },
+          { label: 'SHOOTS', value: '9カット以上' },
+        ].map((item) => (
+          <div class="px-5 py-3">
+            <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] mb-0.5">{item.label}</p>
+            <p class="font-japanese text-sm text-[var(--color-ink)]">{item.value}</p>
+          </div>
+        ))}
+        <div class="px-5 py-3">
+          <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] mb-0.5">OFFICIAL SITE</p>
+          <a href="https://www.pipes.co.jp/" target="_blank" rel="noopener noreferrer" class="font-japanese text-sm text-[var(--color-gold)] hover:text-[var(--color-gold-dark)] transition-colors break-all">
+            pipes.co.jp →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- My involvement -->
+    <section class="fade-in border-l-2 border-[var(--color-gold)] pl-8 space-y-4">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)]">MY INVOLVEMENT</p>
+      <h2 class="font-japanese text-xl font-bold text-[var(--color-ink)]">沖縄の空気を纏って、届ける</h2>
+      <div class="space-y-4 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
+        <p>
+          2025年に初めてモデルとしてお声がけいただき、2026年も続けて参加させていただいています。
+          撮影は沖縄県内のさまざまなロケーションで行われ、海・ビーチ・庭園・街なかと、
+          それぞれの場所でかりゆしウェアの持つ表情を引き出す撮影でした。
+        </p>
+        <p>
+          俳優として人前に立つ仕事と、モデルとして「服を着る」仕事は、
+          どちらも「見られることを意識して身体を使う」という点で通じています。
+          こういった経験が、舞台での表現にも確実に還ってくると感じています。
+        </p>
+        <p>
+          お仕事をいただいたことへの感謝とともに、沖縄という土地に生きる俳優として、
+          この島のブランドと一緒に立てることを誇りに思っています。
+        </p>
+      </div>
+    </section>
+
+    <!-- Gallery 2025 -->
+    <section class="fade-in">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-2">GALLERY</p>
+      <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-2">2025年 撮影</h2>
+      <p class="font-japanese text-sm text-[var(--color-ink-muted)] mb-6">初年度の撮影。沖縄の自然を背景に、ブラウン・ティールのかりゆしウェアを着用。</p>
+      <div class="grid grid-cols-3 gap-3">
+        {gallery2025.map((item) => imgMap[item.key] && (
+          <div class="overflow-hidden aspect-square">
+            <Image
+              src={imgMap[item.key]}
+              alt={item.alt}
+              width={600}
+              class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Gallery 2026 -->
+    <section class="fade-in">
+      <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-2">2026年 撮影</h2>
+      <p class="font-japanese text-sm text-[var(--color-ink-muted)] mb-6">2年目の撮影。ネイビー・ワイン・ブルーなど多彩なカラーで、より多くのロケーションに挑戦。</p>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        {gallery2026.map((item) => imgMap[item.key] && (
+          <div class="overflow-hidden aspect-square">
+            <Image
+              src={imgMap[item.key]}
+              alt={item.alt}
+              width={600}
+              class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Related posts -->
+    {relatedPosts.length > 0 && (
+      <section class="fade-in">
+        <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">DOCUMENT</p>
+        <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-8">関連記事</h2>
+        <div class="divide-y divide-[var(--color-border)]">
+          {relatedPosts.map((post) => (
+            <a
+              href={`/blog/${post.slug}`}
+              class="group flex gap-6 py-5 hover:bg-[var(--color-cream)] px-2 -mx-2 transition-colors"
+            >
+              <time class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] shrink-0 pt-1 w-24">{post.date}</time>
+              <h3 class="font-japanese text-[var(--color-ink)] group-hover:text-[var(--color-gold-dark)] transition-colors leading-relaxed line-clamp-2">
+                {post.title}
+              </h3>
+              <span class="shrink-0 self-center font-display text-xs text-[var(--color-gold)] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+  </div>
+</Layout>

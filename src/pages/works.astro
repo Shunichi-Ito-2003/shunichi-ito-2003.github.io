@@ -10,7 +10,7 @@ const allImages = import.meta.glob<{ default: ImageMetadata }>(
 
 const imgMap: Record<string, ImageMetadata> = {};
 for (const [fullPath, mod] of Object.entries(allImages)) {
-  imgMap[fullPath.replace('/src/assets', '')] = mod.default;
+  imgMap[fullPath.replace('/src/assets', '').normalize('NFC')] = mod.default;
 }
 
 const works = allWorks;

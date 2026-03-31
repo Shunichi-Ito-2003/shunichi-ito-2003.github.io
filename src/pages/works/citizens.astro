@@ -98,12 +98,19 @@ const gallery = [
           { label: 'DIRECTOR', value: 'ふるいちやすし' },
           { label: 'TYPE', value: '短編映画（38分）' },
           { label: 'PREMIERE', value: '2025年6月23日（沖縄）' },
+
         ].map((item) => (
           <div class="px-5 py-3">
             <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] mb-0.5">{item.label}</p>
             <p class="font-japanese text-sm text-[var(--color-ink)]">{item.value}</p>
           </div>
         ))}
+        <div class="px-5 py-3">
+          <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] mb-0.5">OFFICIAL SITE</p>
+          <a href="https://www.filmjapanesque.com/citizens/" target="_blank" rel="noopener noreferrer" class="font-japanese text-sm text-[var(--color-gold)] hover:text-[var(--color-gold-dark)] transition-colors break-all">
+            filmjapanesque.com/citizens →
+          </a>
+        </div>
       </div>
     </section>
 

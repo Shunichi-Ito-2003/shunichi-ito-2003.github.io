@@ -13,7 +13,7 @@ const allImages = import.meta.glob<{ default: ImageMetadata }>(
 
 const imgMap: Record<string, ImageMetadata> = {};
 for (const [fullPath, mod] of Object.entries(allImages)) {
-  imgMap[fullPath.replace('/src/assets', '')] = mod.default;
+  imgMap[fullPath.replace('/src/assets', '').normalize('NFC')] = mod.default;
 }
 
 // featured: true のものだけトップページに表示
@@ -67,6 +67,14 @@ const works = allWorks
             class="px-8 py-3.5 border border-[var(--color-border)] text-[var(--color-ink-muted)] font-display text-xs tracking-[0.2em] hover:border-[var(--color-ink)] hover:text-[var(--color-ink)] transition-all duration-300 text-center"
           >
             BLOG
+          </a>
+          <a
+            href="https://note.com/icchi_ito"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-8 py-3.5 border border-[var(--color-border)] text-[var(--color-ink-muted)] font-display text-xs tracking-[0.2em] hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] transition-all duration-300 text-center"
+          >
+            NOTE →
           </a>
         </div>
       </div>
@@ -232,9 +240,19 @@ const works = allWorks
           <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-2">思考の庭</p>
           <h2 class="font-display text-4xl md:text-5xl tracking-[0.12em] text-[var(--color-ink)]">MONOLOGUE</h2>
         </div>
-        <a href="/blog" class="hidden md:flex items-center gap-2 font-display text-xs tracking-[0.2em] text-[var(--color-ink-muted)] hover:text-[var(--color-gold)] transition-colors">
-          ALL ARTICLES →
-        </a>
+        <div class="hidden md:flex items-center gap-4">
+          <a
+            href="https://note.com/icchi_ito"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-display text-xs tracking-[0.2em] text-[var(--color-gold)] hover:text-[var(--color-gold-dark)] transition-colors"
+          >
+            noteで読む →
+          </a>
+          <a href="/blog" class="flex items-center gap-2 font-display text-xs tracking-[0.2em] text-[var(--color-ink-muted)] hover:text-[var(--color-gold)] transition-colors">
+            ALL ARTICLES →
+          </a>
+        </div>
       </header>
 
       {recentPosts.length > 0 ? (
@@ -287,16 +305,38 @@ const works = allWorks
         <h2 class="font-display text-4xl md:text-5xl tracking-[0.12em] text-white">CONTACT</h2>
       </div>
       <div class="h-px w-12 bg-[var(--color-gold)] mx-auto"></div>
-      <p class="font-japanese text-white/60 leading-loose">
-        出演依頼、脚本執筆のご相談、その他お問い合わせは<br class="hidden md:block" />
-        以下のメールアドレスよりお願いいたします。
-      </p>
-      <a
-        href="mailto:changeupandshake@gmail.com"
-        class="inline-block px-10 py-4 border border-[var(--color-gold)] text-[var(--color-gold)] font-display tracking-[0.2em] text-sm hover:bg-[var(--color-gold)] hover:text-white transition-all duration-300"
-      >
-        SEND EMAIL
-      </a>
+
+      <div class="grid md:grid-cols-2 gap-8 text-left">
+        <!-- LINE -->
+        <div class="space-y-4">
+          <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)]">LINE</p>
+          <p class="font-japanese text-white/60 leading-loose text-sm">
+            応援メッセージ、日々の活動報告の受け取り、<br />一人芝居のご依頼はLINEからどうぞ
+          </p>
+          <a
+            href="https://lin.ee/jbUrdeB"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block px-8 py-3.5 bg-[var(--color-gold)] text-white font-display tracking-[0.2em] text-xs hover:bg-[var(--color-gold-dark)] transition-all duration-300"
+          >
+            LINE で送る →
+          </a>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="space-y-4">
+          <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)]">EMAIL</p>
+          <p class="font-japanese text-white/60 leading-loose text-sm">
+            出演依頼・取材依頼は<br />メールにてお問い合わせください
+          </p>
+          <a
+            href="mailto:changeupandshake@gmail.com"
+            class="inline-block px-8 py-3.5 border border-[var(--color-gold)] text-[var(--color-gold)] font-display tracking-[0.2em] text-xs hover:bg-[var(--color-gold)] hover:text-white transition-all duration-300"
+          >
+            SEND EMAIL →
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 </Layout>
