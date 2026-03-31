@@ -25,9 +25,9 @@ const gallery2026 = [
   { key: '/写真、画像/月桃物語/2026/01_navy_floral_mural.jpeg', alt: '2026年 かりゆしウェア撮影（ネイビーフローラル）' },
   { key: '/写真、画像/月桃物語/2026/02_wine_leaf_cafe.jpeg', alt: '2026年 かりゆしウェア撮影（ワインカラー）' },
   { key: '/写真、画像/月桃物語/2026/03_blue_garden.jpeg', alt: '2026年 かりゆしウェア撮影（ブルー・庭園）' },
-  { key: '/写真、画像/月桃物語/2026/04_purple_sea.jpeg', alt: '2026年 かりゆしウェア撮影（パープル・海）' },
-  { key: '/写真、画像/月桃物語/2026/05_navy_coast.jpeg', alt: '2026年 かりゆしウェア撮影（ネイビー・海岸）' },
-  { key: '/写真、画像/月桃物語/2026/06_white_beach.jpeg', alt: '2026年 かりゆしウェア撮影（ホワイト・ビーチ）' },
+  { key: '/写真、画像/月桃物語/2026/04_purple_sea.jpeg', alt: '2026年 かりゆしウェア撮影（パープル・海）', pos: 'center bottom' },
+  { key: '/写真、画像/月桃物語/2026/05_navy_coast.jpeg', alt: '2026年 かりゆしウェア撮影（ネイビー・海岸）', pos: 'center bottom' },
+  { key: '/写真、画像/月桃物語/2026/06_white_beach.jpeg', alt: '2026年 かりゆしウェア撮影（ホワイト・ビーチ）', pos: 'center bottom' },
 ];
 ---
 
@@ -159,7 +159,8 @@ const gallery2026 = [
               src={imgMap[item.key]}
               alt={item.alt}
               width={600}
-              class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              style={`object-position: ${item.pos ?? 'top'}`}
             />
           </div>
         ))}
