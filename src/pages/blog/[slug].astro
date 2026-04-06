@@ -17,7 +17,25 @@ if (!post) {
   return Astro.redirect('/blog');
 }
 
-const htmlContent = await marked(post.content, { breaks: true });
+// Build note.com URL → internal slug map (keyed by base URL without query params)
+const noteUrlToSlug = new Map(
+  getAllPosts()
+    .filter((p) => p.published && p.note_url)
+    .map((p) => [p.note_url!.split('?')[0], p.slug])
+);
+
+let htmlContent = await marked(post.content, { breaks: true });
+
+// Rewrite note.com article links to internal /blog/[slug] paths
+// Strip query params before lookup so ?magazine_key=... variants also match
+htmlContent = htmlContent.replace(
+  /href="(https:\/\/note\.com\/icchi_ito\/n\/[^"]+)"/g,
+  (match, url) => {
+    const baseUrl = url.split('?')[0];
+    const internalSlug = noteUrlToSlug.get(baseUrl);
+    return internalSlug ? `href="/blog/${internalSlug}"` : match;
+  }
+);
 ---
 
 <Layout title={post.title} description={post.excerpt}>

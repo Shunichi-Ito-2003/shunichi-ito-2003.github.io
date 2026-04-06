@@ -81,7 +81,7 @@ export function getAllPosts(): Post[] {
         category: (data.category as string) || 'Monologue',
         tags: [],
         published: (data.published as boolean) ?? false,
-        note_url: (data.note_url as string) || undefined,
+        note_url: (data.published_url as string) || (data.note_url as string) || undefined,
       };
     })
     .filter((p) => p.title && p.date)
