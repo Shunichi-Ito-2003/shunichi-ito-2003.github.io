@@ -32,11 +32,17 @@ for (const [fullPath, mod] of Object.entries(allImages)) {
         <div class="space-y-5 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
           <p>
             「演劇は世界を平和にする」という信念のもと、沖縄を拠点に俳優として活動しています。
-            演劇を通して自分が押し殺していた感情を知るだけで、ふっと肩の力が抜けることがあります。
-            私は演劇を広く普及させることが、たくさんの人の豊かさにつながると信じています。
+            演劇を通して自分が押し殺していた感情を知るだけで、ふっと肩の力が抜けることがある。
+            その体験を、もっと多くの人に届けたい——それがこの道に入った理由です。
           </p>
           <p>
-            2024年、実際にカンヌ国際映画祭の現地を訪れ、そのエネルギーに圧倒されました。
+            医学部で生命と向き合う日々が、舞台に立つ自分を変えていきました。
+            解剖学で人体の精緻さを知り、臨床で「生老病死」の現場に立ち会うことで、
+            人間という存在の複雑さへの解像度が上がっていく感覚があります。
+            医学と演劇、この二つはどちらも「人間の救済」を目指しているという点で、僕の中では地続きです。
+          </p>
+          <p>
+            2024年、カンヌ国際映画祭の現地を訪れ、そのエネルギーに圧倒されました。
             「今度は作品といっしょにこの地に立つ」という決意を胸に、日々邁進しています。
           </p>
           <div class="border-l-2 border-[var(--color-gold)] pl-5 mt-6">
@@ -82,22 +88,31 @@ for (const [fullPath, mod] of Object.entries(allImages)) {
 
         <!-- Info table -->
         <div class="border border-[var(--color-border)] divide-y divide-[var(--color-border)]">
-          <div class="flex justify-between px-5 py-3">
-            <span class="font-display text-xs tracking-widest text-[var(--color-ink-muted)]">Name</span>
-            <span class="font-japanese text-sm text-[var(--color-ink)]">伊藤 駿一</span>
-          </div>
-          <div class="flex justify-between px-5 py-3">
-            <span class="font-display text-xs tracking-widest text-[var(--color-ink-muted)]">Born</span>
-            <span class="font-japanese text-sm text-[var(--color-ink)]">2003</span>
-          </div>
-          <div class="flex justify-between px-5 py-3">
-            <span class="font-display text-xs tracking-widest text-[var(--color-ink-muted)]">Affiliation</span>
-            <span class="font-japanese text-sm text-[var(--color-ink)]">琉球大学 医学部</span>
-          </div>
-          <div class="flex justify-between px-5 py-3">
-            <span class="font-display text-xs tracking-widest text-[var(--color-ink-muted)]">Location</span>
-            <span class="font-japanese text-sm text-[var(--color-ink)]">Okinawa, Japan</span>
-          </div>
+          {[
+            { label: 'Name', value: '伊藤 駿一（Shunichi Ito）' },
+            { label: 'Born', value: '2003年4月18日　沖縄県出身' },
+            { label: 'Agency', value: '01ENTERTAINMENT' },
+            { label: 'Univ.', value: '琉球大学 医学部 医学科' },
+            { label: 'Height', value: '180 cm' },
+            { label: 'Sizes', value: 'B86 / W74 / H87　靴28cm' },
+          ].map((item) => (
+            <div class="flex justify-between px-5 py-3">
+              <span class="font-display text-xs tracking-widest text-[var(--color-ink-muted)]">{item.label}</span>
+              <span class="font-japanese text-sm text-[var(--color-ink)] text-right">{item.value}</span>
+            </div>
+          ))}
+        </div>
+
+        <!-- Skills & Qualifications -->
+        <div class="mt-6">
+          <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">SKILLS & QUALIFICATIONS</p>
+          <ul class="space-y-2 font-japanese text-sm text-[var(--color-ink-muted)] leading-relaxed">
+            <li>珠算 六段 ／ 暗算 八段</li>
+            <li>将棋 全国大会出場</li>
+            <li>実用英語技能検定 準一級</li>
+            <li>ピアノ</li>
+            <li>野球（高校）・テニス</li>
+          </ul>
         </div>
       </div>
     </section>
