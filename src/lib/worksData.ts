@@ -13,6 +13,18 @@ export type Work = {
 
 export const allWorks: Work[] = [
   {
+    id: 'rebirth',
+    featured: true,
+    category: 'STAGE / ACTING',
+    year: '2024',
+    title: 'ザ・リバース 〜THE REBIRTH〜',
+    role: '主演・工藤役',
+    description: '01ENTERTAINMENT主催。若年性認知症をテーマに「本当に寂しいのは、忘れてしまうこと」を描いた舞台。主演・工藤役を任され、全6公演を完走した。',
+    tags: ['舞台', '主演', '01ENTERTAINMENT'],
+    image: '/写真、画像/THE REBIRTH/flyer.jpeg',
+    objectPosition: '50% 30%',
+  },
+  {
     id: 'shimamori',
     featured: true,
     category: 'STAGE / ACTING',

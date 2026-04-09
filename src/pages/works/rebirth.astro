@@ -1,0 +1,134 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getPostsByKeyword } from '../../lib/posts';
+import { Image } from 'astro:assets';
+import flyerImg from '../../assets/写真、画像/THE REBIRTH/flyer.jpeg';
+
+const relatedPosts = getPostsByKeyword('リバース').slice(0, 8);
+
+const highlights = [
+  { date: '2024.06.05', text: '初日。壺屋演劇場かさねにて開幕。主演・工藤役として物語の中心に立つ' },
+  { date: '2024.06.05〜07', text: '平日3日間の夜公演。19:00〜21:00、毎晩積み重ねる' },
+  { date: '2024.06.08', text: '土曜2公演（昼・夜）。それぞれ異なる空気の客席と向き合う' },
+  { date: '2024.06.09', text: '千秋楽。全公演を走り切り、「座長」としての一つの証明を残す' },
+];
+---
+
+<Layout
+  title="ザ・リバース 〜THE REBIRTH〜"
+  description="01ENTERTAINMENT主催、2024年6月上演。伊藤駿一が主演・工藤役を務めた舞台作品。「本当に寂しいのは、忘れてしまうこと」"
+>
+  <!-- Hero -->
+  <section class="relative h-[70vh] overflow-hidden bg-[var(--color-ink)]">
+    <Image
+      src={flyerImg}
+      alt="ザ・リバース〜THE REBIRTH〜 フライヤー"
+      width={1200}
+      loading="eager"
+      class="w-full h-full object-contain object-center"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 p-8 md:p-16 max-w-4xl">
+      <a href="/works" class="font-display text-xs tracking-[0.2em] text-white/50 hover:text-[var(--color-gold)] transition-colors mb-6 block">← WORKS</a>
+      <span class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] block mb-3">STAGE / ACTING · 2024</span>
+      <h1 class="font-japanese text-4xl md:text-5xl font-bold text-white leading-tight mb-4">ザ・リバース<br /><span class="text-2xl md:text-3xl font-normal">〜THE REBIRTH〜</span></h1>
+      <p class="font-japanese text-white/70 text-lg leading-relaxed">
+        本当に寂しいのは、忘れてしまうこと
+      </p>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-6 py-16 space-y-20">
+
+    <!-- Overview -->
+    <section class="fade-in grid md:grid-cols-[1fr_280px] gap-12">
+      <div class="space-y-6">
+        <div>
+          <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">OVERVIEW</p>
+          <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">作品について</h2>
+        </div>
+        <div class="space-y-4 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
+          <p>
+            テーマは若年性認知症。「本当に寂しいのは、忘れてしまうこと」というキャッチコピーが示すように、
+            記憶と喪失、そして再生を正面から描いた舞台作品。
+          </p>
+          <p>
+            01ENTERTAINMENTが手掛けた本作で、伊藤駿一は主演・工藤役を任された。
+            脚本は松井錦吾、演出は西平寿久。那覇市の壺屋演劇場かさねを舞台に、
+            2024年6月5日から9日まで全6公演を走り切った。
+          </p>
+        </div>
+      </div>
+
+      <!-- Info card -->
+      <div class="border border-[var(--color-border)] divide-y divide-[var(--color-border)] h-fit">
+        {[
+          { label: 'ROLE', value: '工藤 役（主演）' },
+          { label: 'DATE', value: '2024年6月5日〜9日' },
+          { label: 'VENUE', value: '壺屋演劇場かさね（那覇市）' },
+          { label: 'SCRIPT', value: '松井錦吾' },
+          { label: 'DIRECTION', value: '西平寿久' },
+          { label: 'COMPANY', value: '01ENTERTAINMENT' },
+        ].map((item) => (
+          <div class="px-5 py-3">
+            <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] mb-0.5">{item.label}</p>
+            <p class="font-japanese text-sm text-[var(--color-ink)]">{item.value}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- My role -->
+    <section class="fade-in border-l-2 border-[var(--color-gold)] pl-8 space-y-4">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)]">MY ROLE</p>
+      <h2 class="font-japanese text-xl font-bold text-[var(--color-ink)]">主演として、若年性認知症の現実と向き合う</h2>
+      <div class="space-y-4 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
+        <p>
+          医学部で病理や臨床を学ぶ身として、若年性認知症というテーマは人ごとではなかった。
+          「忘れていく」ここあという人物の傍らで、工藤として何を感じ、どう関わるか——
+          共演者の芝居を受け取りながら届け続けた6日間だった。
+        </p>
+        <p>
+          医学と演劇が交差したこの作品は、伊藤駿一にとって忘れられない主演経験のひとつです。
+        </p>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="fade-in">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">TIMELINE</p>
+      <h2 class="font-display text-2xl tracking-widests text-[var(--color-ink)] mb-8">公演記録</h2>
+      <div class="relative pl-6 border-l-2 border-[var(--color-border)] space-y-0">
+        {highlights.map((h) => (
+          <div class="relative py-5 group">
+            <div class="absolute -left-[1.45rem] top-7 w-3 h-3 rounded-full border-2 border-[var(--color-gold)] bg-white group-hover:bg-[var(--color-gold)] transition-colors"></div>
+            <time class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] block mb-1">{h.date}</time>
+            <p class="font-japanese text-[var(--color-ink)] leading-relaxed">{h.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Related posts -->
+    {relatedPosts.length > 0 && (
+      <section class="fade-in">
+        <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">DOCUMENT</p>
+        <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-8">活動記録</h2>
+        <div class="divide-y divide-[var(--color-border)]">
+          {relatedPosts.map((post) => (
+            <a
+              href={`/blog/${post.slug}`}
+              class="group flex gap-6 py-5 hover:bg-[var(--color-cream)] px-2 -mx-2 transition-colors"
+            >
+              <time class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] shrink-0 pt-1 w-24">{post.date}</time>
+              <h3 class="font-japanese text-[var(--color-ink)] group-hover:text-[var(--color-gold-dark)] transition-colors leading-relaxed line-clamp-2">
+                {post.title}
+              </h3>
+              <span class="shrink-0 self-center font-display text-xs text-[var(--color-gold)] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+  </div>
+</Layout>
