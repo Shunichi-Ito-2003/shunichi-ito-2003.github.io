@@ -1,0 +1,69 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title='ラジオドラマ「80年目の帰郷」'
+  description="2025年放送のラジオドラマ。伊藤駿一が日本兵役を務めた。沖縄戦の歴史と向き合う声の演技。"
+>
+  <section class="relative h-[50vh] bg-[var(--color-ink)] flex items-end overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/20"></div>
+    <div class="relative p-8 md:p-16 max-w-4xl">
+      <a href="/works" class="font-display text-xs tracking-[0.2em] text-white/50 hover:text-[var(--color-gold)] transition-colors mb-6 block">← WORKS</a>
+      <span class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] block mb-3">RADIO DRAMA · 2025</span>
+      <h1 class="font-japanese text-3xl md:text-5xl font-bold text-white leading-tight mb-4">ラジオドラマ<br />「80年目の帰郷」</h1>
+      <p class="font-japanese text-white/70 text-lg leading-relaxed">声だけで届ける、沖縄戦の記憶</p>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-6 py-16 space-y-20">
+
+    <section class="fade-in grid md:grid-cols-[1fr_280px] gap-12">
+      <div class="space-y-6">
+        <div>
+          <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">OVERVIEW</p>
+          <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">作品について</h2>
+        </div>
+        <div class="space-y-4 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
+          <p>
+            沖縄戦終結から80年という節目の年に制作・放送されたラジオドラマ。
+            「帰郷」というタイトルが示すように、戦争と故郷、そして記憶の継承をテーマにした作品。
+          </p>
+          <p>
+            伊藤駿一は日本兵役を担当。映像も身体も使えないラジオという媒体で、
+            声と息遣いだけで戦地に生きた人物の魂を表現することに挑んだ。
+            沖縄という地上戦の記憶が刻まれた土地に生きる俳優として、
+            特別な重みを持って向き合った作品。
+          </p>
+        </div>
+      </div>
+
+      <div class="border border-[var(--color-border)] divide-y divide-[var(--color-border)] h-fit">
+        {[
+          { label: 'ROLE', value: '日本兵 役' },
+          { label: 'YEAR', value: '2025年' },
+          { label: 'TYPE', value: 'ラジオドラマ' },
+          { label: 'THEME', value: '沖縄戦・戦後80年' },
+        ].map((item) => (
+          <div class="px-5 py-3">
+            <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] mb-0.5">{item.label}</p>
+            <p class="font-japanese text-sm text-[var(--color-ink)]">{item.value}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="fade-in border-l-2 border-[var(--color-gold)] pl-8 space-y-4">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)]">MY ROLE</p>
+      <h2 class="font-japanese text-xl font-bold text-[var(--color-ink)]">声が、唯一の武器</h2>
+      <div class="space-y-4 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
+        <p>
+          ラジオドラマでは、声が全てだ。表情も所作も消えた中で、
+          声のトーン・間・呼吸だけで聴き手の脳裏に情景を描き出さなければならない。
+          沖縄戦という歴史と向き合いながら、80年前を生きた一人の兵士の存在を声に宿らせた。
+          この経験は、発声と感情表現への理解を根本から深めた。
+        </p>
+      </div>
+    </section>
+  </div>
+</Layout>

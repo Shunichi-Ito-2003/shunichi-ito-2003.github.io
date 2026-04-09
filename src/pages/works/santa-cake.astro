@@ -1,0 +1,90 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getPostsByKeyword } from '../../lib/posts';
+
+const relatedPosts = getPostsByKeyword('サンタ').slice(0, 6);
+---
+
+<Layout
+  title="サンタがくれたクリスマスケーキ"
+  description="01ENTERTAINMENT主催、2024年上演。チャリティー企画「みんながサンタ！」と連動した舞台作品。伊藤駿一がサンタ役（主演）を務めた。"
+>
+  <section class="relative h-[50vh] bg-[var(--color-ink)] flex items-end overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/20"></div>
+    <div class="relative p-8 md:p-16 max-w-4xl">
+      <a href="/works" class="font-display text-xs tracking-[0.2em] text-white/50 hover:text-[var(--color-gold)] transition-colors mb-6 block">← WORKS</a>
+      <span class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] block mb-3">STAGE / CHARITY · 2024</span>
+      <h1 class="font-japanese text-3xl md:text-5xl font-bold text-white leading-tight mb-4">サンタがくれたクリスマスケーキ</h1>
+      <p class="font-japanese text-white/70 text-lg leading-relaxed">チャリティー企画「みんながサンタ！」と連動した舞台作品</p>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-6 py-16 space-y-20">
+
+    <section class="fade-in grid md:grid-cols-[1fr_280px] gap-12">
+      <div class="space-y-6">
+        <div>
+          <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">OVERVIEW</p>
+          <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">作品について</h2>
+        </div>
+        <div class="space-y-4 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
+          <p>
+            01ENTERTAINMENTが毎年実施するチャリティー企画「みんながサンタ！」と連動した舞台作品。
+            観客が支払うチケット代がクリスマスケーキに変換され、沖縄県内のひとり親家庭の子どもたちへ届けられる。
+          </p>
+          <p>
+            伊藤駿一はサンタ役として主演を務め、舞台上でその想いを体現した。
+            演劇と社会貢献が直接つながるこのプロジェクトは、「演劇は世界を平和にする」という信念の実践形として位置づけられる。
+          </p>
+        </div>
+      </div>
+
+      <div class="border border-[var(--color-border)] divide-y divide-[var(--color-border)] h-fit">
+        {[
+          { label: 'ROLE', value: 'サンタ 役（主演）' },
+          { label: 'YEAR', value: '2024年' },
+          { label: 'TYPE', value: 'チャリティー舞台' },
+          { label: 'COMPANY', value: '01ENTERTAINMENT' },
+        ].map((item) => (
+          <div class="px-5 py-3">
+            <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] mb-0.5">{item.label}</p>
+            <p class="font-japanese text-sm text-[var(--color-ink)]">{item.value}</p>
+          </div>
+        ))}
+        <div class="px-5 py-3">
+          <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] mb-0.5">RELATED</p>
+          <a href="/works/santa" class="font-japanese text-sm text-[var(--color-gold)] hover:text-[var(--color-gold-dark)] transition-colors">みんながサンタ！→</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-in border-l-2 border-[var(--color-gold)] pl-8 space-y-4">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)]">MY ROLE</p>
+      <h2 class="font-japanese text-xl font-bold text-[var(--color-ink)]">舞台上のサンタとして</h2>
+      <div class="space-y-4 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
+        <p>
+          チャリティー企画の「顔」として舞台に立つということは、
+          単に役を演じるだけでなく、この活動の意義そのものを体で伝えることだった。
+          観客のチケット代が子どもたちへのケーキになるという仕組みを、
+          舞台上から感じ取ってもらえるような表現を追求した。
+        </p>
+      </div>
+    </section>
+
+    {relatedPosts.length > 0 && (
+      <section class="fade-in">
+        <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">DOCUMENT</p>
+        <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-8">活動記録</h2>
+        <div class="divide-y divide-[var(--color-border)]">
+          {relatedPosts.map((post) => (
+            <a href={`/blog/${post.slug}`} class="group flex gap-6 py-5 hover:bg-[var(--color-cream)] px-2 -mx-2 transition-colors">
+              <time class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] shrink-0 pt-1 w-24">{post.date}</time>
+              <h3 class="font-japanese text-[var(--color-ink)] group-hover:text-[var(--color-gold-dark)] transition-colors leading-relaxed line-clamp-2">{post.title}</h3>
+              <span class="shrink-0 self-center font-display text-xs text-[var(--color-gold)] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+  </div>
+</Layout>

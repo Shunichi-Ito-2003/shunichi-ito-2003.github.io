@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title='POVO「ギガない太陽」'
+  description="大手通信キャリアPOVOのプロモーション動画「ギガない太陽」に主演。2023年。"
+>
+  <section class="relative h-[50vh] bg-[var(--color-ink)] flex items-end overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/20"></div>
+    <div class="relative p-8 md:p-16 max-w-4xl">
+      <a href="/works" class="font-display text-xs tracking-[0.2em] text-white/50 hover:text-[var(--color-gold)] transition-colors mb-6 block">← WORKS</a>
+      <span class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] block mb-3">CM · 2023</span>
+      <h1 class="font-japanese text-3xl md:text-5xl font-bold text-white leading-tight mb-4">POVO<br /><span class="text-2xl font-normal">「ギガない太陽」</span></h1>
+      <p class="font-japanese text-white/70 text-lg leading-relaxed">大手通信キャリアのプロモーション動画に主演</p>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-6 py-16 space-y-20">
+
+    <section class="fade-in grid md:grid-cols-[1fr_280px] gap-12">
+      <div class="space-y-6">
+        <div>
+          <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">OVERVIEW</p>
+          <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">作品について</h2>
+        </div>
+        <div class="space-y-4 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
+          <p>
+            大手通信キャリア・POVOのプロモーション動画「ギガない太陽」に主演。
+            ブランドのメッセージを映像の中で体現する役を担った。
+          </p>
+          <p>
+            舞台とは異なり、カメラという一点に向けて感情を届ける映像演技。
+            限られた尺の中でキャラクターの存在感を出すという映像特有の表現に向き合った作品。
+          </p>
+        </div>
+      </div>
+
+      <div class="border border-[var(--color-border)] divide-y divide-[var(--color-border)] h-fit">
+        {[
+          { label: 'ROLE', value: '主演' },
+          { label: 'YEAR', value: '2023年' },
+          { label: 'TYPE', value: 'CM・プロモーション動画' },
+          { label: 'CLIENT', value: 'POVO（au）' },
+        ].map((item) => (
+          <div class="px-5 py-3">
+            <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] mb-0.5">{item.label}</p>
+            <p class="font-japanese text-sm text-[var(--color-ink)]">{item.value}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="fade-in border-l-2 border-[var(--color-gold)] pl-8 space-y-4">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)]">MY ROLE</p>
+      <h2 class="font-japanese text-xl font-bold text-[var(--color-ink)]">カメラの前に立つ</h2>
+      <div class="space-y-4 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
+        <p>
+          舞台で培った「空間を埋める」表現とは真逆の、
+          「絞り込む」表現が映像では求められる。
+          大きなブランドのビジュアルを担うということの責任を感じながら、
+          カメラに向き合った経験だった。
+        </p>
+      </div>
+    </section>
+  </div>
+</Layout>

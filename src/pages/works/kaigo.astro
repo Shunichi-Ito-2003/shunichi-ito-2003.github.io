@@ -1,0 +1,66 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="介護喜劇 心の花"
+  description="2023年上演の喜劇作品。伊藤駿一が医者役を務めた。医学部での学びが直接役に活きた一作。"
+>
+  <section class="relative h-[50vh] bg-[var(--color-ink)] flex items-end overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/20"></div>
+    <div class="relative p-8 md:p-16 max-w-4xl">
+      <a href="/works" class="font-display text-xs tracking-[0.2em] text-white/50 hover:text-[var(--color-gold)] transition-colors mb-6 block">← WORKS</a>
+      <span class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] block mb-3">STAGE / COMEDY · 2023</span>
+      <h1 class="font-japanese text-3xl md:text-5xl font-bold text-white leading-tight mb-4">介護喜劇 心の花</h1>
+      <p class="font-japanese text-white/70 text-lg leading-relaxed">医学と演劇が交差した一作</p>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-6 py-16 space-y-20">
+
+    <section class="fade-in grid md:grid-cols-[1fr_280px] gap-12">
+      <div class="space-y-6">
+        <div>
+          <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">OVERVIEW</p>
+          <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">作品について</h2>
+        </div>
+        <div class="space-y-4 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
+          <p>
+            介護という現代社会の切実なテーマを、「喜劇」という形式で描いた作品。
+            笑いの中に人間の尊厳や家族の絆、老いに向き合う人々のリアルが刻まれている。
+          </p>
+          <p>
+            伊藤駿一は医者役を担当。医学部で臨床を学ぶ身として、
+            医師が患者や家族に向き合う場面に独自のリアリティを込めた。
+          </p>
+        </div>
+      </div>
+
+      <div class="border border-[var(--color-border)] divide-y divide-[var(--color-border)] h-fit">
+        {[
+          { label: 'ROLE', value: '医者 役' },
+          { label: 'YEAR', value: '2023年' },
+          { label: 'TYPE', value: '喜劇・舞台' },
+          { label: 'COMPANY', value: '01ENTERTAINMENT' },
+        ].map((item) => (
+          <div class="px-5 py-3">
+            <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] mb-0.5">{item.label}</p>
+            <p class="font-japanese text-sm text-[var(--color-ink)]">{item.value}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="fade-in border-l-2 border-[var(--color-gold)] pl-8 space-y-4">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)]">MY ROLE</p>
+      <h2 class="font-japanese text-xl font-bold text-[var(--color-ink)]">医学の知識を、舞台の言葉に変える</h2>
+      <div class="space-y-4 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
+        <p>
+          医者という職業は、患者の話を「聴く」技術が命だと医学部で学ぶ。
+          舞台上の医者役も同じで、相手の言葉と身体の変化を受け取りながら応答するという、
+          問診そのものに近い演技を意識した。医学と演劇が最も直接的に重なった役だった。
+        </p>
+      </div>
+    </section>
+  </div>
+</Layout>

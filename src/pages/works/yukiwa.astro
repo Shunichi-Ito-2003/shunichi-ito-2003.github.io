@@ -1,0 +1,66 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title='琉球トラウマナイトリアルストーリー「ゆびわ」'
+  description="琉球放送系列のホラー・ミステリー番組。2024年放送。伊藤駿一が山城役を務めた。"
+>
+  <section class="relative h-[50vh] bg-[var(--color-ink)] flex items-end overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/20"></div>
+    <div class="relative p-8 md:p-16 max-w-4xl">
+      <a href="/works" class="font-display text-xs tracking-[0.2em] text-white/50 hover:text-[var(--color-gold)] transition-colors mb-6 block">← WORKS</a>
+      <span class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] block mb-3">TV DRAMA · 2024</span>
+      <h1 class="font-japanese text-2xl md:text-4xl font-bold text-white leading-tight mb-4">琉球トラウマナイトリアルストーリー<br />「ゆびわ」</h1>
+      <p class="font-japanese text-white/70 text-lg leading-relaxed">沖縄発・ホラーミステリードラマ</p>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-6 py-16 space-y-20">
+
+    <section class="fade-in grid md:grid-cols-[1fr_280px] gap-12">
+      <div class="space-y-6">
+        <div>
+          <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">OVERVIEW</p>
+          <h2 class="font-display text-2xl tracking-widest text-[var(--color-ink)] mb-6">作品について</h2>
+        </div>
+        <div class="space-y-4 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
+          <p>
+            琉球放送等で放送される、沖縄発の地域密着型ホラー・ミステリー番組。
+            沖縄の風土や文化的背景に根差した怪異を描くシリーズの一編「ゆびわ」に出演。
+          </p>
+          <p>
+            伊藤駿一は山城役を担当。ホラーというジャンル特有の「見えない恐怖」を演じる中で、
+            感情の抑制と解放を精密にコントロールする映像演技を追求した。
+          </p>
+        </div>
+      </div>
+
+      <div class="border border-[var(--color-border)] divide-y divide-[var(--color-border)] h-fit">
+        {[
+          { label: 'ROLE', value: '山城 役' },
+          { label: 'YEAR', value: '2024年' },
+          { label: 'TYPE', value: 'TVドラマ・ホラー' },
+          { label: 'NETWORK', value: '琉球放送系列' },
+        ].map((item) => (
+          <div class="px-5 py-3">
+            <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] mb-0.5">{item.label}</p>
+            <p class="font-japanese text-sm text-[var(--color-ink)]">{item.value}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="fade-in border-l-2 border-[var(--color-gold)] pl-8 space-y-4">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)]">MY ROLE</p>
+      <h2 class="font-japanese text-xl font-bold text-[var(--color-ink)]">ホラーという表現に向き合う</h2>
+      <div class="space-y-4 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
+        <p>
+          ホラー作品における俳優の仕事は、観客の恐怖を引き出す「触媒」になること。
+          爽やかな好青年とは異なる色彩を持つ役柄に挑み、
+          自分の演技の幅に新たな陰影を加えた経験だった。
+        </p>
+      </div>
+    </section>
+  </div>
+</Layout>
