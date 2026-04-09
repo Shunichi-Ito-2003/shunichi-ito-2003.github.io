@@ -142,6 +142,86 @@ for (const [fullPath, mod] of Object.entries(allImages)) {
       </div>
     </section>
 
+    <!-- Credits -->
+    <section class="mb-20 fade-in">
+      <header class="mb-10">
+        <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">出演歴</p>
+        <h2 class="font-display text-3xl tracking-[0.15em] text-[var(--color-ink)] mb-4">CREDITS</h2>
+        <div class="h-px w-16 bg-[var(--color-gold)]"></div>
+      </header>
+
+      {[
+        {
+          year: '2026',
+          items: [
+            { title: '島守のうた（神戸公演）', role: '浦崎純 役', category: '舞台', href: '/works/shimamori' },
+            { title: '地域を応援する演劇 Season 1「南風原の食堂の物語」', role: '出演・脚本', category: '舞台', href: '/works/chiiki' },
+            { title: '月桃物語 かりゆしウェア（2年目）', role: 'モデル', category: 'モデル', href: '/works/pipes' },
+          ],
+        },
+        {
+          year: '2025',
+          items: [
+            { title: '一人芝居：伊藤駿一の奇劇', role: '作・演出・出演', category: '舞台', href: '/works/hitorigei' },
+            { title: 'みんながサンタ！（4年目）', role: '企画・運営・出演', category: 'チャリティー', href: '/works/santa' },
+            { title: '喜劇 カムカンボブッター', role: '高田 役', category: '舞台', href: null },
+            { title: '月桃物語 かりゆしウェア（初年度）', role: 'モデル', category: 'モデル', href: '/works/pipes' },
+            { title: '戦場のランチタイム（再現VTR）', role: '野田 役', category: 'TV', href: null },
+            { title: 'ラジオドラマ「80年目の帰郷」', role: '日本兵 役', category: 'ラジオ', href: null },
+          ],
+        },
+        {
+          year: '2024',
+          items: [
+            { title: 'ザ・リバース 〜THE REBIRTH〜', role: '工藤 役（主演）', category: '舞台', href: '/works/rebirth' },
+            { title: 'サンタがくれたクリスマスケーキ', role: 'サンタ 役（主演）', category: '舞台', href: null },
+            { title: 'CITIZENs〜戦わないという選択〜', role: 'エキストラ・スタッフ', category: '映画', href: '/works/citizens' },
+            { title: '新・海外旅行保険OFF 紹介ビデオ（BOVA出品）', role: '主演', category: 'CM', href: null },
+            { title: '琉球トラウマナイトリアルストーリー「ゆびわ」', role: '山城 役', category: 'TV', href: null },
+            { title: 'Aランチ コワイハナシ 答えの先は自己責任 Ep.2', role: '犯人 役', category: 'TV', href: null },
+          ],
+        },
+        {
+          year: '2023',
+          items: [
+            { title: '末期色の国', role: 'ニーチェ 役', category: '舞台', href: null },
+            { title: '介護喜劇 心の花', role: '医者 役', category: '舞台', href: null },
+            { title: 'キネマの天地', role: '小倉 役', category: '舞台', href: null },
+            { title: '猫好きが集まる猫演劇 ザ・キャット', role: '先生 役', category: '舞台', href: null },
+            { title: 'POVO「ギガない太陽」', role: '主演', category: 'CM', href: null },
+          ],
+        },
+        {
+          year: '2022',
+          items: [
+            { title: 'オカマバー TENDER', role: '小林 役', category: '舞台', href: null },
+            { title: '若者のすべて', role: '直樹 役', category: '舞台', href: null },
+            { title: 'みんながサンタ！（初年度〜）', role: '企画・出演', category: 'チャリティー', href: '/works/santa' },
+          ],
+        },
+      ].map(({ year, items }) => (
+        <div class="mb-10">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="font-display text-sm tracking-[0.3em] text-[var(--color-gold)]">{year}</span>
+            <div class="h-px flex-1 bg-[var(--color-border)]"></div>
+          </div>
+          <div class="divide-y divide-[var(--color-border)]">
+            {items.map((item) => (
+              <div class="py-3 flex items-baseline gap-4">
+                <span class="font-display text-[10px] tracking-widest text-[var(--color-ink-muted)] border border-[var(--color-border)] px-2 py-0.5 shrink-0">{item.category}</span>
+                {item.href ? (
+                  <a href={item.href} class="font-japanese text-sm text-[var(--color-ink)] hover:text-[var(--color-gold-dark)] transition-colors flex-1">{item.title}</a>
+                ) : (
+                  <span class="font-japanese text-sm text-[var(--color-ink)] flex-1">{item.title}</span>
+                )}
+                <span class="font-japanese text-xs text-[var(--color-ink-muted)] shrink-0">{item.role}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </section>
+
     <!-- Contact CTA -->
     <section class="text-center border border-[var(--color-border)] bg-white p-12 space-y-6">
       <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)]">CONTACT</p>
