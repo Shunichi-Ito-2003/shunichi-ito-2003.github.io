@@ -92,6 +92,11 @@ https://note.com/icchi_ito/n/ne9b0c1ef886f
 ▼出張一人芝居のご依頼・ご相談はこちら（公式LINE）
 https://lin.ee/jbUrdeB
 
+<!-- note-series-list -->
+▼「01ENTERTAINMENTの歩き方」連載記事一覧
+・[01ENTERTAINMENTの数々の公演に潜む「隠し味」。あなたはこの曲に気づいていましたか？【01ENTERTAINMENTの歩き方-01】（本記事）](https://note.com/icchi_ito/n/ndd428fd44d7e)
+<!-- /note-series-list -->
+
 ---
 
 ## Excalibrain Links
