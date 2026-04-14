@@ -4,15 +4,15 @@ import Layout from '../../layouts/Layout.astro';
 
 <Layout
   title="猫好きが集まる猫演劇 ザ・キャット"
-  description="2023年上演。猫をテーマにした演劇作品。伊藤駿一が先生役を務めた。"
+  description="2023年上演。人間と猫、二つの世界が一つになる物語。伊藤駿一が先生役を務めた。"
 >
   <section class="relative h-[50vh] bg-[var(--color-ink)] flex items-end overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/20"></div>
     <div class="relative p-8 md:p-16 max-w-4xl">
       <a href="/works" class="font-display text-xs tracking-[0.2em] text-white/50 hover:text-[var(--color-gold)] transition-colors mb-6 block">← WORKS</a>
-      <span class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] block mb-3">STAGE / COMEDY · 2023</span>
+      <span class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] block mb-3">STAGE · 2023</span>
       <h1 class="font-japanese text-3xl md:text-5xl font-bold text-white leading-tight mb-4">猫好きが集まる猫演劇<br /><span class="text-2xl font-normal">ザ・キャット</span></h1>
-      <p class="font-japanese text-white/70 text-lg leading-relaxed">猫と人間が交差するユニークな舞台</p>
+      <p class="font-japanese text-white/70 text-lg leading-relaxed">人間と猫、二つの世界が一つになる時、物語は始まる</p>
     </div>
   </section>
 
@@ -26,13 +26,8 @@ import Layout from '../../layouts/Layout.astro';
         </div>
         <div class="space-y-4 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
           <p>
-            「猫好きが集まる」というコンセプトが示すように、
-            猫をテーマに据えたユニークな群像劇・コメディ作品。
-            猫という存在を通じて人間の本質をユーモラスに描く。
-          </p>
-          <p>
-            伊藤駿一は先生役を担当。コメディリリーフとしての立ち位置で、
-            群像劇の中での存在感の出し方を学んだ一作。
+            猫をテーマにした演劇作品。人間と猫、二つの世界が交差する物語を描く。
+            売上の一部はNPO法人ねこと人と地域のいのちをつなぐ会に寄付された。
           </p>
         </div>
       </div>
@@ -40,8 +35,9 @@ import Layout from '../../layouts/Layout.astro';
       <div class="border border-[var(--color-border)] divide-y divide-[var(--color-border)] h-fit">
         {[
           { label: 'ROLE', value: '先生 役' },
-          { label: 'YEAR', value: '2023年' },
-          { label: 'TYPE', value: '舞台・コメディ' },
+          { label: 'YEAR', value: '2023年7月' },
+          { label: 'VENUE', value: '壺屋演劇場かさね' },
+          { label: 'SCRIPT', value: '松井錦吾' },
           { label: 'COMPANY', value: '01ENTERTAINMENT' },
         ].map((item) => (
           <div class="px-5 py-3">
@@ -54,11 +50,12 @@ import Layout from '../../layouts/Layout.astro';
 
     <section class="fade-in border-l-2 border-[var(--color-gold)] pl-8 space-y-4">
       <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)]">MY ROLE</p>
-      <h2 class="font-japanese text-xl font-bold text-[var(--color-ink)]">群像の中の一点として</h2>
+      <h2 class="font-japanese text-xl font-bold text-[var(--color-ink)]">人ではない存在を演じる</h2>
       <div class="space-y-4 font-japanese text-[var(--color-ink-muted)] leading-loose text-justify">
         <p>
-          群像劇における「先生」という役は、場を仕切りながらも目立ちすぎない絶妙なバランスが求められる。
-          舞台全体のアンサンブルを支える歯車としての演技を意識した、貴重な経験だった。
+          野良猫たちの中の先生的ポジションを演じた。
+          人間ではない存在をどう身体で表現するか。猫が人だったらどう振る舞うのか。
+          そういったことを考えながら取り組んだ、これまでにない種類の挑戦だった。
         </p>
       </div>
     </section>
