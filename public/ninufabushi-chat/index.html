@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>にぬふぁぶし公演 Q&A</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <header class="header">
+    <div class="star">★</div>
+    <h1>にぬふぁぶし公演 Q&A</h1>
+    <p class="subtitle">公演のこと、作品のこと、なんでも聞いてください</p>
+  </header>
+
+  <main class="chat-area" id="chatArea">
+    <div class="message bot welcome">
+      <p>こんにちは。「子ども食堂・にぬふぁぶし」公演 Q&A AIです。</p>
+      <p>公演スケジュール、作品のテーマ、キャストの役柄、沖縄の言葉の意味——なんでも聞いてください。</p>
+      <p class="hint">例：「にぬふぁぶしってどういう意味？」「公演はいつ？」「カナサルナーカーブチカキリって何？」</p>
+    </div>
+  </main>
+
+  <form class="input-form" id="inputForm">
+    <textarea
+      id="messageInput"
+      placeholder="質問を入力してください（Enterで送信、Shift+Enterで改行）"
+      rows="2"
+      autocomplete="off"
+      required
+    ></textarea>
+    <button type="submit" id="sendButton">送信</button>
+  </form>
+
+  <footer class="footer">
+    <p>公演メンバー向け／回答に不安がある時はいっちー本人に確認してください</p>
+    <p class="links">
+      <a href="https://lin.ee/jbUrdeB" target="_blank" rel="noopener">公式LINE</a>
+      <span>・</span>
+      <a href="https://note.com/icchi_ito" target="_blank" rel="noopener">note</a>
+    </p>
+  </footer>
+</div>
+
+<script src="chat.js"></script>
+</body>
+</html>

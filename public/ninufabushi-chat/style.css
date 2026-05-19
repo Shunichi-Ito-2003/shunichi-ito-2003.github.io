@@ -1,0 +1,276 @@
+/* ===========================
+   にぬふぁぶしBot — 夜空×北極星ゴールド
+   モバイル7割想定／レスポンシブ
+   =========================== */
+
+:root {
+  --night-deep: #0a1333;
+  --night-mid: #1a2a5e;
+  --night-light: #2a3a7e;
+  --gold-bright: #f4d98a;
+  --gold-soft: #f9eec2;
+  --gold-deep: #b89456;
+  --text-light: #f5f1e8;
+  --text-muted: #b8b3a0;
+  --bot-bg: rgba(244, 217, 138, 0.08);
+  --user-bg: rgba(255, 255, 255, 0.92);
+  --user-text: #2c3e50;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: "Hiragino Sans", "Noto Sans JP", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(180deg, var(--night-deep) 0%, var(--night-mid) 100%);
+  background-attachment: fixed;
+  color: var(--text-light);
+  line-height: 1.7;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* 星空背景（subtle dots） */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, var(--gold-soft), transparent),
+    radial-gradient(1px 1px at 60% 70%, var(--gold-bright), transparent),
+    radial-gradient(1.5px 1.5px at 80% 20%, var(--gold-soft), transparent),
+    radial-gradient(1px 1px at 30% 80%, var(--gold-bright), transparent),
+    radial-gradient(2px 2px at 90% 60%, var(--gold-soft), transparent);
+  background-size: 400px 400px;
+  background-repeat: repeat;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ===== Header ===== */
+.header {
+  text-align: center;
+  padding: 16px 0 28px;
+  border-bottom: 1px solid rgba(244, 217, 138, 0.2);
+  margin-bottom: 20px;
+}
+
+.star {
+  font-size: 2.4em;
+  color: var(--gold-bright);
+  text-shadow: 0 0 16px rgba(244, 217, 138, 0.6);
+  margin-bottom: 4px;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(0.95); }
+}
+
+.header h1 {
+  font-family: "Shippori Mincho", "Noto Serif JP", serif;
+  font-size: 1.5em;
+  font-weight: 600;
+  color: var(--gold-bright);
+  letter-spacing: 0.05em;
+}
+
+.subtitle {
+  font-size: 0.9em;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* ===== Chat Area ===== */
+.chat-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 4px;
+  overflow-y: auto;
+  margin-bottom: 16px;
+}
+
+.message {
+  padding: 14px 18px;
+  border-radius: 14px;
+  max-width: 90%;
+  word-wrap: break-word;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.message p {
+  margin: 6px 0;
+}
+.message p:first-child { margin-top: 0; }
+.message p:last-child { margin-bottom: 0; }
+
+.message.bot {
+  background: var(--bot-bg);
+  border: 1px solid rgba(244, 217, 138, 0.25);
+  align-self: flex-start;
+  color: var(--text-light);
+}
+
+.message.user {
+  background: var(--user-bg);
+  color: var(--user-text);
+  align-self: flex-end;
+  box-shadow: var(--shadow);
+}
+
+.message.welcome {
+  border-left: 3px solid var(--gold-bright);
+}
+
+.message.error {
+  background: rgba(192, 57, 43, 0.15);
+  border: 1px solid rgba(192, 57, 43, 0.4);
+}
+
+.hint {
+  font-size: 0.85em;
+  color: var(--gold-soft);
+  font-style: italic;
+  margin-top: 8px;
+}
+
+.thinking {
+  display: inline-block;
+}
+.thinking::after {
+  content: "···";
+  animation: dots 1.4s infinite;
+  color: var(--gold-bright);
+}
+@keyframes dots {
+  0%, 20% { content: "·"; }
+  40% { content: "··"; }
+  60%, 100% { content: "···"; }
+}
+
+/* ===== Input Form ===== */
+.input-form {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  background: rgba(10, 19, 51, 0.7);
+  border: 1px solid rgba(244, 217, 138, 0.25);
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+}
+
+#messageInput {
+  flex: 1;
+  font-family: inherit;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--user-text);
+  border: none;
+  border-radius: 10px;
+  padding: 12px 14px;
+  resize: none;
+  outline: none;
+  line-height: 1.5;
+  min-height: 48px;
+  max-height: 120px;
+}
+
+#messageInput:focus {
+  box-shadow: 0 0 0 2px var(--gold-bright);
+}
+
+#sendButton {
+  background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-deep) 100%);
+  color: var(--night-deep);
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.95em;
+  border: none;
+  border-radius: 10px;
+  padding: 0 20px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  min-width: 72px;
+}
+
+#sendButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(244, 217, 138, 0.3);
+}
+
+#sendButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+#sendButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===== Footer ===== */
+.footer {
+  text-align: center;
+  padding: 20px 0 12px;
+  margin-top: 16px;
+  border-top: 1px solid rgba(244, 217, 138, 0.15);
+  font-size: 0.8em;
+  color: var(--text-muted);
+}
+
+.footer .links {
+  margin-top: 6px;
+}
+
+.footer a {
+  color: var(--gold-bright);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.footer a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.footer span {
+  margin: 0 6px;
+  color: var(--text-muted);
+}
+
+/* ===== モバイル微調整 ===== */
+@media (max-width: 480px) {
+  .container { padding: 16px 12px; }
+  .header h1 { font-size: 1.25em; }
+  .star { font-size: 2em; }
+  .message { max-width: 95%; padding: 12px 14px; }
+  #sendButton { padding: 0 16px; min-width: 60px; }
+}
