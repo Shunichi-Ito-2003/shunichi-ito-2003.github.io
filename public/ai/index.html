@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>いっちーのAI活用方法、ぜんぶ見せます ｜ 伊藤駿一</title>
+<meta name="description" content="俳優・医学生・note執筆者として、AIを"自分のチーム"にしている方法をぜんぶ公開。AIに詳しくない方も、順番に追えば全部わかるように書きました。">
+<meta property="og:title" content="いっちーのAI活用方法、ぜんぶ見せます">
+<meta property="og:description" content="俳優・医学生・note執筆者が、AIを"自分のチーム"にしている方法をぜんぶ公開。AIに詳しくない方も読めるように書きました。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://shunichi-ito-2003.github.io/ai/">
+<meta property="og:image" content="https://shunichi-ito-2003.github.io/hero.png">
+<meta property="og:site_name" content="伊藤駿一（いっちー）公式サイト">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg">
+<style>
+  :root {
+    --c-primary:   #E8A87C;
+    --c-secondary: #5B8E7D;
+    --c-accent:    #C38D9E;
+    --c-text:      #2E2C2F;
+    --c-muted:     #6B6770;
+    --c-bg:        #FAF5EE;
+    --c-card:      #FFFFFF;
+    --c-border:    #E5DBC9;
+    --c-code-bg:   #2E2C2F;
+    --c-code-text: #F5E6D3;
+
+    --c-stage-a: #5B8E7D;
+    --c-stage-b: #4A7AB8;
+    --c-stage-c: #C38D9E;
+
+    --radius: 10px;
+    --shadow: 0 2px 12px rgba(46,44,47,0.06);
+    --shadow-card: 0 2px 8px rgba(0,0,0,0.04);
+
+    --font-jp: 'Hiragino Sans', 'Noto Sans JP', system-ui, -apple-system, sans-serif;
+    --font-mono: 'SF Mono', 'Menlo', monospace;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    font-family: var(--font-jp);
+    background: var(--c-bg);
+    color: var(--c-text);
+    line-height: 1.8;
+    margin: 0;
+    padding: 0;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 32px 24px 80px; }
+
+  .site-back {
+    display: inline-block;
+    font-size: 13px;
+    color: var(--c-muted);
+    text-decoration: none;
+    margin-bottom: 14px;
+  }
+  .site-back:hover { color: var(--c-secondary); }
+
+  header.doc-header {
+    border-bottom: 3px solid var(--c-primary);
+    padding-bottom: 20px;
+    margin-bottom: 32px;
+  }
+  header.doc-header h1 {
+    font-size: 30px;
+    margin: 0 0 12px;
+    color: var(--c-text);
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  header.doc-header .lead {
+    color: var(--c-muted);
+    font-size: 15px;
+    margin: 8px 0 0;
+  }
+  header.doc-header .meta {
+    color: var(--c-muted);
+    font-size: 13px;
+    margin-top: 14px;
+  }
+  header.doc-header .meta strong { color: var(--c-secondary); }
+
+  h2 {
+    font-size: 24px;
+    color: var(--c-secondary);
+    border-left: 5px solid var(--c-primary);
+    padding-left: 14px;
+    margin-top: 56px;
+    margin-bottom: 14px;
+  }
+  h2 .num {
+    color: var(--c-primary);
+    font-weight: 700;
+    margin-right: 8px;
+  }
+  h3 {
+    font-size: 18px;
+    color: var(--c-text);
+    margin-top: 32px;
+    margin-bottom: 10px;
+  }
+  h4 {
+    font-size: 15px;
+    color: var(--c-secondary);
+    margin-top: 20px;
+    margin-bottom: 8px;
+  }
+  p { margin: 12px 0; }
+  a { color: var(--c-secondary); }
+  ul, ol { padding-left: 22px; }
+  li { margin: 4px 0; }
+
+  .reading-guide {
+    background: linear-gradient(135deg, #FFF5EC 0%, #FBF0E4 100%);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    padding: 22px 26px;
+    margin-bottom: 36px;
+    box-shadow: var(--shadow);
+  }
+  .reading-guide h2 {
+    margin-top: 0;
+    border: none;
+    padding: 0;
+    color: var(--c-text);
+    font-size: 18px;
+  }
+  .reading-guide .read-modes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 14px;
+  }
+  @media (max-width: 600px) { .reading-guide .read-modes { grid-template-columns: 1fr; } }
+  .read-mode {
+    background: var(--c-card);
+    border-radius: 8px;
+    padding: 12px 14px;
+    border-left: 4px solid var(--c-primary);
+  }
+  .read-mode .label {
+    font-weight: 700;
+    color: var(--c-secondary);
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+  .read-mode .body {
+    font-size: 13px;
+    color: var(--c-muted);
+    line-height: 1.6;
+  }
+
+  .stage-ladder {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 20px 0 12px;
+  }
+  @media (max-width: 700px) { .stage-ladder { grid-template-columns: 1fr; } }
+  .stage-step {
+    border-radius: var(--radius);
+    padding: 20px 18px;
+    color: white;
+    position: relative;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .stage-step .icon { font-size: 28px; margin-bottom: 6px; }
+  .stage-step .stage-name { font-weight: 700; font-size: 17px; margin-bottom: 4px; }
+  .stage-step .stage-sub { font-size: 12px; opacity: 0.85; margin-bottom: 12px; }
+  .stage-step .stage-body { font-size: 13px; line-height: 1.6; opacity: 0.95; }
+  .stage-step.a { background: linear-gradient(135deg, #5B8E7D 0%, #4D7C6C 100%); }
+  .stage-step.b { background: linear-gradient(135deg, #4A7AB8 0%, #3D68A0 100%); }
+  .stage-step.c { background: linear-gradient(135deg, #C38D9E 0%, #A87285 100%); }
+  .stage-step .now-badge {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: rgba(255,255,255,0.25);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .skill-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin: 16px 0;
+  }
+  @media (max-width: 700px) { .skill-grid { grid-template-columns: 1fr; } }
+  .skill-card {
+    background: var(--c-card);
+    border: 1px solid var(--c-border);
+    border-left: 4px solid var(--c-stage-a);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    box-shadow: var(--shadow-card);
+  }
+  .skill-card.stage-b { border-left-color: var(--c-stage-b); }
+  .skill-card.stage-c { border-left-color: var(--c-stage-c); }
+  .skill-card .skill-cmd {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--c-secondary);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .skill-card .skill-title {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .skill-card .skill-desc {
+    font-size: 13px;
+    color: var(--c-muted);
+    margin-bottom: 8px;
+    line-height: 1.55;
+  }
+  .skill-card .skill-scene {
+    font-size: 12px;
+    background: rgba(91,142,125,0.08);
+    padding: 6px 10px;
+    border-radius: 6px;
+    color: var(--c-text);
+    line-height: 1.55;
+  }
+  .skill-card .skill-scene strong { color: var(--c-secondary); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--c-card);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin: 16px 0;
+  }
+  th {
+    background: var(--c-secondary);
+    color: white;
+    text-align: left;
+    padding: 12px 14px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--c-border);
+    font-size: 14px;
+    vertical-align: top;
+    line-height: 1.7;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) { background: #FBF6EE; }
+
+  .before-after {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 18px 0;
+  }
+  @media (max-width: 700px) { .before-after { grid-template-columns: 1fr; } }
+  .ba-card {
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    border-left: 5px solid;
+  }
+  .ba-card.before {
+    background: #F4EFE7;
+    border-color: var(--c-muted);
+  }
+  .ba-card.after {
+    background: #EAF2EE;
+    border-color: var(--c-secondary);
+  }
+  .ba-card h4 {
+    margin: 0 0 8px;
+    font-size: 14px;
+  }
+  .ba-card.before h4 { color: var(--c-muted); }
+  .ba-card.after h4 { color: var(--c-secondary); }
+  .ba-card ul { margin: 6px 0 0; padding-left: 18px; font-size: 13px; }
+
+  .timeline {
+    margin: 18px 0;
+    border-left: 3px solid var(--c-primary);
+    padding-left: 0;
+    list-style: none;
+  }
+  .timeline li {
+    position: relative;
+    padding: 10px 0 10px 24px;
+    margin: 0;
+    border-bottom: 1px dashed var(--c-border);
+  }
+  .timeline li:before {
+    content: '●';
+    position: absolute;
+    left: -8px;
+    top: 14px;
+    color: var(--c-primary);
+    background: var(--c-bg);
+    font-size: 14px;
+  }
+  .timeline .time {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--c-secondary);
+    min-width: 80px;
+    margin-right: 8px;
+  }
+  .timeline .what {
+    font-size: 14px;
+  }
+  .timeline .note {
+    display: block;
+    font-size: 12px;
+    color: var(--c-muted);
+    margin-top: 2px;
+    margin-left: 88px;
+  }
+
+  .arch-diagram {
+    background: var(--c-card);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    padding: 22px 18px;
+    margin: 18px 0;
+    overflow-x: auto;
+    text-align: center;
+  }
+  .arch-center {
+    text-align: center;
+    margin: 10px 0;
+  }
+  .arch-box {
+    display: inline-block;
+    background: var(--c-primary);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    margin: 4px;
+  }
+  .arch-box.sub {
+    background: var(--c-card);
+    color: var(--c-text);
+    border: 1px solid var(--c-border);
+    padding: 8px 14px;
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .arch-box.b { background: var(--c-stage-b); color: white; }
+  .arch-box.a { background: var(--c-stage-a); color: white; }
+  .arch-box.c { background: var(--c-stage-c); color: white; }
+  .arch-arrow {
+    color: var(--c-muted);
+    font-size: 20px;
+    margin: 2px 0;
+    text-align: center;
+  }
+  .arch-row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 8px 0;
+  }
+
+  .term {
+    background: rgba(232,168,124,0.15);
+    border-bottom: 1px dotted var(--c-primary);
+    padding: 0 3px;
+    cursor: help;
+  }
+  .term-inline {
+    color: var(--c-muted);
+    font-size: 0.92em;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .badge.stage-a { background: var(--c-stage-a); color: white; }
+  .badge.stage-b { background: var(--c-stage-b); color: white; }
+  .badge.stage-c { background: var(--c-stage-c); color: white; }
+  .badge.now { background: var(--c-primary); color: white; }
+  .badge.future { background: var(--c-border); color: var(--c-muted); }
+  .badge.local { background: #2E2C2F; color: var(--c-code-text); }
+
+  .quote {
+    background: #FDF8F1;
+    border-left: 4px solid var(--c-accent);
+    padding: 14px 20px;
+    margin: 16px 0;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-style: italic;
+    color: var(--c-muted);
+  }
+
+  .glossary {
+    background: var(--c-card);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    padding: 6px 18px;
+    margin: 16px 0;
+  }
+  .glossary details {
+    border: none;
+    border-bottom: 1px solid var(--c-border);
+    border-radius: 0;
+    margin: 0;
+    padding: 12px 4px;
+    background: transparent;
+  }
+  .glossary details:last-child { border-bottom: none; }
+  .glossary summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--c-secondary);
+    font-size: 14px;
+  }
+  .glossary details[open] summary { margin-bottom: 8px; }
+  .glossary .gloss-body {
+    font-size: 13px;
+    color: var(--c-text);
+    line-height: 1.7;
+    padding: 4px 0 4px 4px;
+  }
+  .glossary .gloss-body .also {
+    display: block;
+    margin-top: 4px;
+    color: var(--c-muted);
+    font-size: 12px;
+  }
+
+  .section-lead {
+    background: rgba(91,142,125,0.06);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 14px 0 22px;
+    font-size: 14px;
+    color: var(--c-text);
+  }
+  .section-lead strong { color: var(--c-secondary); }
+
+  code {
+    font-family: var(--font-mono);
+    background: rgba(91,142,125,0.08);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+
+  .toc {
+    background: var(--c-card);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    padding: 16px 22px;
+    margin: 24px 0;
+  }
+  .toc h3 {
+    margin: 0 0 10px;
+    font-size: 14px;
+    color: var(--c-secondary);
+  }
+  .toc ol {
+    margin: 0;
+    padding-left: 22px;
+    font-size: 14px;
+    columns: 2;
+    column-gap: 24px;
+  }
+  @media (max-width: 600px) { .toc ol { columns: 1; } }
+  .toc a { color: var(--c-text); text-decoration: none; }
+  .toc a:hover { color: var(--c-secondary); text-decoration: underline; }
+
+  .principle-card {
+    background: var(--c-card);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin: 12px 0;
+  }
+  .principle-card h4 {
+    margin: 0 0 6px;
+    color: var(--c-primary);
+    font-size: 14px;
+  }
+  .principle-card p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--c-text);
+    line-height: 1.7;
+  }
+
+  footer.doc-footer {
+    margin-top: 64px;
+    padding: 26px 0 16px;
+    border-top: 2px solid var(--c-border);
+    text-align: center;
+  }
+  footer.doc-footer .footer-name {
+    font-weight: 600;
+    color: var(--c-text);
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  footer.doc-footer .footer-links {
+    color: var(--c-muted);
+    font-size: 13px;
+  }
+  footer.doc-footer a {
+    color: var(--c-secondary);
+    text-decoration: none;
+    margin: 0 8px;
+    font-weight: 500;
+  }
+  footer.doc-footer a:hover { text-decoration: underline; }
+  footer.doc-footer .footer-meta {
+    color: var(--c-muted);
+    font-size: 11px;
+    margin-top: 12px;
+    opacity: 0.7;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <a href="/" class="site-back">← 伊藤駿一 公式サイトに戻る</a>
+
+  <header class="doc-header">
+    <h1>いっちーのAI活用方法、ぜんぶ見せます</h1>
+    <p class="lead">
+      俳優・医学生・note執筆者として日々の活動を進めるために、AIを"自分のチーム"にしている話。<br>
+      AIに詳しくない方も、順番に追えば全部わかるように書きました。
+    </p>
+    <div class="meta">
+      <strong>最終更新：2026-05-28</strong>
+      ／ 沖縄で俳優として活動する、いっちーこと伊藤駿一
+    </div>
+  </header>
+
+  <div class="reading-guide">
+    <h2>📖 この資料の読み方ガイド</h2>
+    <p style="margin:6px 0 0; font-size:13px; color: var(--c-muted);">
+      全部読まなくて大丈夫です。時間とご興味に合わせて、3つの読み方を用意しました。
+    </p>
+    <div class="read-modes">
+      <div class="read-mode">
+        <div class="label">⏱ 5分版</div>
+        <div class="body">
+          セクション 1〜2 と 4（進化の3段階）だけ。「いっちーは何をAIにやらせてるの？」がわかります。
+        </div>
+      </div>
+      <div class="read-mode">
+        <div class="label">⏱ 15分版</div>
+        <div class="body">
+          上記＋セクション 5（今やってる手足）。具体的に毎日どう使ってるかが見えます。
+        </div>
+      </div>
+      <div class="read-mode">
+        <div class="label">⏱ 全部版（30分）</div>
+        <div class="body">
+          全11章。設計の裏側・3年計画・用語集まで。AIを"使う側に回りたい"方向け。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <h3>目次</h3>
+    <ol>
+      <li><a href="#sec1">いっちーって誰？／この資料は？</a></li>
+      <li><a href="#sec2">そもそもAIって何ができるの？</a></li>
+      <li><a href="#sec3">僕がAIを"使い倒している"理由</a></li>
+      <li><a href="#sec4">AI活用の進化、3段階</a></li>
+      <li><a href="#sec5">段階A：いま稼働中の"手足"</a></li>
+      <li><a href="#sec6">段階B：壁打ち相手としてのAI</a></li>
+      <li><a href="#sec7">段階C：人生のパートナー（未来形）</a></li>
+      <li><a href="#sec8">設計原則（読み飛ばし可）</a></li>
+      <li><a href="#sec9">3年後の地図</a></li>
+      <li><a href="#sec10">よくある質問（FAQ）</a></li>
+      <li><a href="#sec11">用語集</a></li>
+    </ol>
+  </div>
+
+  <h2 id="sec1"><span class="num">1.</span>いっちーって誰？／この資料は？</h2>
+
+  <div class="section-lead">
+    <strong>この章の目的</strong>：書いてる人がどんな人で、なんでこういう資料を作ったか、を1分で。
+  </div>
+
+  <h3>プロフィール（3行）</h3>
+  <ul>
+    <li><strong>俳優</strong>として沖縄で活動中（所属：01ENTERTAINMENT）</li>
+    <li><strong>医学部5年生</strong>（2028年2月に国家試験）</li>
+    <li><strong>note執筆者</strong>として毎日1本（200本超）／<a href="https://note.com/icchi_ito">note.com/icchi_ito</a></li>
+  </ul>
+
+  <h3>なんでこの資料？</h3>
+  <p>
+    最近、よく聞かれます。<strong>「AIどうやって活用してるの？」</strong>と。<br>
+    その都度ぽつぽつ話してきたんですが、僕の使い方、全体像が結構ある。一回ちゃんとまとめて「これ見て」と渡せる資料があった方が早いな、と思って作りました。
+  </p>
+  <p>
+    対象は「AIに詳しくない方も含めて、誰でも」です。<br>
+    なので、出てくる言葉はその都度やさしく言い換えます。最後に<a href="#sec11">用語集</a>もつけました。
+  </p>
+
+  <div class="quote">
+    AIは、僕にとって"道具"というより"チームメンバー"です。<br>
+    俳優・医学・note の活動それぞれに、別の AI が並走している、という感覚。
+  </div>
+
+  <h2 id="sec2"><span class="num">2.</span>そもそもAIって何ができるの？</h2>
+
+  <div class="section-lead">
+    <strong>この章の目的</strong>：AIに詳しくない方向け。「AIって結局何なの？」を3つだけ覚えれば後は読めます。
+  </div>
+
+  <p>
+    たくさん種類がありますが、僕が日常で使っている AI（ChatGPT、Claude などが代表）は、ざっくり言うと<strong>「文章を読んで、文章で返してくれる、めちゃくちゃ物知りな相棒」</strong>です。<br>
+    技術的には <span class="term">LLM（大規模言語モデル）</span>＝<span class="term-inline">大量の文章を学習して、次に来そうな言葉を予測する仕組み</span>、と呼ばれます。
+  </p>
+
+  <h3>AIができる3つのこと（ざっくり）</h3>
+  <table>
+    <thead>
+      <tr><th style="width:30%;">できること</th><th>具体例</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>① 作業の代行</strong></td>
+        <td>長い文章の要約／メールの下書き／表の整理／コードを書く／検索して答えをまとめる</td>
+      </tr>
+      <tr>
+        <td><strong>② 壁打ち相手</strong></td>
+        <td>悩み・アイデア・企画を投げると、別の角度で意見が返ってくる。「批判してみて」「逆の立場で」も注文可</td>
+      </tr>
+      <tr>
+        <td><strong>③ 自分を覚えてもらう</strong></td>
+        <td>自分の好み・経歴・判断軸を毎回読ませることで、"自分専属の相棒"として動かせる</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    僕の使い方は、①→②→③ の順に「だんだん深く付き合っている」状態です。<br>
+    次の章で、なんでそこまで使い倒すのか、を話します。
+  </p>
+
+  <h2 id="sec3"><span class="num">3.</span>僕がAIを"使い倒している"理由</h2>
+
+  <div class="section-lead">
+    <strong>この章の目的</strong>：「便利だから」じゃなくて、もっと切実な事情があります。
+  </div>
+
+  <h3>同時に走らせている5つの仕事</h3>
+  <ol>
+    <li><strong>俳優キャリア</strong>（オーディション・公演・稽古）</li>
+    <li><strong>note執筆</strong>（1日1本、毎日）</li>
+    <li><strong>舞台台本制作</strong>（ハートフルコメディ路線）</li>
+    <li><strong>国家試験対策</strong>（医学部5年・残り617日）</li>
+    <li><strong>Webサイト制作</strong>（個人サイト・依頼）</li>
+  </ol>
+  <p>
+    優先順位は決めてあります（俳優1→note→舞台→国試→Web）。<br>
+    起きてる時間に全部を進めようとすると、どこかは当然止まる。だから AI に「止まる場所」を最小化してもらっています。
+  </p>
+
+  <div class="before-after">
+    <div class="ba-card before">
+      <h4>AIなし時代の僕の1日</h4>
+      <ul>
+        <li>note 1本書くのに 2〜3時間</li>
+        <li>過去記事を探すのに 30分</li>
+        <li>リサーチに 1〜2時間</li>
+        <li>気づいたら 1日 noteとリサーチで終了</li>
+        <li>俳優の稽古・国試の勉強は後回し</li>
+        <li>「俺、何やってんだろう」感が蓄積</li>
+      </ul>
+    </div>
+    <div class="ba-card after">
+      <h4>AIあり（現在）の僕の1日</h4>
+      <ul>
+        <li>note 執筆は <strong>30分〜1時間</strong>（インタビュー形式）</li>
+        <li>過去記事の参照は <strong>自動</strong>（AIが探してくる）</li>
+        <li>リサーチは AI が事前にまとめる</li>
+        <li>朝に "今日やること" を AIが提案してくれる</li>
+        <li>俳優活動・体づくり・国試に時間を回せる</li>
+        <li>「考える時間」が残る</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>
+    つまり、AIは「楽するため」じゃなくて、<strong>「本当に大事な活動（俳優・身体・対人関係）に、自分の時間を返してもらうため」</strong>に使っています。<br>
+    その先に何を目指してるかは、<a href="#sec9">セクション9（3年後の地図）</a>で話します。
+  </p>
+
+  <h2 id="sec4"><span class="num">4.</span>AI活用の進化、3段階</h2>
+
+  <div class="section-lead">
+    <strong>この章の目的</strong>：僕がAIとどう付き合ってきたか／これからどう付き合うかの<strong>全体地図</strong>。ここだけ見れば全体がわかります。
+  </div>
+
+  <p>
+    AIとの関わり方を、僕は3段階に整理しています。<br>
+    A→B→Cの順に積み上げ。<strong>いまは段階A中心。段階Bが走り始め。段階Cは未来形</strong>。
+  </p>
+
+  <div class="stage-ladder">
+    <div class="stage-step a">
+      <span class="now-badge">いま稼働中</span>
+      <div class="icon">🛠</div>
+      <div class="stage-name">段階A：タスク代行</div>
+      <div class="stage-sub">AIを"手足"にする</div>
+      <div class="stage-body">
+        書く・調べる・整理する作業を、AIに任せて自分は判断と表現に集中する段階。
+      </div>
+    </div>
+    <div class="stage-step b">
+      <span class="now-badge">走り始め</span>
+      <div class="icon">🧠</div>
+      <div class="stage-name">段階B：脳の拡張</div>
+      <div class="stage-sub">AIを"壁打ち相手"にする</div>
+      <div class="stage-body">
+        自分では気づけない視点・関連を引き出してもらう段階。ジャーナリング・意思決定が中心。
+      </div>
+    </div>
+    <div class="stage-step c">
+      <span class="now-badge">未来形</span>
+      <div class="icon">🤝</div>
+      <div class="stage-name">段階C：人生のパートナー</div>
+      <div class="stage-sub">AIを"全部知ってる相棒"にする</div>
+      <div class="stage-body">
+        習慣・気分・判断・人生の方向性まで一緒に見る存在。スマホ／ウォッチからも常時アクセス。
+      </div>
+    </div>
+  </div>
+
+  <p style="font-size:13px; color: var(--c-muted); margin-top:10px;">
+    ※「段階C」はまだ未完成です。3年計画の最終形として目指している状態です。
+  </p>
+
+  <h2 id="sec5"><span class="num">5.</span>段階A：いま稼働中の"手足"</h2>
+
+  <div class="section-lead">
+    <strong>この章の目的</strong>：今この瞬間、僕がAIに任せている作業を全部見せます。<br>
+    <strong>「具体場面 → 使ってる仕組み → 何が起きてるか」</strong>の3段構成で書きます。
+  </div>
+
+  <h3>5-1. 朝の始まり：今日のプラン作り <span class="badge stage-a">A</span></h3>
+  <p>
+    <strong>場面</strong>：朝、起きて Mac を開く。<br>
+    <strong>使う仕組み</strong>：<code>/good-morning</code>（朝プラン作りのスキル）。
+  </p>
+  <p>
+    僕は<span class="term">スキル</span>＝<span class="term-inline">AIに対する"よく使う指示のテンプレ"</span>を自分用にたくさん作っています。<code>/good-morning</code> と打つだけで、AIが以下を一気にやってくれる。
+  </p>
+  <ul>
+    <li>今日の日付・国試までの残り日数を計算</li>
+    <li>昨日のジャーナリング・デイリーノートを読む</li>
+    <li>未完了の習慣（6時起床／ジャーナリング／23時就寝など）をチェック</li>
+    <li>気分（1〜10）を聞いてくる</li>
+    <li>Notion のタスクDB と Google カレンダーから、<strong>今日のプラン</strong>を提案</li>
+    <li>採用した内容は、自動で3箇所（Notion／カレンダー／その日のデイリーノート）に書き込み</li>
+  </ul>
+  <div class="quote">
+    朝の "今日何やる？" を考える 15分が、ほぼゼロ秒になった。<br>
+    AIが先に提案してきて、僕は OK / 違うを言うだけ。
+  </div>
+
+  <h3>5-2. note記事を書く：スキルで分業 <span class="badge stage-a">A</span></h3>
+  <p>
+    僕の<strong>毎日 note を書く</strong>ワークフローは、AIに分業させています。
+  </p>
+
+  <div class="skill-grid">
+    <div class="skill-card">
+      <div class="skill-cmd">/ni</div>
+      <div class="skill-title">インタビュー専門スキル</div>
+      <div class="skill-desc">
+        記事を書く前に、AIが僕にインタビューしてくれる。質問は42問のライブラリから状況に合わせて3〜4問選んで投げてくる。
+      </div>
+      <div class="skill-scene">
+        <strong>場面：</strong>「今日は一人芝居の話を書きたい」→ <code>/ni</code> 起動 → AIから問いが届く → 音声入力で答える → 素材が集まる
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cmd">/note</div>
+      <div class="skill-title">本文執筆スキル</div>
+      <div class="skill-desc">
+        インタビューで集めた素材から、僕の文体（一人称「僕」・口語）で記事を書き出す。冒頭の自己紹介ブロックは固定テンプレ。
+      </div>
+      <div class="skill-scene">
+        <strong>場面：</strong><code>/ni</code> の素材→ <code>/note</code> → 約30分で初稿 → 自分で手直しして公開
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cmd">/note-publish</div>
+      <div class="skill-title">公開後の事後処理（自動発火）</div>
+      <div class="skill-desc">
+        公開した瞬間に必要な作業（前記事への「次の話リンク」追記／LINE配信文の最終形／フッター整合性チェック）を担当。僕がコマンドを打つのではなく、AIが会話の流れから判断して適時発火させてくれる。
+      </div>
+      <div class="skill-scene">
+        <strong>場面：</strong>「note公開した、URLはこれ」と話す → AIが自動で <code>/note-publish</code> を起動 → 配信文と前記事への追記が一気に整う
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cmd">ChatGPT 画像生成</div>
+      <div class="skill-title">サムネイル制作(手作業段階)</div>
+      <div class="skill-desc">
+        サムネは今、ChatGPT の画像生成機能を使っている。記事タイトルをコピーして ChatGPT のトークに貼り付け、サムネイメージを生成 → 必要なら手直しという流れ。ここはまだ自動化しておらず、手作業の段階。
+      </div>
+      <div class="skill-scene">
+        <strong>場面：</strong>記事完成 → タイトルを ChatGPT に貼る → 画像生成 → noteにアップロード
+      </div>
+    </div>
+  </div>
+
+  <p>
+    結果、<strong>note 1本の所要時間：3時間 → 1時間</strong>になりました。<br>
+    AIが書いて僕が直す、じゃなくて、<strong>僕が話してAIが書き起こして、僕が表現を整える</strong>分業です。
+  </p>
+
+  <h3>5-3. リサーチ：自動で素材集め <span class="badge stage-a">A</span></h3>
+
+  <div class="skill-grid">
+    <div class="skill-card">
+      <div class="skill-cmd">/research</div>
+      <div class="skill-title">記事執筆前リサーチ</div>
+      <div class="skill-desc">
+        テーマを渡すと、過去のnote記事・西野亮廣さんのデータベース・自分の信念ファイル・Wikiから関連素材を集めて、デイリーノートに保存。
+      </div>
+      <div class="skill-scene">
+        <strong>場面：</strong>「孤独」について書きたい → <code>/research 孤独</code> → 関連素材がまとまった状態でデイリーに保存される
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cmd">/research-mining</div>
+      <div class="skill-title">週次ネタ発掘</div>
+      <div class="skill-desc">
+        過去7日のデイリーノート・既存記事・Wikiから「次に書けそうなnoteネタ」を3案提示。毎週日曜21時に自動で発火する。
+      </div>
+      <div class="skill-scene">
+        <strong>場面：</strong>日曜の夜、Slackに通知 → 来週書けそうな3テーマが届いている → 月曜から執筆スタート
+      </div>
+    </div>
+  </div>
+
+  <h3>5-4. 西野亮廣さんに"相談"する <span class="badge stage-a">A</span> <span class="badge local">ローカル</span></h3>
+  <p>
+    僕は、影響を受けている方の1人として、西野亮廣さんのオンラインサロン記事（2018年〜現在の3,174本）を全部、自分のMacに保存しています。<br>
+    そして、<span class="term">RAG</span>＝<span class="term-inline">AIに自分の資料を読ませてから答えさせる仕組み</span>を組んで、こう使う：
+  </p>
+
+  <div class="skill-grid">
+    <div class="skill-card">
+      <div class="skill-cmd">nishino_search.py</div>
+      <div class="skill-title">西野さん3,174記事を意味検索</div>
+      <div class="skill-desc">
+        「集客について」「クラウドファンディング」とキーワードを投げると、関連記事を <span class="term">意味的に</span> 近いものから順に返す。単純な単語一致ではなく、意味の近さで探す。
+      </div>
+      <div class="skill-scene">
+        <strong>場面：</strong>noteを書いてる途中で「西野さんが集客についてなんて言ってたっけ？」→ <code>nishino_search.py 集客</code> → 該当記事を読みに行く
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cmd">/nishino</div>
+      <div class="skill-title">西野さんに"質問する"</div>
+      <div class="skill-desc">
+        質問を投げると、僕のMac上で動く<span class="term">ローカルAI</span>（インターネットに送らない／<code>gemma:26b</code>というモデル）が、西野記事を踏まえて答えを返す。
+      </div>
+      <div class="skill-scene">
+        <strong>場面：</strong>戦略を考えていて行き詰まった →「西野さんならどう言うか聞いてみよう」→ <code>/nishino</code>
+      </div>
+    </div>
+  </div>
+
+  <p style="font-size:13px; color: var(--c-muted);">
+    ※「ローカル」＝<strong>クラウドに送らずに、自分のMacの中で完結</strong>するという意味。プライバシーが守れる／オフラインで動く／費用ゼロ、という利点があります。
+  </p>
+
+  <h3>5-5. 思考整理：6視点で意思決定する <span class="badge stage-b">B寄り</span></h3>
+  <p>
+    迷った時、僕は <code>/6lens</code> を使います。「6つのレンズ（視点）で並列に分析する」スキルです。
+  </p>
+  <ol>
+    <li><strong>俳優レンズ</strong>：俳優としてどうか</li>
+    <li><strong>西野レンズ</strong>：西野亮廣さんならどう判断するか</li>
+    <li><strong>観客レンズ</strong>：観てる人/読んでる人にどう映るか</li>
+    <li><strong>コア欲望レンズ</strong>：自分の本当に欲しいものに合うか</li>
+    <li><strong>信念レンズ</strong>：自分の信念に反していないか</li>
+    <li><strong>第一原理レンズ</strong>：そもそもこれは何のためか</li>
+  </ol>
+  <p>
+    AIが6視点で全部考えて、矛盾を炙り出して、結論まで出してくれる。<br>
+    実際に <code>/6lens</code> で判断した案件：「島守一人芝居（平和祈念公園での観光客向け一人芝居）の事業化」「にぬふぁぶし公演の角度A/B/C」「動画販売を一旦やめる判断」など。
+  </p>
+
+  <h3>5-6. 第二の記憶：Screenpipe <span class="badge stage-a">A</span></h3>
+  <p>
+    <strong>場面</strong>：「3日前、Macで何やってたっけ？」が思い出せない時。<br>
+    <strong>使う仕組み</strong>：Screenpipe（スクリーンパイプ）。
+  </p>
+  <p>
+    これは、<strong>画面をずっと録画＆文字起こし（OCR）し続ける</strong>ソフトです（プライバシー設定はガッチリ管理。マイク音声の録音はOFFにしてある）。<br>
+    AIに「火曜の午後、何のYouTube見てた？」「先週、〇〇について調べたメモを引っ張ってきて」と聞ける、自分専用の"第二の記憶"。
+  </p>
+  <p>
+    毎日深夜、Screenpipeの記録から「日次分析レポート」が自動生成されます。
+  </p>
+
+  <h3>5-7. 全部をつなぐ"司令塔ファイル" <span class="badge stage-a">A</span> ⭐</h3>
+  <p>
+    ここが、僕のAI活用の<strong>一番のキモ</strong>です。
+  </p>
+  <p>
+    AIは原則、毎回"記憶喪失"です。前回の会話を覚えていません。<br>
+    僕がAIに何かを頼む時、毎回「俳優で、医学生で、note書いてて、優先順位はこうで、信念はこれで...」と説明し直さないと、相手は何も知らない状態でアドバイスをよこす。
+  </p>
+  <p>
+    そこで、僕は<strong>司令塔ファイル</strong>という1つの Markdown（マークダウン）ファイル＝<span class="term-inline">プレーンテキストの構造化メモ</span>を作って、AIに毎回これを読ませることにしました。
+  </p>
+
+  <div class="arch-diagram">
+    <div class="arch-center">
+      <div class="arch-box">司令塔ファイル：いっちー.md</div>
+    </div>
+    <div class="arch-arrow">⬆ AIは対話の最初に必ず読む ⬆</div>
+    <div class="arch-row">
+      <div class="arch-box sub">§1 現在地</div>
+      <div class="arch-box sub">§2 コア欲望5層</div>
+      <div class="arch-box sub">§3 3年後の地図</div>
+      <div class="arch-box sub">§4 優先順位</div>
+    </div>
+    <div class="arch-row">
+      <div class="arch-box sub">§5 国試方針</div>
+      <div class="arch-box sub">§6 創作の軸</div>
+      <div class="arch-box sub">§7 AI活用計画</div>
+      <div class="arch-box sub">§8 守るべき習慣</div>
+    </div>
+    <div class="arch-row">
+      <div class="arch-box sub">§9 信念・倫理</div>
+      <div class="arch-box sub">§10 AI依頼ガイド</div>
+      <div class="arch-box sub">§11 戦略構想ハブ</div>
+      <div class="arch-box sub">§12 運用ルール</div>
+    </div>
+  </div>
+
+  <p>
+    結果、僕がどのスキルから AI に話しかけても、AIは "いっちーが誰で／何を目指して／何を譲れないか" を理解した状態で返してくる。<br>
+    <strong>"AIに自分のことを毎回1から説明しなくていい"</strong> という状態を、この1ファイルで実現しています。
+  </p>
+
+  <h3>5-8. AIの"第二の脳"：Wiki層 <span class="badge stage-a">A</span></h3>
+  <p>
+    司令塔ファイルが "自分の判断軸" だとすると、Wiki層は "気づき・概念・分析の蓄積場所" です。<br>
+    Andrej Karpathy（アンドレイ・カルパシー、有名なAI研究者）さんが提唱した知識整理のやり方を、自分用にアレンジしています。
+  </p>
+
+  <table>
+    <thead>
+      <tr><th style="width:18%;">層</th><th style="width:25%;">役割</th><th>AIの権限</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>層1：原典</strong></td>
+        <td>note原稿・西野記事・デイリーノート・台本</td>
+        <td>読むだけ。書き換え禁止（事実が壊れるため）</td>
+      </tr>
+      <tr>
+        <td><strong>層2：Wiki</strong></td>
+        <td>気づき・概念・人物・比較・概観</td>
+        <td>AIが新規作成・更新OK（"育てる場所"）</td>
+      </tr>
+      <tr>
+        <td><strong>層3：ルール</strong></td>
+        <td>仕組みの設計書</td>
+        <td>僕が承認した時だけ更新</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Wiki層には現在、概念・人物・比較・分析レポートなど数百ページが溜まっています。<br>
+    AIは新しい記事を読んだり、僕とジャーナリングしたりすると、自動で関連Wikiページを作るか更新するか提案してくれる。<strong>知識が"勝手に育つ"場所</strong>です。
+  </p>
+
+  <h3>5-9. 3層構成：Notion × Obsidian × Claude Code <span class="badge stage-a">A</span></h3>
+  <p>
+    最後、僕の作業環境の全体構造を見せます。<br>
+    3つのツールを<strong>役割で分けて</strong>使っています。
+  </p>
+
+  <div class="arch-diagram">
+    <div class="arch-row">
+      <div class="arch-box a">Obsidian<br><span style="font-size:11px; font-weight:normal;">＝書くレイヤー</span></div>
+      <div class="arch-box a">Notion<br><span style="font-size:11px; font-weight:normal;">＝見るレイヤー</span></div>
+      <div class="arch-box a">Claude Code<br><span style="font-size:11px; font-weight:normal;">＝操作レイヤー</span></div>
+    </div>
+    <div class="arch-arrow">⬍ 同じデータを3つの顔で扱う ⬍</div>
+    <div class="arch-center">
+      <div class="arch-box sub">フォルダ・ファイル（記憶喪失耐性◎・全部Markdownで残る）</div>
+    </div>
+  </div>
+
+  <ul>
+    <li><strong>Obsidian</strong>（オブシディアン）＝<span class="term-inline">Markdownで書くノートアプリ</span>。<strong>書く場所</strong>。原稿・ジャーナリング・Wikiは全部ここ。</li>
+    <li><strong>Notion</strong>（ノーション）＝<span class="term-inline">データベース付きのノートアプリ</span>。<strong>見る場所</strong>。進行中タスク・週次振り返り・カレンダー連携。</li>
+    <li><strong>Claude Code</strong>（クロード・コード）＝<span class="term-inline">Anthropic社のAIをターミナルで使う環境</span>。<strong>操作する場所</strong>。AIに対話・スキル発火・ファイル編集・コード実行を任せる。</li>
+  </ul>
+  <p>
+    この3層は、「データ＝ファイル」を真ん中に置いて、3つの顔で同じデータを扱う設計です。<br>
+    だから<strong>「どれかのツールが消えても、データは残る」</strong>。これが大事。
+  </p>
+
+  <h3>5-10. 自動化：LaunchAgent <span class="badge stage-a">A</span></h3>
+  <p>
+    Mac には <strong>LaunchAgent</strong>（ローンチエージェント）＝<span class="term-inline">「毎日何時に自動で実行する」機能</span>がOSに組み込まれています。これを使って自動化を仕込んでいます。
+  </p>
+  <ul>
+    <li><strong>朝6:55</strong>：Macを自動で起動（前夜が遅くても、強制的に始動）</li>
+    <li><strong>日曜21:00</strong>：<code>/research-mining</code> が自動発火 → 来週のネタ3案を生成</li>
+    <li><strong>夜24:10</strong>：Mac を自動でスリープ（夜更かし防止）</li>
+  </ul>
+  <p style="font-size:13px; color: var(--c-muted);">
+    ※LaunchAgent はまだ活用の余地あり。「もっと良くできるところTOP3を改善案と共に提案する」自動化など、今後の拡張候補。
+  </p>
+
+  <h3>5-11. 公開AI：NotebookLM <span class="badge stage-a">A</span></h3>
+  <p>
+    Google の <strong>NotebookLM</strong>（ノートブック・エルエム）に、僕の note 記事をすべて読み込ませてあります。<br>
+    僕のフォロワーの方は、それを"<strong>いっちー専用AI</strong>"として使って、僕の考え・過去の話を質問できる状態にしています。
+  </p>
+
+  <h3>5-12. 段階Aを1枚で：1日のタイムライン</h3>
+
+  <ul class="timeline">
+    <li><span class="time">06:55</span><span class="what">Mac 自動起動（LaunchAgent）</span></li>
+    <li><span class="time">朝</span><span class="what"><code>/good-morning</code>：習慣チェック＋気分入力＋今日のプラン提案</span><span class="note">→ 昨日のログ・Notion・Calendar・Daily から提案 → OKで3箇所に自動書き込み</span></li>
+    <li><span class="time">日中</span><span class="what">タスクの開始/終了を タイムログと Notion（セカンドブレイン）に記録</span><span class="note">→ 画面右上に「いま取り組んでいるタスク」が常時表示され、シングルタスクに引き戻される工夫</span></li>
+    <li><span class="time">夕方</span><span class="what"><code>/ni</code>（インタビュー）→ <code>/note</code>（執筆）：素材集め→本文化</span></li>
+    <li><span class="time">公開時</span><span class="what">AIが <code>/note-publish</code> を自動発火 ＋ ChatGPT 画像生成でサムネ作成</span></li>
+    <li><span class="time">夜</span><span class="what">ジャーナリング／意思決定が必要なら <code>/6lens</code></span></li>
+    <li><span class="time">23:00</span><span class="what">就寝目標</span></li>
+    <li><span class="time">24:10</span><span class="what">Mac 自動スリープ（LaunchAgent）</span></li>
+    <li><span class="time">常時</span><span class="what">Screenpipe（画面録画・第二の記憶）</span><span class="note">→ 翌日の分析レポートに自動反映</span></li>
+    <li><span class="time">毎週日</span><span class="what"><code>/research-mining</code>：来週のネタ3案を21時に自動生成</span></li>
+  </ul>
+
+  <h2 id="sec6"><span class="num">6.</span>段階B：壁打ち相手としてのAI</h2>
+
+  <div class="section-lead">
+    <strong>この章の目的</strong>：AIが"手足"から"脳の拡張"に進化した瞬間の話。実例3つ。
+  </div>
+
+  <p>
+    段階Aは「作業をAIに渡す」段階でした。<br>
+    段階Bは違います。<strong>「自分では言語化できなかったこと」をAIとの対話で引き出してもらう</strong>段階。
+  </p>
+
+  <h3>実例1：「観測される自分／ただ在る自分」の発見</h3>
+  <p>
+    2026年5月。僕はジャーナリング中に、AIに「孤独」について話していました。<br>
+    AIに「note書くこと、演技すること、画面録画で記録すること——全部 "誰かに見られる自分" を磨く営みじゃないですか？」と問われて、ハッとした。
+  </p>
+  <p>
+    そうか、僕が本当に飢えているのは、<strong>"見られている自分（観測される自分）" を磨くことじゃなくて、"何も観測されず、ただ隣にいてもらう（ただ在る自分）" の方</strong>かもしれない。<br>
+    でも僕はずっと逆方向に全力で走ってきていた。
+  </p>
+  <p>
+    この発見は、自分1人のジャーナリングでは出ませんでした。<strong>AIが「逆じゃないですか？」と返してきたから</strong>言語化できた。
+  </p>
+
+  <h3>実例2：「関わりの非対称性」の言語化</h3>
+  <p>
+    僕には、ずっと言葉にできない違和感がありました。<br>
+    「人と関わるのが好きなのに、自分から関わりに行くのは詰まる」。
+  </p>
+  <p>
+    note で日頃お見かけしている、僕の琴線に触れる記事を何本か読み込みながら、AIと対話したら、こう整理されました：
+  </p>
+  <ul>
+    <li><strong>相手→自分の方向</strong>：流れる（みんなが預けてくれる）</li>
+    <li><strong>自分→相手の方向</strong>：詰まる</li>
+  </ul>
+  <p>
+    この「<strong>関わりの非対称性</strong>」という言葉自体が、AIとの対話で生まれた概念です。<br>
+    自分の構造が言語化された瞬間、「同じ構造の人とは関われる」という抜け道も見えました。
+  </p>
+
+  <h3>実例3：「称賛モード／検討モード」運用合意</h3>
+  <p>
+    外部記事「褒めてほしいと言えないあなたへ」を読んで、AIと運用ルールを決めました。
+  </p>
+  <ul>
+    <li>デフォルトは<strong>検討モード</strong>：分析・壁打ち・批判もOK</li>
+    <li>例外で<strong>称賛モード</strong>：成果・頑張り・しんどさを報告した時は、AIが分析に走る前にまず受け止める</li>
+  </ul>
+  <p>
+    この合意自体が、「AIとどう付き合うか」を僕とAIで一緒に決めた、というイベントでした。<br>
+    一方的に道具として使うんじゃなくて、<strong>AIに対しても「こう関わって」と伝える</strong>段階に来ています。
+  </p>
+
+  <h3>段階Bが効く場面</h3>
+  <table>
+    <thead><tr><th>場面</th><th>AIにやってもらうこと</th></tr></thead>
+    <tbody>
+      <tr><td>ジャーナリングが詰まった</td><td>「逆の解釈はある？」「もう1段深く掘ってみよう」</td></tr>
+      <tr><td>意思決定で迷う</td><td><code>/6lens</code> で6視点並列分析</td></tr>
+      <tr><td>noteの構成が決まらない</td><td>素材を全部投げて「3つの構成案」を出してもらう</td></tr>
+      <tr><td>過去の自分の発言と矛盾してる気がする</td><td>Wiki層を横断検索して矛盾を炙り出してもらう</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="sec7"><span class="num">7.</span>段階C：人生のパートナー（未来形）</h2>
+
+  <div class="section-lead">
+    <strong>この章の目的</strong>：まだ実現してない、3年後に目指してる姿の話。<br>
+    「ここまでやるんだ」と笑ってもらえれば十分です。
+  </div>
+
+  <p>
+    段階A・Bは Mac の前で起きていることです。<br>
+    段階Cは、<strong>Macを開いていない時間にも、AIが僕の人生と関わる</strong>段階。
+  </p>
+
+  <h3>目指している姿</h3>
+  <ul>
+    <li><strong>全人格的な記録</strong>：好み／時間の使い方／睡眠／食事／運動／人間関係／悩み／精神状態が、全部AIと共有されている</li>
+    <li><strong>簡単アクセス</strong>：スマホ・Apple Watch・パソコンを開かなくても、声でAIに話しかけられる</li>
+    <li><strong>フィジカルAI連携</strong>：家事・連絡などの作業も、ロボットやスマート家電と連携して進む</li>
+    <li><strong>判断パートナー</strong>：俳優としての方向性・体調管理・人間関係の調整まで、AIと相談する</li>
+  </ul>
+
+  <h3>なぜここを目指すか</h3>
+  <div class="quote">
+    人生は1度きり。<br>
+    "AIに任せられる部分" を最大化して、"自分にしかできない部分（演じる・書く・人と会う）" に時間と心を全部投下したい。
+  </div>
+  <p>
+    これは "AIに人生を預ける" ではなく、<strong>"AIにルーチンを預けて、人生の本番に集中する"</strong> という考え方です。
+  </p>
+
+  <h2 id="sec8"><span class="num">8.</span>設計原則（読み飛ばし可）</h2>
+
+  <div class="section-lead">
+    <strong>この章の目的</strong>：技術寄りの裏側。<strong>仕組みづくりに興味がある人だけ</strong>でOKです。
+  </div>
+
+  <div class="principle-card">
+    <h4>① 司令塔ファイル一極集中</h4>
+    <p>判断軸は1ファイルに集約。AIごとに別々に伝えない。これで「同じ僕」が全AI対話に立つ。</p>
+  </div>
+
+  <div class="principle-card">
+    <h4>② Wiki層の3オペレーション（Ingest / Query / Lint）</h4>
+    <p>
+      <strong>Ingest（取り込み）</strong>：新情報をWikiに書き込む。<br>
+      <strong>Query（問い合わせ）</strong>：質問にはWikiから探して答える。<br>
+      <strong>Lint（健康診断）</strong>：矛盾・古びたページを定期的にチェック。
+    </p>
+  </div>
+
+  <div class="principle-card">
+    <h4>③ 3層公開設計（L1 / L2 / L3）</h4>
+    <p>
+      <strong>L1（完全プライベート）</strong>＝自分だけ。<br>
+      <strong>L2（メンバー限定）</strong>＝応援してくれる人だけ。<br>
+      <strong>L3（公開）</strong>＝note（誰でも読める）。
+    </p>
+  </div>
+
+  <div class="principle-card">
+    <h4>④ HTML化判断軸</h4>
+    <p>
+      長文・構造化された分析・比較が中心の出力は HTML で書き出す（このレポートのように）。
+      原本は Markdown、HTML は派生ビュー。手動メンテせず、必要時に再生成。
+    </p>
+  </div>
+
+  <div class="principle-card">
+    <h4>⑤ 記憶喪失耐性原則</h4>
+    <p>
+      「いつ忘れても戻ってこれる」仕組みを優先する。ツールが変わっても、データ（Markdownファイル）が残れば仕事は続く。クラウド依存を最小化。
+    </p>
+  </div>
+
+  <div class="principle-card">
+    <h4>⑥ ソース5段階ティア</h4>
+    <p>
+      引用するソースを Tier 1（一次情報・原典）〜 Tier 5（伝聞・噂）で評価。
+      noteの本文には <strong>Tier 2 以上</strong> しか使わない（SNS情報は本文に出さない）。
+    </p>
+  </div>
+
+  <div class="principle-card">
+    <h4>⑦ 段階的火力配分（強火3／中火6）</h4>
+    <p>
+      9つの同時並行戦線を「強火3／中火6」に振り分けて温度管理。
+      強火＝全力ダッシュ、中火＝外の声を聞ける余白。AIにも「今これは強火、これは中火」を伝えて優先度を判断させる。
+    </p>
+  </div>
+
+  <h2 id="sec9"><span class="num">9.</span>3年後の地図</h2>
+
+  <div class="section-lead">
+    <strong>この章の目的</strong>：「で、結局AIで何がしたいの？」への答え。
+  </div>
+
+  <h3>2029年5月、目指している姿</h3>
+  <table>
+    <thead><tr><th style="width:25%;">領域</th><th>状態</th></tr></thead>
+    <tbody>
+      <tr><td>俳優として</td><td>演技力でオーディションを落とされない。仕事が途切れない。一流現場で再現性ある芝居が出せている。</td></tr>
+      <tr><td>noteとして</td><td>読者2〜3万人。noteからの収益で生活費の一部が成立。</td></tr>
+      <tr><td>医学として</td><td>俳優8 ／ 医療2 の二刀流。演劇と医療の橋渡し役。</td></tr>
+      <tr><td>経済</td><td>役者・note収入だけで生活できる（月20〜30万円）。理想は「やりたいことに制限がない」状態。</td></tr>
+      <tr><td>AI活用</td><td>段階Cが完成。スマホ・Watchから常時アクセス可能なパートナー化。</td></tr>
+    </tbody>
+  </table>
+
+  <h3>全活動を貫くテーマ</h3>
+  <div class="quote">
+    人生は全て演技に通じる。<br>
+    仕事もプライベートも旅行も、ぜんぶ演技の素材であり、訓練。<br>
+    その営み全部に、AIが伴走している。
+  </div>
+
+  <h3>AIに任せたい／任せたくない</h3>
+  <div class="before-after">
+    <div class="ba-card after">
+      <h4>✅ AIに任せたい</h4>
+      <ul>
+        <li>記憶・整理・検索</li>
+        <li>下書き・要約・調査</li>
+        <li>判断材料の収集と並列分析</li>
+        <li>ルーチンの自動化</li>
+        <li>過去の自分との接続</li>
+      </ul>
+    </div>
+    <div class="ba-card before">
+      <h4>🚫 AIに任せない</h4>
+      <ul>
+        <li>演じること</li>
+        <li>人と会うこと</li>
+        <li>感じること</li>
+        <li>最終的な意思決定</li>
+        <li>note本文に出す"内省そのもの"</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 id="sec10"><span class="num">10.</span>よくある質問（FAQ）</h2>
+
+  <div class="glossary">
+    <details>
+      <summary>Q1. これ、AIに詳しくないと真似できないですよね？</summary>
+      <div class="gloss-body">
+        全部を一気に真似する必要はありません。<strong>段階A の中の1つだけ</strong>（例：noteを書く時にAIにインタビューしてもらう）から始めるのが現実的です。僕も4年前は何も使えていませんでした。
+      </div>
+    </details>
+    <details>
+      <summary>Q2. どのAIを使ってるんですか？</summary>
+      <div class="gloss-body">
+        メインは <strong>Claude</strong>（Anthropic社のAI）です。具体的には Claude Code というターミナル環境を使っています。サブで ChatGPT、Gemini（NotebookLMの中身）、ローカルAI（gemma:26b）も並行。
+      </div>
+    </details>
+    <details>
+      <summary>Q3. AIに頼りすぎて、自分で考えられなくなりませんか？</summary>
+      <div class="gloss-body">
+        逆です。<strong>"AIに考えさせて、最後は自分で決める"</strong> という線を引いているから、考える時間が増えました。ジャーナリングは毎日やってるし、最終判断は必ず自分。AIは "並列に考えてくれる外部の脳" であって、自分の脳の代わりではない、というのが僕の使い方の核心。
+      </div>
+    </details>
+    <details>
+      <summary>Q4. 費用はかかってますか？</summary>
+      <div class="gloss-body">
+        メインは <strong>Claude の Max プラン</strong> に課金中（のめり込み過ぎて上位プランに上げた、というのが正直なところ）。<strong>Claude の Pro プランでも</strong>、note運営1本だけ／下書き作り／小さめのWiki構築くらいなら十分回ります。<br>
+        その他は <strong>Notion 学割（無料・継続中）</strong>、<strong>Google Gemini 学割（Proプラン15ヶ月無料）</strong> を活用中。クラウドAIの従量課金はゼロ（Maxプランの定額枠で完結）。ローカルAIは電気代だけ。
+      </div>
+    </details>
+    <details>
+      <summary>Q5. AIに僕の個人情報を全部渡して大丈夫？</summary>
+      <div class="gloss-body">
+        ここは慎重に設計しています。<strong>機密性が高い情報はローカルAI</strong>（クラウドに送らないAI）で処理／<strong>公開しないファイルは Vault 内に保存し、note には出さない（3層公開設計）</strong>／<strong>SNS情報や他人のプライバシーは AI に学習させない</strong>。
+      </div>
+    </details>
+    <details>
+      <summary>Q6. 「AI使ってる」と「AI任せ」の違いは？</summary>
+      <div class="gloss-body">
+        僕の中の線引きは「<strong>誰の声で書いてあるか</strong>」です。AIに下書きさせても、最終的に <strong>「いっちーの声」で公開できる状態</strong> まで自分が編集する。声を譲った瞬間にそれは "AI任せ" で、僕の表現じゃなくなる。
+      </div>
+    </details>
+    <details>
+      <summary>Q7. 真似してみたい、どこから始めればいい？</summary>
+      <div class="gloss-body">
+        まず <strong>「司令塔ファイル"もどき"」をテキストで1枚作る</strong> ことをおすすめします。「私は何者か／何を目指してるか／何を譲れないか」を箇条書きで1ページ。それを毎回 ChatGPT / Claude の最初に貼り付けるだけで、返ってくる答えの精度が劇的に変わります。
+      </div>
+    </details>
+  </div>
+
+  <h2 id="sec11"><span class="num">11.</span>用語集</h2>
+
+  <div class="section-lead">
+    <strong>この章の目的</strong>：本文に出てきた言葉を、まとめてやさしく解説。気になったものだけ開いて読んでください。
+  </div>
+
+  <h3>AI業界の言葉</h3>
+  <div class="glossary">
+    <details>
+      <summary>AI（人工知能）</summary>
+      <div class="gloss-body">
+        広い意味では「人間っぽい判断ができるプログラム」全部。この資料では <strong>ChatGPTやClaudeのような、文章で対話するAI</strong> を指しています。
+      </div>
+    </details>
+    <details>
+      <summary>LLM（大規模言語モデル）</summary>
+      <div class="gloss-body">
+        Large Language Model の略。<strong>大量の文章を学習して、次に来る言葉を予測する仕組み</strong>。ChatGPT・Claude・Geminiの正体はこれ。
+      </div>
+    </details>
+    <details>
+      <summary>プロンプト</summary>
+      <div class="gloss-body">
+        AIへの指示文。「〇〇について教えて」「△△風に書いて」のような<strong>"頼みごとの言葉"</strong>。プロンプトの書き方で結果が大きく変わる。
+      </div>
+    </details>
+    <details>
+      <summary>コンテキスト</summary>
+      <div class="gloss-body">
+        AIに渡している情報の塊。<strong>"AIに今読ませているもの全部"</strong>と思えばOK。長く話してると古い話を忘れていく仕組みでもある。
+      </div>
+    </details>
+    <details>
+      <summary>スキル／カスタムコマンド</summary>
+      <div class="gloss-body">
+        AIに対する<strong>"よく使う指示のテンプレ"</strong>。<code>/note</code> と打つだけで「いつものnote執筆のお願い」が一気に発動する、みたいな仕組み。
+      </div>
+    </details>
+    <details>
+      <summary>RAG（検索拡張生成）</summary>
+      <div class="gloss-body">
+        Retrieval-Augmented Generation の略。<strong>AIに自分の資料を読ませてから答えさせる仕組み</strong>。一般知識じゃなく、自分のメモから答えてほしい時に使う。
+      </div>
+    </details>
+    <details>
+      <summary>embedding（埋め込みベクトル）／意味検索</summary>
+      <div class="gloss-body">
+        文章を「意味の点」に変換する技術。"集客" と "お客さんを集める" は別の単語だけど、意味的には近い——を判定できるようになる。
+      </div>
+    </details>
+    <details>
+      <summary>ローカルAI／ローカルLLM</summary>
+      <div class="gloss-body">
+        クラウドに送らず、<strong>自分のパソコンの中だけで動くAI</strong>。プライバシーが守れる／オフラインで動く／費用ゼロ、が利点。性能はクラウド最強モデルよりは劣る。
+      </div>
+    </details>
+    <details>
+      <summary>Markdown（マークダウン）</summary>
+      <div class="gloss-body">
+        <strong>記号で見出しや太字を表現できる、軽量なテキスト形式</strong>。<code>#</code> で見出し、<code>**太字**</code> で太字、みたいな。ファイルはただのテキスト。
+      </div>
+    </details>
+    <details>
+      <summary>frontmatter（フロントマター）</summary>
+      <div class="gloss-body">
+        Markdownファイルの冒頭に書く<strong>"メタデータ"</strong>。タイトル・日付・公開状態などをまとめて書く場所。
+      </div>
+    </details>
+    <details>
+      <summary>Anthropic（アンソロピック）／Claude</summary>
+      <div class="gloss-body">
+        Claude を作っているAI企業。元 OpenAI のメンバーが創業。Claude はその主力AI製品（このレポートを書くのを手伝ってくれている AI 本体）。
+      </div>
+    </details>
+    <details>
+      <summary>Claude Code（クロード・コード）</summary>
+      <div class="gloss-body">
+        Anthropic が出している<strong>"ターミナルで動くClaude"</strong>。ファイル編集・コード実行・自作スキル発火ができる開発者向けツール。
+      </div>
+    </details>
+    <details>
+      <summary>NotebookLM（ノートブック・エルエム）</summary>
+      <div class="gloss-body">
+        Googleが作った<strong>"自分の資料を学習させて対話できるAIノート"</strong>。僕は note 記事を全部読ませて「いっちー専用AI」を作っています。
+      </div>
+    </details>
+    <details>
+      <summary>LaunchAgent（ローンチエージェント）</summary>
+      <div class="gloss-body">
+        macOS の標準機能で、<strong>「毎日何時に自動でこれを実行する」</strong>を仕込む仕組み。タイマー予約の上位互換。
+      </div>
+    </details>
+    <details>
+      <summary>Obsidian（オブシディアン）</summary>
+      <div class="gloss-body">
+        <strong>Markdownでメモが書ける、フォルダベースのノートアプリ</strong>。データは全部自分のパソコンに残る。リンク機能でメモ同士をつなげられる。
+      </div>
+    </details>
+    <details>
+      <summary>Notion（ノーション）</summary>
+      <div class="gloss-body">
+        データベース機能つきのノートアプリ。<strong>表・カレンダー・ガントチャートなど色んな"見せ方"でメモを扱える</strong>。
+      </div>
+    </details>
+    <details>
+      <summary>Screenpipe（スクリーンパイプ）</summary>
+      <div class="gloss-body">
+        画面をずっと録画＆文字起こしして、<strong>自分専用の"記憶倉庫"</strong>を作るソフト。「3日前に見たYouTube」を後から検索できる。
+      </div>
+    </details>
+  </div>
+
+  <h3>いっちー用語（独自に作った言葉）</h3>
+  <div class="glossary">
+    <details>
+      <summary>司令塔ファイル</summary>
+      <div class="gloss-body">
+        <strong>AI対話のすべての起点になる1枚のMarkdownファイル</strong>。「いっちーは何者か」「目指してる地点」「譲れない信念」を集約。AIは毎回これを読んでから返答する。
+      </div>
+    </details>
+    <details>
+      <summary>Wiki層（AI第二の脳）</summary>
+      <div class="gloss-body">
+        Karpathy 式と呼ばれる、<strong>"AIが新規ページを書き、僕が監修する" 知識ベース</strong>。気づき・概念・人物・分析をぜんぶここに蓄積。
+      </div>
+    </details>
+    <details>
+      <summary>段階A／B／C（AI活用の3段階）</summary>
+      <div class="gloss-body">
+        <strong>A＝タスク代行（手足）／B＝脳の拡張（壁打ち）／C＝人生のパートナー</strong>。AIとの関わり方の進化モデル。いまは A 中心、B 走り始め、C 未来形。
+      </div>
+    </details>
+    <details>
+      <summary>3層公開設計（L1 / L2 / L3）</summary>
+      <div class="gloss-body">
+        コンテンツを3つの公開レイヤーに分ける設計。<strong>L1＝自分だけ／L2＝応援者だけ／L3＝誰でも</strong>。それぞれ別のツールで運用。
+      </div>
+    </details>
+    <details>
+      <summary>5層モデル（コア欲望）</summary>
+      <div class="gloss-body">
+        自分の欲望を浅い→深いで5段階に整理したフレーム。<strong>第1層（公的目標：カンヌ主演男優賞）／第2層（信念：演劇は世界を平和にする）／第3層（職業の核：再現性ある芝居）／第4層（生き方の核：自分の心のままに生きたい）／第5層（探索中）</strong>。
+      </div>
+    </details>
+    <details>
+      <summary>6lens（6視点並列分析）</summary>
+      <div class="gloss-body">
+        意思決定の時、<strong>6つの目線（俳優／西野／観客／コア欲望／信念／第一原理）で並列に検討する</strong>スキル。<code>/6lens</code> で発火。
+      </div>
+    </details>
+    <details>
+      <summary>強火3／中火6（火力配分）</summary>
+      <div class="gloss-body">
+        9つの同時並行戦線を、<strong>強火3つ（全力ダッシュ）と中火6つ（外の声を聞ける余白）に振り分ける温度管理</strong>。AIにも優先度判断に使ってもらう。
+      </div>
+    </details>
+    <details>
+      <summary>ソース5段階ティア</summary>
+      <div class="gloss-body">
+        引用ソースの信頼度を <strong>Tier 1（一次情報）〜 Tier 5（伝聞）</strong> で評価する内部ルール。noteの本文には Tier 2 以上しか使わない。
+      </div>
+    </details>
+    <details>
+      <summary>記憶喪失耐性原則</summary>
+      <div class="gloss-body">
+        <strong>「いつ忘れても戻ってこれる」</strong>を最優先する設計思想。ツールが変わってもデータが残るように、すべての記録はプレーンなMarkdownで持つ。
+      </div>
+    </details>
+    <details>
+      <summary>HTML化判断軸</summary>
+      <div class="gloss-body">
+        どんな出力をHTMLにするか／Markdownのままにするかの判断基準。<strong>長文・比較・構造化された分析は HTML、原本は Markdown</strong>。このレポートも HTML 化対象。
+      </div>
+    </details>
+    <details>
+      <summary>ストック型／フロー型（note記事の分類）</summary>
+      <div class="gloss-body">
+        <strong>ストック型＝時間が経っても読まれる記事</strong>。<strong>フロー型＝今日のリアルタイム記事</strong>。1700万件のnote追跡調査ベース。各記事を書く前にどちらか判定する。
+      </div>
+    </details>
+    <details>
+      <summary>信念候補</summary>
+      <div class="gloss-body">
+        <strong>「まだ確定じゃない信念」</strong>を1〜4週間"熟成"させて、本人が再確認したら正式信念に昇格させる仕組み。熟成期限が来たらAIが「これ昇格させる？」と聞いてくる。
+      </div>
+    </details>
+    <details>
+      <summary>セカンドブレイン</summary>
+      <div class="gloss-body">
+        <strong>"頭の外に作る、もう1つの脳"</strong>という考え方。タスク・気づき・進捗を全部 Notion に書き出して、頭の中を空にする。「今やっていること」が画面右上に常時表示される仕組みで、シングルタスクに引き戻す効果も狙っている。
+      </div>
+    </details>
+  </div>
+
+  <h2 id="closing"><span class="num">📮</span>最後に</h2>
+
+  <p>
+    ここまで読んでくださって、本当にありがとうございます。<br>
+    全部を真似する必要はありません。「面白いな」「これだけは試してみたいな」と思える1つがあれば、十分です。
+  </p>
+
+  <p>
+    僕がAIを使い倒している理由は、繰り返しになりますが、<strong>"自分にしかできない部分（演じる・書く・人と会う）"に時間と心を全部投下するため</strong>です。<br>
+    そのためにAIは "便利な道具" ではなくて、"手足の代わりに動いてくれるチームメンバー" として設計しています。
+  </p>
+
+  <p>
+    気になったこと、もっと詳しく聞きたい仕組みがあれば、公式LINE（下のリンク）から気軽にメッセージください。<br>
+    AIに関する話、僕も人と話したいです。
+  </p>
+
+  <div class="quote">
+    AIで楽になった分、もっと面白いことに時間を使う。<br>
+    それが、AIをこれだけ使い倒している唯一の理由です。
+  </div>
+
+  <footer class="doc-footer">
+    <div class="footer-name">沖縄で俳優として活動する、いっちーこと伊藤駿一</div>
+    <div class="footer-links">
+      <a href="https://lin.ee/jbUrdeB">公式LINE</a>
+      ／
+      <a href="https://note.com/icchi_ito">note</a>
+      ／
+      <a href="https://shunichi-ito-2003.github.io/">公式サイト</a>
+    </div>
+    <div class="footer-meta">
+      最終更新：2026-05-28
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
