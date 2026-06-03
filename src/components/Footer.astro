@@ -24,4 +24,18 @@ const prefix = isEn ? '/en' : '';
       &copy; {new Date().getFullYear()} ITO SHUNICHI
     </p>
   </div>
+
+  <div class="max-w-6xl mx-auto mt-8 pt-6 border-t border-[var(--color-border)] text-center">
+    <p class="font-japanese text-xs text-[var(--color-ink-muted)] leading-relaxed mb-3">
+      {isEn ? 'Who is Ichi? An AI trained on all my note articles answers anything about my work.' : '「いっちーってどんな人？」note記事を読み込んだAIが、活動のことに何でも答えます。'}
+    </p>
+    <a
+      href="https://notebooklm.google.com/notebook/d1217e51-8352-4733-9311-d410ad584356"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-block px-6 py-2 border border-[var(--color-gold)] text-[var(--color-gold)] font-display text-[11px] tracking-[0.2em] hover:bg-[var(--color-gold)] hover:text-white transition-all duration-300"
+    >
+      {isEn ? 'Ask Ichi AI' : 'いっちーAIに質問する'}
+    </a>
+  </div>
 </footer>
