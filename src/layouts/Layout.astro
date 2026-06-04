@@ -41,6 +41,17 @@ const ogImageUrl = `${siteUrl}${ogImage}`;
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
+    <!-- GoatCounter（本番ビルド時のみ・Cookieなしアクセス解析） -->
+    {
+      import.meta.env.PROD && (
+        <script
+          is:inline
+          data-goatcounter="https://icchi-ito.goatcounter.com/count"
+          async
+          src="//gc.zgo.at/count.js"
+        />
+      )
+    }
   </head>
   <body>
     <Nav />
