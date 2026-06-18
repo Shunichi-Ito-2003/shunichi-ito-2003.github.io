@@ -9,10 +9,6 @@ export async function getStaticPaths({ paginate }: { paginate: Function }) {
 
 const { page } = Astro.props;
 const posts = page.data;
-
-// カテゴリ一覧を抽出（重複除去）
-const allPosts = getPublishedPosts();
-const categories = ['すべて', ...Array.from(new Set(allPosts.map((p) => p.category).filter(Boolean)))];
 ---
 
 <Layout title="BLOG" description="伊藤駿一のブログ。俳優・医学生としての日々の思考と記録。">
@@ -35,37 +31,15 @@ const categories = ['すべて', ...Array.from(new Set(allPosts.map((p) => p.cat
       </div>
     </header>
 
-    <!-- Category filter -->
-    <div class="flex flex-wrap gap-2 mb-10" id="category-filter">
-      {categories.map((cat) => (
-        <button
-          data-category={cat}
-          class={`category-btn font-display text-xs tracking-[0.15em] px-4 py-2 border transition-colors ${
-            cat === 'すべて'
-              ? 'border-[var(--color-gold)] text-[var(--color-gold)] bg-transparent'
-              : 'border-[var(--color-border)] text-[var(--color-ink-muted)] hover:border-[var(--color-gold)] hover:text-[var(--color-gold)]'
-          }`}
-        >
-          {cat}
-        </button>
-      ))}
-    </div>
-
     {posts.length > 0 ? (
-      <div class="divide-y divide-[var(--color-border)]" id="posts-list">
+      <div class="divide-y divide-[var(--color-border)]">
         {posts.map((post) => (
           <a
             href={`/blog/${post.slug}`}
-            data-category={post.category}
-            class="post-item group flex flex-col md:flex-row gap-4 md:gap-8 py-8 transition-colors"
+            class="group flex flex-col md:flex-row gap-4 md:gap-8 py-8 transition-colors"
           >
             <div class="shrink-0 md:w-28">
               <time class="font-display text-xs tracking-widest text-[var(--color-ink-muted)]">{post.date}</time>
-              {post.category && (
-                <span class="block mt-1 font-display text-xs tracking-widest text-[var(--color-gold)]">
-                  {post.category}
-                </span>
-              )}
             </div>
             <div class="flex-grow">
               <h2 class="font-japanese font-bold text-[var(--color-ink)] group-hover:text-[var(--color-gold-dark)] transition-colors leading-relaxed mb-2">
@@ -118,31 +92,3 @@ const categories = ['すべて', ...Array.from(new Set(allPosts.map((p) => p.cat
     )}
   </div>
 </Layout>
-
-<script>
-  const buttons = document.querySelectorAll<HTMLButtonElement>('.category-btn');
-  const items = document.querySelectorAll<HTMLElement>('.post-item');
-
-  buttons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const selected = btn.dataset.category ?? 'すべて';
-
-      // ボタンのスタイル更新
-      buttons.forEach((b) => {
-        b.classList.remove('border-[var(--color-gold)]', 'text-[var(--color-gold)]');
-        b.classList.add('border-[var(--color-border)]', 'text-[var(--color-ink-muted)]');
-      });
-      btn.classList.add('border-[var(--color-gold)]', 'text-[var(--color-gold)]');
-      btn.classList.remove('border-[var(--color-border)]', 'text-[var(--color-ink-muted)]');
-
-      // 記事の表示/非表示
-      items.forEach((item) => {
-        if (selected === 'すべて' || item.dataset.category === selected) {
-          item.style.display = '';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-    });
-  });
-</script>
