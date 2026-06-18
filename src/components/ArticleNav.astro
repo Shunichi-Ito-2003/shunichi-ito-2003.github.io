@@ -1,0 +1,75 @@
+---
+import { getAdjacentPosts, getAdjacentInSeries } from '../lib/posts';
+
+interface Props {
+  slug: string;
+}
+const { slug } = Astro.props;
+
+const seriesNav = getAdjacentInSeries(slug);
+const { prev, next } = getAdjacentPosts(slug);
+---
+
+{/* シリーズ内ナビ（シリーズに属し、かつ前後どちらかがある時だけ表示） */}
+{seriesNav.series && (seriesNav.prev || seriesNav.next) && (
+  <nav class="mt-16 pt-8 border-t border-[var(--color-border)]">
+    <div class="flex items-center justify-between gap-4 mb-5">
+      <span class="font-display text-xs tracking-[0.2em] text-[var(--color-gold)]">
+        シリーズ「{seriesNav.series}」
+      </span>
+      <a
+        href={`/blog/series/${encodeURIComponent(seriesNav.series)}`}
+        class="shrink-0 font-display text-xs tracking-[0.15em] text-[var(--color-ink-muted)] hover:text-[var(--color-gold)] transition-colors"
+      >
+        最初から読む →
+      </a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {seriesNav.prev ? (
+        <a
+          href={`/blog/${seriesNav.prev.slug}`}
+          class="group block p-4 border border-[var(--color-border)] hover:border-[var(--color-gold)] transition-colors"
+        >
+          <span class="font-display text-[10px] tracking-[0.2em] text-[var(--color-ink-muted)]">← 前の回 {seriesNav.prev.seriesLabel}</span>
+          <span class="block mt-1.5 font-japanese text-sm text-[var(--color-ink)] group-hover:text-[var(--color-gold-dark)] transition-colors line-clamp-2">{seriesNav.prev.title}</span>
+        </a>
+      ) : <span class="hidden md:block" />}
+      {seriesNav.next ? (
+        <a
+          href={`/blog/${seriesNav.next.slug}`}
+          class="group block p-4 border border-[var(--color-border)] hover:border-[var(--color-gold)] transition-colors md:text-right"
+        >
+          <span class="font-display text-[10px] tracking-[0.2em] text-[var(--color-ink-muted)]">次の回 {seriesNav.next.seriesLabel} →</span>
+          <span class="block mt-1.5 font-japanese text-sm text-[var(--color-ink)] group-hover:text-[var(--color-gold-dark)] transition-colors line-clamp-2">{seriesNav.next.title}</span>
+        </a>
+      ) : <span class="hidden md:block" />}
+    </div>
+  </nav>
+)}
+
+{/* 全記事の時系列ナビ（前の記事 / 次の記事） */}
+{(prev || next) && (
+  <nav class="mt-8 pt-8 border-t border-[var(--color-border)]">
+    <p class="font-display text-xs tracking-[0.2em] text-[var(--color-ink-muted)] mb-5">記事をめぐる</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {prev ? (
+        <a
+          href={`/blog/${prev.slug}`}
+          class="group block p-4 border border-[var(--color-border)] hover:border-[var(--color-gold)] transition-colors"
+        >
+          <span class="font-display text-[10px] tracking-[0.2em] text-[var(--color-ink-muted)]">← 前の記事</span>
+          <span class="block mt-1.5 font-japanese text-sm text-[var(--color-ink)] group-hover:text-[var(--color-gold-dark)] transition-colors line-clamp-2">{prev.title}</span>
+        </a>
+      ) : <span class="hidden md:block" />}
+      {next ? (
+        <a
+          href={`/blog/${next.slug}`}
+          class="group block p-4 border border-[var(--color-border)] hover:border-[var(--color-gold)] transition-colors md:text-right"
+        >
+          <span class="font-display text-[10px] tracking-[0.2em] text-[var(--color-ink-muted)]">次の記事 →</span>
+          <span class="block mt-1.5 font-japanese text-sm text-[var(--color-ink)] group-hover:text-[var(--color-gold-dark)] transition-colors line-clamp-2">{next.title}</span>
+        </a>
+      ) : <span class="hidden md:block" />}
+    </div>
+  </nav>
+)}

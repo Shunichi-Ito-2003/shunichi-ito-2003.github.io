@@ -1,0 +1,59 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getSeriesList, getSeriesPosts } from '../../../lib/posts';
+
+export async function getStaticPaths() {
+  return getSeriesList().map((s) => ({ params: { series: s.name } }));
+}
+
+const series = Astro.params.series as string;
+const posts = getSeriesPosts(series); // 古い順（1話から）
+const first = posts[0]?.date ?? '';
+const latest = posts[posts.length - 1]?.date ?? '';
+---
+
+<Layout title={`${series}｜シリーズ`} description={`「${series}」シリーズ全${posts.length}話。最初から順番に読めます。`}>
+  <div class="max-w-3xl mx-auto px-6 py-16">
+    <!-- Back link -->
+    <a
+      href="/blog/series"
+      class="inline-flex items-center gap-2 font-display text-xs tracking-[0.2em] text-[var(--color-ink-muted)] hover:text-[var(--color-gold)] transition-colors mb-12"
+    >
+      ← シリーズ一覧
+    </a>
+
+    <!-- Header -->
+    <header class="mb-12 pb-8 border-b border-[var(--color-border)]">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">シリーズ</p>
+      <h1 class="font-japanese text-2xl md:text-3xl font-bold text-[var(--color-ink)] mb-4">{series}</h1>
+      <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)]">
+        全 {posts.length} 話 — {first} 〜 {latest}
+      </p>
+    </header>
+
+    <!-- Episode list (oldest first) -->
+    <ol class="divide-y divide-[var(--color-border)]">
+      {posts.map((post) => (
+        <li>
+          <a
+            href={`/blog/${post.slug}`}
+            class="group flex flex-col md:flex-row gap-2 md:gap-6 py-6 transition-colors"
+          >
+            <div class="shrink-0 md:w-24">
+              <span class="font-display text-sm tracking-widest text-[var(--color-gold)]">{post.seriesLabel}</span>
+              <time class="block mt-0.5 font-display text-[11px] tracking-widest text-[var(--color-ink-muted)]">{post.date}</time>
+            </div>
+            <div class="flex-grow">
+              <h2 class="font-japanese font-bold text-[var(--color-ink)] group-hover:text-[var(--color-gold-dark)] transition-colors leading-relaxed mb-1">
+                {post.title}
+              </h2>
+              <p class="font-japanese text-sm text-[var(--color-ink-muted)] leading-relaxed line-clamp-2">
+                {post.excerpt}
+              </p>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </div>
+</Layout>

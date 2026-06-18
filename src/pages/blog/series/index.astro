@@ -1,0 +1,54 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getSeriesList } from '../../../lib/posts';
+
+const seriesList = getSeriesList();
+---
+
+<Layout title="シリーズ一覧" description="伊藤駿一のブログのシリーズ一覧。テーマごとに記事をまとめて、最初から読めます。">
+  <div class="max-w-4xl mx-auto px-6 py-16">
+    <!-- Back link -->
+    <a
+      href="/blog"
+      class="inline-flex items-center gap-2 font-display text-xs tracking-[0.2em] text-[var(--color-ink-muted)] hover:text-[var(--color-gold)] transition-colors mb-12"
+    >
+      ← BLOG
+    </a>
+
+    <!-- Header -->
+    <header class="mb-16">
+      <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">まとめて読む</p>
+      <h1 class="font-display text-4xl md:text-5xl tracking-[0.15em] text-[var(--color-ink)] mb-6">SERIES</h1>
+      <div class="h-px w-16 bg-[var(--color-gold)]"></div>
+      <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] mt-4">
+        {seriesList.length} シリーズ
+      </p>
+    </header>
+
+    <!-- Series cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {seriesList.map((s) => {
+        const latestPost = s.posts[s.posts.length - 1];
+        return (
+          <a
+            href={`/blog/series/${encodeURIComponent(s.name)}`}
+            class="group block p-6 border border-[var(--color-border)] hover:border-[var(--color-gold)] transition-colors"
+          >
+            <div class="flex items-baseline justify-between gap-3 mb-3">
+              <h2 class="font-japanese text-lg font-bold text-[var(--color-ink)] group-hover:text-[var(--color-gold-dark)] transition-colors">
+                {s.name}
+              </h2>
+              <span class="shrink-0 font-display text-xs tracking-widest text-[var(--color-gold)]">{s.count}話</span>
+            </div>
+            <p class="font-display text-[11px] tracking-widest text-[var(--color-ink-muted)] mb-3">
+              {s.first} 〜 {s.latest}
+            </p>
+            <p class="font-japanese text-sm text-[var(--color-ink-muted)] leading-relaxed line-clamp-2">
+              最新：{latestPost.title}
+            </p>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</Layout>

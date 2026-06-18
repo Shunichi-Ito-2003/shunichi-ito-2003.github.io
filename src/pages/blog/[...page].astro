@@ -22,9 +22,17 @@ const categories = ['すべて', ...Array.from(new Set(allPosts.map((p) => p.cat
       <p class="font-display text-xs tracking-[0.3em] text-[var(--color-gold)] mb-3">思考の庭</p>
       <h1 class="font-display text-4xl md:text-5xl tracking-[0.15em] text-[var(--color-ink)] mb-6">MONOLOGUE</h1>
       <div class="h-px w-16 bg-[var(--color-gold)]"></div>
-      <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)] mt-4">
-        {page.total} 記事 — {page.currentPage} / {page.lastPage} ページ
-      </p>
+      <div class="flex items-center justify-between gap-4 mt-4">
+        <p class="font-display text-xs tracking-widest text-[var(--color-ink-muted)]">
+          {page.total} 記事 — {page.currentPage} / {page.lastPage} ページ
+        </p>
+        <a
+          href="/blog/series"
+          class="shrink-0 font-display text-xs tracking-[0.15em] text-[var(--color-gold)] hover:text-[var(--color-gold-dark)] transition-colors"
+        >
+          シリーズで読む →
+        </a>
+      </div>
     </header>
 
     <!-- Category filter -->

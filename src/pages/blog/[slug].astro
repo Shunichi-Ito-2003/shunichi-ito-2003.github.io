@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ArticleNav from '../../components/ArticleNav.astro';
 import { getAllPosts, getPostBySlug } from '../../lib/posts';
 import { marked } from 'marked';
 
@@ -50,10 +51,18 @@ htmlContent = htmlContent.replace(
 
     <!-- Article header -->
     <header class="mb-12 pb-8 border-b border-[var(--color-border)]">
-      <div class="flex items-center gap-4 mb-4">
+      <div class="flex flex-wrap items-center gap-4 mb-4">
         <time class="font-display text-xs tracking-widest text-[var(--color-ink-muted)]">{post.date}</time>
         {post.category && (
           <span class="font-display text-xs tracking-widest text-[var(--color-gold)]">{post.category}</span>
+        )}
+        {post.series && (
+          <a
+            href={`/blog/series/${encodeURIComponent(post.series)}`}
+            class="inline-flex items-center gap-1 font-display text-[11px] tracking-widest text-[var(--color-gold-dark)] border border-[var(--color-gold)] px-2 py-0.5 hover:bg-[var(--color-gold)] hover:text-white transition-colors"
+          >
+            {post.series} {post.seriesLabel}
+          </a>
         )}
       </div>
       <h1 class="font-japanese text-2xl md:text-3xl font-bold text-[var(--color-ink)] leading-relaxed">
@@ -64,8 +73,11 @@ htmlContent = htmlContent.replace(
     <!-- Article body -->
     <div class="prose-article" set:html={htmlContent} />
 
+    <!-- Article navigation: series + chronological -->
+    <ArticleNav slug={post.slug} />
+
     <!-- Footer -->
-    <footer class="mt-16 pt-8 border-t border-[var(--color-border)]">
+    <footer class="mt-10">
       {post.note_url && (
         <a
           href={post.note_url}
