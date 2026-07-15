@@ -113,6 +113,43 @@ const works = allWorks
     </div>
   </div>
 
+  <!-- ── NEXT STAGE（次の公演） ─────────────── -->
+  <section id="next-stage" class="fade-in py-20 px-6 bg-[var(--color-cream)]">
+    <div class="max-w-4xl mx-auto">
+      <div class="relative border-2 border-[var(--color-gold)] bg-white px-8 py-10 md:px-12">
+        <span class="absolute -top-3 left-8 bg-white px-3 font-display text-xs tracking-[0.3em] text-[var(--color-gold)]">NEXT STAGE</span>
+        <div class="grid md:grid-cols-[1fr_auto] gap-8 items-center">
+          <div class="space-y-4">
+            <p class="font-display text-xs tracking-[0.25em] text-[var(--color-ink-muted)]">次の公演</p>
+            <h2 class="font-japanese text-2xl md:text-3xl font-bold text-[var(--color-ink)]">『ケーキは世界を救う』</h2>
+            <div class="space-y-1 font-japanese text-sm text-[var(--color-ink-muted)] leading-relaxed">
+              <p class="text-[var(--color-ink)] font-bold">2026.08.12（水）〜 08.16（日）全8ステージ</p>
+              <p>壺屋演劇場かさね（那覇市）／伊藤駿一 出演</p>
+            </div>
+          </div>
+          <div class="flex flex-col gap-3 md:min-w-[220px]">
+            <a
+              href="https://engeki.net/ticket/?ref=SEL-1610"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-8 py-3.5 bg-[var(--color-gold)] text-white font-display text-xs tracking-[0.2em] hover:bg-[var(--color-gold-dark)] transition-all duration-300 text-center"
+            >
+              TICKET →
+            </a>
+            <a
+              href="https://lin.ee/jbUrdeB"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-8 py-3.5 border border-[var(--color-border)] text-[var(--color-ink-muted)] font-display text-xs tracking-[0.2em] hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] transition-all duration-300 text-center"
+            >
+              LINEで問い合わせ →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── NEWS ──────────────────────────────── -->
   <section id="news" class="fade-in py-24 px-6 bg-white">
     <div class="max-w-4xl mx-auto">
@@ -126,12 +163,14 @@ const works = allWorks
       <!-- タイムライン形式 -->
       <div class="relative pl-6 border-l-2 border-[var(--color-border)] space-y-0">
         {[
-          { date: '2026.06.07', cat: 'PROJECT', title: '地域を応援する演劇 Season 4 本番予定。子ども食堂「にぬふぁぶし（北極星）」を応援' },
+          { date: '2026.08.12', cat: 'STAGE', title: '舞台『ケーキは世界を救う』出演。壺屋演劇場かさね にて8.12〜8.16 全8ステージ' },
+          { date: '2026.08.08', cat: 'STAGE', title: '子どもミュージカル『ミツシマ』第2回沖縄公演（8.8〜8.9）に演出部として参加' },
+          { date: '2026.06.06', cat: 'PROJECT', title: '地域を応援する演劇 Season 4 完走。子ども食堂「にぬふぁぶし（北極星）」を応援' },
+          { date: '2026.05.14', cat: 'FILM', title: '映画『CITIZENs〜戦わないという選択〜』Amazon Prime Videoにて配信開始' },
           { date: '2026.03.15', cat: 'PROJECT', title: '地域を応援する演劇 Season 1 完走。まぁさん堂（南風原）を応援' },
           { date: '2026.02.20', cat: 'FILM', title: '映画『CITIZENs〜戦わないという選択〜』キネカ大森上映。初日20分で完売、全日程ほぼ満席' },
           { date: '2026.02.08', cat: 'STAGE', title: '舞台『島守のうた』神戸公演。浦崎純役として出演' },
           { date: '2025.12', cat: 'CHARITY', title: 'クリスマスチャリティー企画「みんながサンタ！」120家庭へのケーキ配達完了' },
-          { date: '2025.04', cat: 'SOLO', title: '一人芝居 初演。北谷モッズにて88名満員' },
         ].map((item) => (
           <article class="relative py-7 group">
             <!-- ゴールドの点 -->
