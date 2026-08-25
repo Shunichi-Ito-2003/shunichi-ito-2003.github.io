@@ -20,6 +20,19 @@ for (const [fullPath, mod] of Object.entries(allImages)) {
 const works = allWorks
   .filter(w => w.featured)
   .map(w => ({ ...w, href: `/works/${w.id}` }));
+
+// ── NEXT STAGE 設定 ─────────────────────
+// 次の公演が決まったら null をやめて下の形で埋める（枠が公演告知版に切り替わる）。
+// 公演が終わったら null に戻す（常設版＝出張一人芝居＋LINE導線を表示）。
+// 例：
+// const nextStage = {
+//   title: '『ケーキは世界を救う』',
+//   dates: '2026.08.12（水）〜 08.16（日）全8ステージ',
+//   venue: '壺屋演劇場かさね（那覇市）／伊藤駿一 出演',
+//   ticketUrl: 'https://engeki.net/ticket/?ref=SEL-1610',
+// };
+type NextStage = { title: string; dates: string; venue: string; ticketUrl?: string };
+const nextStage: NextStage | null = null;
 ---
 
 <Layout>
@@ -118,34 +131,65 @@ const works = allWorks
     <div class="max-w-4xl mx-auto">
       <div class="relative border-2 border-[var(--color-gold)] bg-white px-8 py-10 md:px-12">
         <span class="absolute -top-3 left-8 bg-white px-3 font-display text-xs tracking-[0.3em] text-[var(--color-gold)]">NEXT STAGE</span>
-        <div class="grid md:grid-cols-[1fr_auto] gap-8 items-center">
-          <div class="space-y-4">
-            <p class="font-display text-xs tracking-[0.25em] text-[var(--color-ink-muted)]">次の公演</p>
-            <h2 class="font-japanese text-2xl md:text-3xl font-bold text-[var(--color-ink)]">『ケーキは世界を救う』</h2>
-            <div class="space-y-1 font-japanese text-sm text-[var(--color-ink-muted)] leading-relaxed">
-              <p class="text-[var(--color-ink)] font-bold">2026.08.12（水）〜 08.16（日）全8ステージ</p>
-              <p>壺屋演劇場かさね（那覇市）／伊藤駿一 出演</p>
+        {nextStage ? (
+          <div class="grid md:grid-cols-[1fr_auto] gap-8 items-center">
+            <div class="space-y-4">
+              <p class="font-display text-xs tracking-[0.25em] text-[var(--color-ink-muted)]">次の公演</p>
+              <h2 class="font-japanese text-2xl md:text-3xl font-bold text-[var(--color-ink)]">{nextStage.title}</h2>
+              <div class="space-y-1 font-japanese text-sm text-[var(--color-ink-muted)] leading-relaxed">
+                <p class="text-[var(--color-ink)] font-bold">{nextStage.dates}</p>
+                <p>{nextStage.venue}</p>
+              </div>
+            </div>
+            <div class="flex flex-col gap-3 md:min-w-[220px]">
+              {nextStage.ticketUrl && (
+                <a
+                  href={nextStage.ticketUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="px-8 py-3.5 bg-[var(--color-gold)] text-white font-display text-xs tracking-[0.2em] hover:bg-[var(--color-gold-dark)] transition-all duration-300 text-center"
+                >
+                  TICKET →
+                </a>
+              )}
+              <a
+                href="https://lin.ee/jbUrdeB"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-8 py-3.5 border border-[var(--color-border)] text-[var(--color-ink-muted)] font-display text-xs tracking-[0.2em] hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] transition-all duration-300 text-center"
+              >
+                LINEで問い合わせ →
+              </a>
             </div>
           </div>
-          <div class="flex flex-col gap-3 md:min-w-[220px]">
-            <a
-              href="https://engeki.net/ticket/?ref=SEL-1610"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="px-8 py-3.5 bg-[var(--color-gold)] text-white font-display text-xs tracking-[0.2em] hover:bg-[var(--color-gold-dark)] transition-all duration-300 text-center"
-            >
-              TICKET →
-            </a>
-            <a
-              href="https://lin.ee/jbUrdeB"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="px-8 py-3.5 border border-[var(--color-border)] text-[var(--color-ink-muted)] font-display text-xs tracking-[0.2em] hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] transition-all duration-300 text-center"
-            >
-              LINEで問い合わせ →
-            </a>
+        ) : (
+          <div class="grid md:grid-cols-[1fr_auto] gap-8 items-center">
+            <div class="space-y-4">
+              <p class="font-display text-xs tracking-[0.25em] text-[var(--color-ink-muted)]">次の公演</p>
+              <h2 class="font-japanese text-2xl md:text-3xl font-bold text-[var(--color-ink)]">次回公演、準備中。</h2>
+              <div class="space-y-1 font-japanese text-sm text-[var(--color-ink-muted)] leading-relaxed">
+                <p>公演が決まり次第、公式LINEで最速でお知らせします。</p>
+                <p>出張一人芝居は通年受付中——沖縄本島内どこへでも、観客1名から。</p>
+              </div>
+            </div>
+            <div class="flex flex-col gap-3 md:min-w-[220px]">
+              <a
+                href="https://lin.ee/jbUrdeB"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-8 py-3.5 bg-[var(--color-gold)] text-white font-display text-xs tracking-[0.2em] hover:bg-[var(--color-gold-dark)] transition-all duration-300 text-center"
+              >
+                LINEで最新情報を受け取る →
+              </a>
+              <a
+                href="/works/hitorigei"
+                class="px-8 py-3.5 border border-[var(--color-border)] text-[var(--color-ink-muted)] font-display text-xs tracking-[0.2em] hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] transition-all duration-300 text-center"
+              >
+                出張一人芝居を呼ぶ →
+              </a>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   </section>
@@ -163,7 +207,7 @@ const works = allWorks
       <!-- タイムライン形式 -->
       <div class="relative pl-6 border-l-2 border-[var(--color-border)] space-y-0">
         {[
-          { date: '2026.08.12', cat: 'STAGE', title: '舞台『ケーキは世界を救う』出演。壺屋演劇場かさね にて8.12〜8.16 全8ステージ' },
+          { date: '2026.08.16', cat: 'STAGE', title: '舞台『ケーキは世界を救う』全8ステージ完走。壺屋演劇場かさね にて8.12〜8.16' },
           { date: '2026.08.08', cat: 'STAGE', title: '子どもミュージカル『ミツシマ』第2回沖縄公演（8.8〜8.9）に演出部として参加' },
           { date: '2026.06.06', cat: 'PROJECT', title: '地域を応援する演劇 Season 4 完走。子ども食堂「にぬふぁぶし（北極星）」を応援' },
           { date: '2026.05.14', cat: 'FILM', title: '映画『CITIZENs〜戦わないという選択〜』Amazon Prime Videoにて配信開始' },
