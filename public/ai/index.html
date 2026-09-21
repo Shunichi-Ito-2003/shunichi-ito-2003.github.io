@@ -538,6 +538,38 @@
     margin-top: 12px;
     opacity: 0.7;
   }
+  /* --- 2026-09-22 update additions --- */
+  .update-box {
+    background: var(--c-card);
+    border: 2px solid var(--c-primary);
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    margin: 0 0 28px;
+    box-shadow: var(--shadow);
+  }
+  .update-box .stamp { font-size: 12px; color: var(--c-muted); margin-bottom: 4px; }
+  .update-box h2 { margin: 0 0 8px; border: none; padding: 0; font-size: 17px; color: var(--c-text); }
+  .update-box ul { margin: 6px 0 0; padding-left: 20px; font-size: 14px; }
+  .update-box li { margin: 6px 0; line-height: 1.7; }
+  .badge.new { background: var(--c-accent); color: white; }
+  .incident {
+    background: var(--c-card);
+    border: 1px solid var(--c-border);
+    border-left: 5px solid var(--c-accent);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin: 16px 0;
+  }
+  .incident h4 { margin: 0 0 8px; color: var(--c-accent); font-size: 15px; }
+  .incident p { margin: 8px 0; font-size: 14px; }
+  .incident .lesson {
+    font-size: 13px;
+    background: rgba(195,141,158,0.10);
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-top: 10px;
+  }
+  .incident .lesson strong { color: var(--c-accent); }
 </style>
 </head>
 <body>
@@ -552,10 +584,22 @@
       AIに詳しくない方も、順番に追えば全部わかるように書きました。
     </p>
     <div class="meta">
-      <strong>最終更新：2026-05-28</strong>
+      <strong>最終更新：2026-09-22</strong>（初版 2026-05-28）
       ／ 沖縄で俳優として活動する、いっちーこと伊藤駿一
     </div>
   </header>
+
+  <div class="update-box">
+    <div class="stamp">2026-09-22 全面更新</div>
+    <h2>🆕 この4ヶ月で変わったこと（更新の要点）</h2>
+    <ul>
+      <li><strong>一番言いたい線引きを、1つの章にしました。</strong>「声の領域は本人を外さない／事務の領域は本人を外す」。AIモデルの使い分けも、この線で決めています → <a href="#sec5">5章</a></li>
+      <li><strong>Macを開いていない時間にも、AIが動き始めました。</strong>毎朝6:30にLINEへ届く「今日の提案」、番号を返信するだけで今日の一点が決まる仕組み → <a href="#sec6-1">6-1</a>・<a href="#sec8">8章</a></li>
+      <li><strong>自動化が3本から30本前後に増えました。</strong>1日の自動化マップとタイムラインを、全部書き直しています → <a href="#sec6-10">6-10</a>・<a href="#sec6-12">6-12</a></li>
+      <li><strong>壊れた話も書きました。</strong>AIが自分のnote原稿を消していた事件と、その復旧 → <a href="#sec9">9章</a></li>
+      <li><strong>数字を更新。</strong>note 公開248本、国家試験まで500日（2026-09-22時点）</li>
+    </ul>
+  </div>
 
   <div class="reading-guide">
     <h2>📖 この資料の読み方ガイド</h2>
@@ -566,19 +610,19 @@
       <div class="read-mode">
         <div class="label">⏱ 5分版</div>
         <div class="body">
-          セクション 1〜2 と 4（進化の3段階）だけ。「いっちーは何をAIにやらせてるの？」がわかります。
+          セクション 1〜2 と 4〜5（進化の3段階と、線引き）だけ。「いっちーは何をAIにやらせて、何をやらせないの？」がわかります。
         </div>
       </div>
       <div class="read-mode">
         <div class="label">⏱ 15分版</div>
         <div class="body">
-          上記＋セクション 5（今やってる手足）。具体的に毎日どう使ってるかが見えます。
+          上記＋セクション 6（今やってる手足）と 9（失敗と復旧）。毎日どう使ってるか、壊れた時どうしたかが見えます。
         </div>
       </div>
       <div class="read-mode">
-        <div class="label">⏱ 全部版（30分）</div>
+        <div class="label">⏱ 全部版（40分）</div>
         <div class="body">
-          全11章。設計の裏側・3年計画・用語集まで。AIを"使う側に回りたい"方向け。
+          全13章。設計の裏側・3年計画・用語集まで。AIを"使う側に回りたい"方向け。
         </div>
       </div>
     </div>
@@ -591,13 +635,15 @@
       <li><a href="#sec2">そもそもAIって何ができるの？</a></li>
       <li><a href="#sec3">僕がAIを"使い倒している"理由</a></li>
       <li><a href="#sec4">AI活用の進化、3段階</a></li>
-      <li><a href="#sec5">段階A：いま稼働中の"手足"</a></li>
-      <li><a href="#sec6">段階B：壁打ち相手としてのAI</a></li>
-      <li><a href="#sec7">段階C：人生のパートナー（未来形）</a></li>
-      <li><a href="#sec8">設計原則（読み飛ばし可）</a></li>
-      <li><a href="#sec9">3年後の地図</a></li>
-      <li><a href="#sec10">よくある質問（FAQ）</a></li>
-      <li><a href="#sec11">用語集</a></li>
+      <li><a href="#sec5">自動化の線引き：声の領域／事務の領域 🆕</a></li>
+      <li><a href="#sec6">段階A：いま稼働中の"手足"</a></li>
+      <li><a href="#sec7">段階B：壁打ち相手としてのAI</a></li>
+      <li><a href="#sec8">段階C：人生のパートナー（一歩目が動いた）</a></li>
+      <li><a href="#sec9">4ヶ月で起きた失敗と復旧 🆕</a></li>
+      <li><a href="#sec10">設計原則（読み飛ばし可）</a></li>
+      <li><a href="#sec11">3年後の地図</a></li>
+      <li><a href="#sec12">よくある質問（FAQ）</a></li>
+      <li><a href="#sec13">用語集</a></li>
     </ol>
   </div>
 
@@ -611,7 +657,7 @@
   <ul>
     <li><strong>俳優</strong>として沖縄で活動中（所属：01ENTERTAINMENT）</li>
     <li><strong>医学部5年生</strong>（2028年2月に国家試験）</li>
-    <li><strong>note執筆者</strong>として毎日1本（200本超）／<a href="https://note.com/icchi_ito">note.com/icchi_ito</a></li>
+    <li><strong>note執筆者</strong>（公開248本）／<a href="https://note.com/icchi_ito">note.com/icchi_ito</a></li>
   </ul>
 
   <h3>なんでこの資料？</h3>
@@ -621,7 +667,11 @@
   </p>
   <p>
     対象は「AIに詳しくない方も含めて、誰でも」です。<br>
-    なので、出てくる言葉はその都度やさしく言い換えます。最後に<a href="#sec11">用語集</a>もつけました。
+    なので、出てくる言葉はその都度やさしく言い換えます。最後に<a href="#sec13">用語集</a>もつけました。
+  </p>
+  <p>
+    初版は2026年5月28日に書きました。<br>
+    2026年9月、AIの勉強会で自分の使い方を発表する機会があって、そのあとこのページを共有したら、更新が5月で止まっていた。なので、4ヶ月分の変化を足して全面的に更新しました。何が変わったかは、冒頭の「更新の要点」にまとめてあります。
   </p>
 
   <div class="quote">
@@ -675,9 +725,9 @@
   <h3>同時に走らせている5つの仕事</h3>
   <ol>
     <li><strong>俳優キャリア</strong>（オーディション・公演・稽古）</li>
-    <li><strong>note執筆</strong>（1日1本、毎日）</li>
+    <li><strong>note執筆</strong>（公開248本）</li>
     <li><strong>舞台台本制作</strong>（ハートフルコメディ路線）</li>
-    <li><strong>国家試験対策</strong>（医学部5年・残り617日）</li>
+    <li><strong>国家試験対策</strong>（医学部5年・残り500日）</li>
     <li><strong>Webサイト制作</strong>（個人サイト・依頼）</li>
   </ol>
   <p>
@@ -701,7 +751,7 @@
         <li>「今日のネタどうしよう」を AI と話しながら、早めに抜けられる</li>
         <li>過去記事の参照は <strong>自動</strong>（AIが探してくる）</li>
         <li>リサーチは AI が事前にまとめる</li>
-        <li>朝に "今日やること" を AIが提案してくれる</li>
+        <li>朝、Mac を開く前に "今日の提案" が LINE に届く</li>
         <li>俳優活動・体づくり・国試に、時間を回せる</li>
         <li>「考える時間」が残る</li>
       </ul>
@@ -714,7 +764,7 @@
 
   <p>
     つまり、AIは「楽するため」じゃなくて、<strong>「本当に大事な活動（俳優・身体・対人関係）に、自分の時間を返してもらうため」</strong>に使っています。<br>
-    その先に何を目指してるかは、<a href="#sec9">セクション9（3年後の地図）</a>で話します。
+    その先に何を目指してるかは、<a href="#sec11">セクション11（3年後の地図）</a>で話します。
   </p>
 
   <h2 id="sec4"><span class="num">4.</span>AI活用の進化、3段階</h2>
@@ -725,7 +775,7 @@
 
   <p>
     AIとの関わり方を、僕は3段階に整理しています。<br>
-    A→B→Cの順に積み上げ。<strong>いまは段階A中心。段階Bが走り始め。段階Cは未来形</strong>。
+    A→B→Cの順に積み上げ。<strong>いまは段階A中心。段階Bは走っている。段階Cは、一歩目が動き出した</strong>。
   </p>
 
   <div class="stage-ladder">
@@ -739,7 +789,7 @@
       </div>
     </div>
     <div class="stage-step b">
-      <span class="now-badge">走り始め</span>
+      <span class="now-badge">走っている</span>
       <div class="icon">🧠</div>
       <div class="stage-name">段階B：脳の拡張</div>
       <div class="stage-sub">AIを"壁打ち相手"にする</div>
@@ -748,7 +798,7 @@
       </div>
     </div>
     <div class="stage-step c">
-      <span class="now-badge">未来形</span>
+      <span class="now-badge">一歩目が動いた</span>
       <div class="icon">🤝</div>
       <div class="stage-name">段階C：人生のパートナー</div>
       <div class="stage-sub">AIを"全部知ってる相棒"にする</div>
@@ -759,40 +809,114 @@
   </div>
 
   <p style="font-size:13px; color: var(--c-muted); margin-top:10px;">
-    ※「段階C」はまだ未完成です。3年計画の最終形として目指している状態です。
+    ※「段階C」はまだ未完成です。ただし「Macを開かない時間にもAIが動く」部分だけ、2026年9月に一歩目が動きました（<a href="#sec8">8章</a>）。
   </p>
 
-  <h2 id="sec5"><span class="num">5.</span>段階A：いま稼働中の"手足"</h2>
+  <h2 id="sec5"><span class="num">5.</span>自動化の線引き：声の領域は本人を外さない、事務の領域は本人を外す <span class="badge new">NEW</span></h2>
+
+  <div class="section-lead">
+    <strong>この章の目的</strong>：僕がAI活用でいちばん語りたい、たった1つの線引き。<br>
+    2026年9月の勉強会でも、いろいろ見せたいものはあったけれど、一番はここだと話しました。
+  </div>
+
+  <h3>きっかけ：目的が真逆の人に出会った</h3>
+  <p>
+    2026年6月、株式会社ヌーのさいとうひでおさんの note「<a href="https://note.com/hideo_saito/n/n7572e4aa8bce">Claude Code課金してから3週間。MAXプランの契約に至りました。会社の自動化インフラを全部公開します</a>」を読みました。<br>
+    僕と同じ Claude Code、同じ Max プランで、会社の仕組みを7つ自動化して、その中身を全部公開している記事です。
+  </p>
+  <p>
+    読んで最初に思ったのは「すごい」。次に思ったのは、<strong>「目的が真逆だ」</strong>でした。<br>
+    さいとうさんの自動化は、記事を書くところまで含めて「本人を作業から外す」方向に振り切っている（と僕は読みました）。僕は、note・ジャーナリング・芝居に関しては、本人を外した瞬間に価値が消える。<br>
+    同じ道具、同じ料金プランでも、<strong>領域によって自動化の目的が逆になる</strong>。それが、この線引きの出発点です。
+  </p>
+
+  <h3>2つの領域</h3>
+  <table>
+    <thead><tr><th style="width:20%;"></th><th style="width:38%;">🎤 声の領域</th><th>🗂 事務の領域</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>何が入るか</strong></td>
+        <td>note、ジャーナリング、芝居、本人の内省</td>
+        <td>リサーチ、営業資料、収支の把握、同期やバックアップ、ネタ発掘、文字起こし、日程調整、公開後の事後処理</td>
+      </tr>
+      <tr>
+        <td><strong>本人が消えたら</strong></td>
+        <td>価値も消える</td>
+        <td>誰がやっても同じ</td>
+      </tr>
+      <tr>
+        <td><strong>AIの役割</strong></td>
+        <td><strong>増幅</strong>。壁打ちと下書きに徹して、本人を作業から外さない。フル自動投稿はしない</td>
+        <td><strong>本人を外す</strong>。無人で回してよい</td>
+      </tr>
+      <tr>
+        <td><strong>この資料での例</strong></td>
+        <td><code>/ni</code>・<code>/note</code>・<code>/6lens</code>・ジャーナリング</td>
+        <td>LINE秘書・Vault日次バックアップ・週次ネタ発掘・NotebookLM公開AI・タスクピッカー</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="quote">
+    判断基準は一問だけ。<br>
+    「これを自動化したら、本人の声が死ぬか？」<br>
+    死ぬなら増幅まで。死なないなら、外してよい。
+  </div>
+
+  <p>
+    5月版の <a href="#sec11">「AIに任せたい／任せたくない」</a> のリストは、この一問を先に置くと、ぜんぶ同じ線から出てきます。<br>
+    そして、この線は「何を自動化するか」だけじゃなく、<strong>どのAIモデルを使うか</strong>にも効いてきました。
+  </p>
+
+  <h3>同じ線で、AIモデルも使い分ける（2026年9月〜）</h3>
+  <p>
+    Claude には、賢さと値段の違うモデルが何種類かあります。9月に、直近30日分の呼び出しログ（5,559回）を集計して、使い分けの基準を決めました。覚え方は4語です。
+  </p>
+  <table>
+    <thead><tr><th style="width:22%;">モデル</th><th style="width:24%;">一言</th><th>使う場面</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Fable 5.1</strong></td><td><strong>判断</strong></td><td>6視点分析、参入・撤退の判断、原因の見えない障害。ここは値段で選ばない</td></tr>
+      <tr><td><strong>Opus 5</strong></td><td><strong>創作と対話</strong>（迷ったらこれ）</td><td>インタビュー、note執筆、ジャーナリング、人に届く文章</td></tr>
+      <tr><td><strong>Sonnet 5</strong></td><td><strong>作業</strong></td><td>公開後の事後処理、リサーチ、サブエージェント（<a href="#sec6-3">6-3</a>）、日次の取り込み</td></tr>
+      <tr><td><strong>Haiku 4.5</strong></td><td><strong>仕分け</strong></td><td>分類だけの処理</td></tr>
+    </tbody>
+  </table>
+  <p>
+    決め方は、やっぱり同じ一問。<strong>「本人が消えたら価値も消えるか？」</strong> 消えるなら（声の領域）Opus 以上、消えないなら（事務の領域）Sonnet 以下。<br>
+    実測してわかったのは、重いのはモデルの値段より「毎回読ませている文脈の量」だった、ということ。これは <a href="#sec6-7">6-7</a> の司令塔ファイルの話につながります。
+  </p>
+
+  <h2 id="sec6"><span class="num">6.</span>段階A：いま稼働中の"手足"</h2>
 
   <div class="section-lead">
     <strong>この章の目的</strong>：今この瞬間、僕がAIに任せている作業を全部見せます。<br>
-    <strong>「具体場面 → 使ってる仕組み → 何が起きてるか」</strong>の3段構成で書きます。
+    <strong>「具体場面 → 使ってる仕組み → 何が起きてるか」</strong>の3段構成。5月版から増えたものには <span class="badge new">NEW</span> を付けています。
   </div>
 
-  <h3>5-1. 朝の始まり：今日のプラン作り <span class="badge stage-a">A</span></h3>
+  <h3 id="sec6-1">6-1. 朝の始まり：LINEに「今日の提案」が届く <span class="badge stage-a">A</span> <span class="badge new">NEW</span></h3>
   <p>
-    <strong>場面</strong>：朝、起きて Mac を開く。<br>
-    <strong>使う仕組み</strong>：<code>/good-morning</code>（朝プラン作りのスキル）。
+    <strong>場面</strong>：朝6:30、まだ布団の中。LINEに「今日の提案」が届いている。<br>
+    <strong>使う仕組み</strong>：LINEの"AI秘書"（無人で動く朝の提案）＋ <code>/good-morning</code>（朝プラン作りのスキル）。
   </p>
   <p>
-    僕は<span class="term">スキル</span>＝<span class="term-inline">AIに対する"よく使う指示のテンプレ"</span>を自分用にたくさん作っています。<code>/good-morning</code> と打つだけで、AIが以下を一気にやってくれる。
+    5月の時点では、「Macを開いて <code>/good-morning</code> と打つ」のが朝の始まりでした。9月からは、Macを開く前に届きます。
   </p>
   <ul>
-    <li>今日の日付・国試までの残り日数を計算</li>
-    <li>昨日のジャーナリング・デイリーノートを読む</li>
-    <li>未完了の習慣（6時起床／ジャーナリング／23時就寝など）をチェック</li>
-    <li>気分（1〜10）を聞いてくる</li>
-    <li>Notion のタスクDB と Google カレンダーから、<strong>今日のプラン</strong>を提案</li>
-    <li>採用した内容は、自動で3箇所（Notion／カレンダー／その日のデイリーノート）に書き込み</li>
+    <li><strong>6:30</strong>：Mac が無人で、Notion のタスク・Google カレンダー・昨日のログを集め、AI（Sonnet）に「今日の提案」を作らせて、LINE に1通送る。国試までの残り日数も、止まっている自動化の警告も、この1通に入ってくる</li>
+    <li><strong>返信で決める</strong>：提案には番号が振ってある。「2」と返信すると、Notion の「センターピン」（今日これだけは、の一点）が立つ。受け取り役は Cloudflare 上にいるので、<strong>Mac が寝ていても動く</strong></li>
+    <li><strong>Mac を開いたら</strong>：<code>/good-morning</code> が LINE に送った提案を読んで、続きから進める。昨日のジャーナリングやデイリーノートを読み、未完了の習慣をチェックし、インボックスの棚卸し（今日やる／置く／捨てる・最大5件）、出発時刻の計算（移動時間表から逆算して iPhone のリマインダーに「出発合図」を登録）、採用した内容を Notion・カレンダー・デイリーノートに書き込み</li>
   </ul>
   <div class="quote">
     朝の "今日何やる？" を考える 15分が、ほぼゼロ秒になった。<br>
     AIが先に提案してきて、僕は OK / 違うを言うだけ。
   </div>
+  <p style="font-size:13px; color: var(--c-muted);">
+    ※僕は<span class="term">スキル</span>＝<span class="term-inline">AIに対する"よく使う指示のテンプレ"</span>を自分用にたくさん作っています（2026年9月時点で27本）。以下、<code>/〇〇</code> と書いてあるものは全部それです。
+  </p>
 
-  <h3>5-2. note記事を書く：スキルで分業 <span class="badge stage-a">A</span></h3>
+  <h3 id="sec6-2">6-2. note記事を書く：スキルで分業 <span class="badge stage-a">A</span></h3>
   <p>
-    僕の<strong>毎日 note を書く</strong>ワークフローは、AIに分業させています。
+    note を書くワークフローは、AIに分業させています。ここは<strong>声の領域</strong>なので、AIは書き起こしと下書きまで。速さは測りません。
   </p>
 
   <div class="skill-grid">
@@ -810,17 +934,17 @@
       <div class="skill-cmd">/note</div>
       <div class="skill-title">本文執筆スキル</div>
       <div class="skill-desc">
-        インタビューで集めた素材から、僕の文体（一人称「僕」・口語）で記事を書き出す。冒頭の自己紹介ブロックは固定テンプレ。
+        インタビューで集めた素材から、僕の文体（一人称「僕」・口語）で記事を書き出す。冒頭の自己紹介ブロックは固定テンプレ。書きながら、関連する過去記事を自動で探してリンク候補を出す（6月〜）。
       </div>
       <div class="skill-scene">
-        <strong>場面：</strong><code>/ni</code> の素材→ <code>/note</code> → 約30分で初稿 → 自分で手直しして公開
+        <strong>場面：</strong><code>/ni</code> の素材→ <code>/note</code> → 初稿 → 自分で手直しして公開
       </div>
     </div>
     <div class="skill-card">
       <div class="skill-cmd">/note-publish</div>
       <div class="skill-title">公開後の事後処理（自動発火）</div>
       <div class="skill-desc">
-        公開した瞬間に必要な作業（前記事への「次の話リンク」追記／LINE配信文の最終形／フッター整合性チェック）を担当。僕がコマンドを打つのではなく、AIが会話の流れから判断して適時発火させてくれる。
+        公開した瞬間に必要な作業（前記事への「次の話リンク」追記／連載ナビの全記事同期／LINE配信文の最終形／X投稿の生成と投稿／NotebookLM公開AIへの反映／フッター整合性チェック）を担当。僕がコマンドを打つのではなく、AIが会話の流れから判断して適時発火させてくれる。
       </div>
       <div class="skill-scene">
         <strong>場面：</strong>「note公開した、URLはこれ」と話す → AIが自動で <code>/note-publish</code> を起動 → 配信文と前記事への追記が一気に整う
@@ -830,7 +954,7 @@
       <div class="skill-cmd">ChatGPT 画像生成</div>
       <div class="skill-title">サムネイル制作(手作業段階)</div>
       <div class="skill-desc">
-        サムネは今、ChatGPT の画像生成機能を使っている。記事タイトルをコピーして ChatGPT のトークに貼り付け、サムネイメージを生成 → 必要なら手直しという流れ。ここはまだ自動化しておらず、手作業の段階。
+        サムネは今も、ChatGPT の画像生成機能を使っている。記事タイトルをコピーして ChatGPT のトークに貼り付け、サムネイメージを生成 → 必要なら手直しという流れ。ここは自動化しておらず、手作業の段階。
       </div>
       <div class="skill-scene">
         <strong>場面：</strong>記事完成 → タイトルを ChatGPT に貼る → 画像生成 → noteにアップロード
@@ -842,8 +966,11 @@
     結果として、<strong>僕の声の輪郭を AI が下書きにしてくれる</strong>分業ができています。<br>
     AIが書いて僕が直す、じゃなくて、<strong>僕が話してAIが書き起こして、僕が表現を整える</strong>。同じ作業時間でも、深さと量がぜんぜん違ってきました。
   </p>
+  <p style="font-size:13px; color: var(--c-muted);">
+    ※原稿ファイルの <code>published</code> を <code>true</code> にすると、公式サイトのブログにも自動で転載されます（Obsidian の変更を見張るスクリプト → GitHub → サイト再生成）。
+  </p>
 
-  <h3>5-3. リサーチ：自動で素材集め <span class="badge stage-a">A</span></h3>
+  <h3 id="sec6-3">6-3. リサーチ：自動で素材集め、重い検索は"サブ"に <span class="badge stage-a">A</span></h3>
 
   <div class="skill-grid">
     <div class="skill-card">
@@ -860,24 +987,34 @@
       <div class="skill-cmd">/research-mining</div>
       <div class="skill-title">週次ネタ発掘</div>
       <div class="skill-desc">
-        過去7日のデイリーノート・既存記事・Wikiから「次に書けそうなnoteネタ」を3案提示。毎週日曜21時に自動で発火する。
+        過去7日のデイリーノート・既存記事・Wikiから「次に書けそうなnoteネタ」を3案提示。毎週日曜21時に無人で発火する（動かすのは Sonnet）。
       </div>
       <div class="skill-scene">
         <strong>場面：</strong>日曜の夜、Slackに通知 → 来週書けそうな3テーマが届いている → 月曜から執筆スタート
       </div>
     </div>
+    <div class="skill-card">
+      <div class="skill-cmd">サブエージェント3種</div>
+      <div class="skill-title">絞り込み専門の"別のAI" <span class="badge new">NEW</span></div>
+      <div class="skill-desc">
+        西野さんの記事3,000本超・過去のnote・Wikiとデイリーノートの横断検索は、メインのAIが自分で読まずに、別のAI（安くて速い Sonnet）に「絞り込み」だけ任せる。返答は必ず<strong>3点セット</strong>＝要約＋原典のパスと行番号＋原文ママの引用。引用と精読は、メインのAIが原典を開いてやる。要約からの孫引きは禁止。
+      </div>
+      <div class="skill-scene">
+        <strong>場面：</strong>この資料の更新でも、4ヶ月分の変化の洗い出しはサブエージェントがやりました（検索32回・約9分）。メインのAIは、その結果を原典に当たりながら本文に起こしています
+      </div>
+    </div>
   </div>
 
-  <h3>5-4. 西野亮廣さんに"相談"する <span class="badge stage-a">A</span> <span class="badge local">ローカル</span></h3>
+  <h3 id="sec6-4">6-4. 西野亮廣さんに"相談"する <span class="badge stage-a">A</span> <span class="badge local">検索はローカル</span></h3>
   <p>
-    僕は、影響を受けている方の1人として、西野亮廣さんのオンラインサロン記事（2018年〜現在の3,174本）を全部、自分のMacに保存しています。<br>
+    僕は、影響を受けている方の1人として、西野亮廣さんのオンラインサロン記事（2018年〜現在の3,344本・自動取得で増え続ける）を全部、自分のMacに保存しています。<br>
     そして、<span class="term">RAG</span>＝<span class="term-inline">AIに自分の資料を読ませてから答えさせる仕組み</span>を組んで、こう使う：
   </p>
 
   <div class="skill-grid">
     <div class="skill-card">
       <div class="skill-cmd">nishino_search.py</div>
-      <div class="skill-title">西野さん3,174記事を意味検索</div>
+      <div class="skill-title">西野さん3,344記事を意味検索</div>
       <div class="skill-desc">
         「集客について」「クラウドファンディング」とキーワードを投げると、関連記事を <span class="term">意味的に</span> 近いものから順に返す。単純な単語一致ではなく、意味の近さで探す。
       </div>
@@ -887,9 +1024,9 @@
     </div>
     <div class="skill-card">
       <div class="skill-cmd">/nishino</div>
-      <div class="skill-title">西野さんに"質問する"</div>
+      <div class="skill-title">西野さんに"質問する"（v2・2026年8月〜）</div>
       <div class="skill-desc">
-        質問を投げると、僕のMac上で動く<span class="term">ローカルAI</span>（インターネットに送らない／<code>gemma:26b</code>というモデル）が、西野記事を踏まえて答えを返す。
+        質問を投げると、まず Mac の中だけで動く意味検索が関連記事を絞り込み、Claude がその記事の全文を読んで「① 西野さんの声 → ② で、いっちーの場合」の二段で返す。先に"ペルソナパック"（判断軸TOP50・文体カルテ・原文の実例集）を読ませてあるので、口調と判断の癖が乗る。
       </div>
       <div class="skill-scene">
         <strong>場面：</strong>戦略を考えていて行き詰まった →「西野さんならどう言うか聞いてみよう」→ <code>/nishino</code>
@@ -898,12 +1035,12 @@
   </div>
 
   <p style="font-size:13px; color: var(--c-muted);">
-    ※「ローカル」＝<strong>クラウドに送らずに、自分のMacの中で完結</strong>するという意味。プライバシーが守れる／オフラインで動く／費用ゼロ、という利点があります。
+    ※「ローカル」＝<strong>クラウドに送らずに、自分のMacの中で完結</strong>するという意味。検索の「意味の近さ」計算は Mac の中（Ollama）で完結。5月版では答えもローカルAI（gemma）に出させていましたが、8月から答えは Claude に切り替え。<code>--local</code> を付ければ今も全部ローカルで動きます。
   </p>
 
-  <h3>5-5. 思考整理：6視点で意思決定する <span class="badge stage-b">B寄り</span></h3>
+  <h3 id="sec6-5">6-5. 思考整理：6視点で意思決定する <span class="badge stage-b">B寄り</span></h3>
   <p>
-    迷った時、僕は <code>/6lens</code> を使います。「6つのレンズ（視点）で並列に分析する」スキルです。
+    迷った時、僕は <code>/6lens</code> を使います。「6つのレンズ（視点）で並列に分析する」スキルです。動かすのは"判断"担当の Fable。
   </p>
   <ol>
     <li><strong>俳優レンズ</strong>：俳優としてどうか</li>
@@ -915,10 +1052,10 @@
   </ol>
   <p>
     AIが6視点で全部考えて、矛盾を炙り出して、結論まで出してくれる。<br>
-    実際に <code>/6lens</code> で判断した案件：「島守一人芝居（平和祈念公園での観光客向け一人芝居）の事業化」「にぬふぁぶし公演の角度A/B/C」「動画販売を一旦やめる判断」など。
+    実際に <code>/6lens</code> で判断した案件：「島守一人芝居（平和祈念公園での観光客向け一人芝居）の事業化」「動画販売を一旦やめる判断」「国家試験とどう付き合うか（6月に決着）」「自分の看板の一言（旗）を何にするか（8月）」など。
   </p>
 
-  <h3>5-6. 第二の記憶：Screenpipe <span class="badge stage-a">A</span></h3>
+  <h3 id="sec6-6">6-6. 第二の記憶：Screenpipe <span class="badge stage-a">A</span></h3>
   <p>
     <strong>場面</strong>：「3日前、Macで何やってたっけ？」が思い出せない時。<br>
     <strong>使う仕組み</strong>：Screenpipe（スクリーンパイプ）。
@@ -928,10 +1065,10 @@
     AIに「火曜の午後、何のYouTube見てた？」「先週、〇〇について調べたメモを引っ張ってきて」と聞ける、自分専用の"第二の記憶"。
   </p>
   <p>
-    毎日深夜、Screenpipeの記録から「日次分析レポート」が自動生成されます。
+    毎朝6:55、前日の記録から「日次分析」が自動で作られ、17:50にはその日の画面記録の要点がデイリーノートに落ちます。Mac で LINE を開いていた時間帯の画面は、トークのアーカイブとしても日別に保存される（<a href="#sec6-13">6-13</a>）。
   </p>
 
-  <h3>5-7. 全部をつなぐ"司令塔ファイル" <span class="badge stage-a">A</span> ⭐</h3>
+  <h3 id="sec6-7">6-7. 全部をつなぐ"司令塔ファイル" <span class="badge stage-a">A</span> ⭐</h3>
   <p>
     ここが、僕のAI活用の<strong>一番のキモ</strong>です。
   </p>
@@ -966,14 +1103,21 @@
       <div class="arch-box sub">§11 戦略構想ハブ</div>
       <div class="arch-box sub">§12 運用ルール</div>
     </div>
+    <div class="arch-arrow">＋</div>
+    <div class="arch-center">
+      <div class="arch-box sub">応答ログ（別ファイル）：対話から拾った本人の言葉・原文ママ</div>
+    </div>
   </div>
 
   <p>
     結果、僕がどのスキルから AI に話しかけても、AIは "いっちーが誰で／何を目指して／何を譲れないか" を理解した状態で返してくる。<br>
     <strong>"AIに自分のことを毎回1から説明しなくていい"</strong> という状態を、この1ファイルで実現しています。
   </p>
+  <p>
+    <strong>9月の更新</strong>：4ヶ月のあいだに、司令塔には「いっちーの応答」（対話から拾った本人の言葉）が溜まり続けて、ファイルが116KBまで太りました。毎回読ませている固定の文脈のうち、45%がその応答ログ。そこで応答ログを別ファイルに分けて、司令塔は65KBに戻しました。<strong>育つファイルは、太りすぎたら分ける</strong>。5章の「重いのは文脈の量」は、ここで実感した話です。
+  </p>
 
-  <h3>5-8. AIの"第二の脳"：Wiki層 <span class="badge stage-a">A</span></h3>
+  <h3 id="sec6-8">6-8. AIの"第二の脳"：Wiki層 <span class="badge stage-a">A</span></h3>
   <p>
     司令塔ファイルが "自分の判断軸" だとすると、Wiki層は "気づき・概念・分析の蓄積場所" です。<br>
     Andrej Karpathy（アンドレイ・カルパシー、有名なAI研究者）さんが提唱した知識整理のやり方を、自分用にアレンジしています。
@@ -1003,13 +1147,16 @@
   </table>
 
   <p>
-    Wiki層には現在、概念・人物・比較・分析レポートなど数百ページが溜まっています。<br>
+    Wiki層には2026年9月22日時点で、概念62・概観35・人物14・分析レポート305ページ。何をいつ取り込んだかの時系列ログは2,500行を超えました。<br>
     AIは新しい記事を読んだり、僕とジャーナリングしたりすると、自動で関連Wikiページを作るか更新するか提案してくれる。<strong>知識が"勝手に育つ"場所</strong>です。
   </p>
-
-  <h3>5-9. 3層構成：Notion × Obsidian × Claude Code <span class="badge stage-a">A</span></h3>
   <p>
-    最後、僕の作業環境の全体構造を見せます。<br>
+    <strong>6月に決めたルール</strong>：ページ同士のリンクは、AIが候補を出して、僕が「繋がる」と言った時だけ張る。リンクは検索では作れない「この二つは関係がある」という本人の判断の記録だから。
+  </p>
+
+  <h3 id="sec6-9">6-9. 3層構成：Notion × Obsidian × Claude Code <span class="badge stage-a">A</span></h3>
+  <p>
+    僕の作業環境の全体構造を見せます。<br>
     3つのツールを<strong>役割で分けて</strong>使っています。
   </p>
 
@@ -1035,41 +1182,158 @@
     だから<strong>「どれかのツールが消えても、データは残る」</strong>。これが大事。
   </p>
 
-  <h3>5-10. 自動化：LaunchAgent <span class="badge stage-a">A</span></h3>
+  <h3 id="sec6-10">6-10. 自動化：LaunchAgent で30本前後（1日の自動化マップ） <span class="badge stage-a">A</span> <span class="badge new">NEW</span></h3>
   <p>
-    Mac には <strong>LaunchAgent</strong>（ローンチエージェント）＝<span class="term-inline">「毎日何時に自動で実行する」機能</span>がOSに組み込まれています。これを使って自動化を仕込んでいます。
+    Mac には <strong>LaunchAgent</strong>（ローンチエージェント）＝<span class="term-inline">「毎日何時に自動で実行する」機能</span>がOSに組み込まれています。<br>
+    5月版では3本でした。いま、Mac の中で毎日動いている自動化は30本前後。全部「事務の領域」です。時刻順に並べます（2026-09-22時点・全部実物）。
   </p>
-  <ul>
-    <li><strong>朝6:55</strong>：Macを自動で起動（前夜が遅くても、強制的に始動）</li>
-    <li><strong>日曜21:00</strong>：<code>/research-mining</code> が自動発火 → 来週のネタ3案を生成</li>
-    <li><strong>夜24:10</strong>：Mac を自動でスリープ（夜更かし防止）</li>
-  </ul>
+  <table>
+    <thead><tr><th style="width:16%;">時刻</th><th style="width:50%;">何が動くか</th><th>何のため</th></tr></thead>
+    <tbody>
+      <tr><td>02:00</td><td>今日のタイムログ用ファイルを用意</td><td>⌘⌥T のタスク記録の受け皿</td></tr>
+      <tr><td>04:00</td><td>note記事をAI用に分類して、NotebookLM公開AIの元データを再生成</td><td><a href="#sec6-11">6-11</a> の公開AIを最新に保つ</td></tr>
+      <tr><td>04:00</td><td>西野記事データベースの再構築</td><td><a href="#sec6-4">6-4</a> の検索が最新記事を含むように</td></tr>
+      <tr><td>06:25</td><td>今日の習慣リストを Apple リマインダーに作成</td><td>Apple Watch からチェック1タップ</td></tr>
+      <tr><td>06:30</td><td>「今日の提案」を作って LINE に送る</td><td><a href="#sec6-1">6-1</a></td></tr>
+      <tr><td>06:55</td><td>Mac 自動起動（OSのスケジュール）＋ Screenpipe の前日分から日次分析</td><td>前夜が遅くても始動</td></tr>
+      <tr><td>07:00</td><td>西野サロン記事の取得（7時・12時・20時の3回）</td><td>新着を自動で保存</td></tr>
+      <tr><td>07:00</td><td>Kindle ハイライトの"復習便"（本3件＋ウェブ1件）をメールで</td><td>読んだ本の線を忘れない</td></tr>
+      <tr><td>07:00</td><td>デイリーノートに朝のブリーフィングを書き込み</td><td>国試カウントダウン・自動化アラート</td></tr>
+      <tr><td>07:05</td><td>Vault（全ファイル）の日次バックアップを GitHub に PR → 自動マージ</td><td>消えても戻せる（<a href="#sec9">9章</a>で効いた）</td></tr>
+      <tr><td>07:20</td><td>LINE トークのアーカイブ（Mac で開いていた画面の文字起こしを日別に保存）</td><td>会話の記録を Vault に</td></tr>
+      <tr><td>07:30</td><td>意味検索の索引を更新</td><td><a href="#sec6-4">6-4</a>・<a href="#sec6-3">6-3</a> の検索精度</td></tr>
+      <tr><td>09:00</td><td>自動化のヘルスチェック（登録状態の自己修復／失敗ジョブの検知／成果物の鮮度）</td><td>外から見張る（<a href="#sec9">9章</a>）</td></tr>
+      <tr><td>09:00</td><td>前日のデイリーノートの要約を冒頭に追記（Gemini）</td><td>昨日の振り返りが勝手に終わる</td></tr>
+      <tr><td>14:00</td><td>記録の中で閾値を超えた項目があれば LINE で知らせる</td><td>気づきの先回り</td></tr>
+      <tr><td>17:50</td><td>Screenpipe の記録から、その日の要点をデイリーノートへ</td><td>第二の記憶を本人の記録に接続</td></tr>
+      <tr><td>21:00（日）</td><td><code>/research-mining</code>：来週のネタ3案を生成して Slack へ</td><td><a href="#sec6-3">6-3</a></td></tr>
+      <tr><td>21:30</td><td>夜の振り返り質問（タイムログ要約＋習慣の状態）を LINE と Mac 通知で</td><td>ジャーナリングの誘導</td></tr>
+      <tr><td>23:15</td><td>就寝前の一言を LINE で</td><td>夜更かし防止</td></tr>
+      <tr><td>23:58</td><td>進行中タスクを全件クローズ（タスクピッカーの夜間処理）</td><td>翌朝を空で始める</td></tr>
+      <tr><td>00:10</td><td>Mac 自動スリープ</td><td>夜更かし防止</td></tr>
+      <tr><td>15分ごと</td><td>ボイスメモの文字起こし（完全ローカル）→ 種類判定 → 振り分け。第一声「タスク」なら Notion のインボックスへ、「アイデア」ならアイデア帳へ</td><td><a href="#sec6-13">6-13</a></td></tr>
+      <tr><td>15分ごと</td><td>Apple リマインダーのチェック → 習慣記録に同期</td><td>Watch でつけた記録が Mac 側に</td></tr>
+      <tr><td>90分ごと</td><td>2時間以上の連続使用を検知したら LINE</td><td>デジタルウェルネス</td></tr>
+      <tr><td>2分ごと</td><td>ダウンロードフォルダの自動整理 → iCloud へ</td><td>添付ファイルの行方不明を防ぐ</td></tr>
+      <tr><td>常時</td><td>Screenpipe の画面録画／コピーした文章をデイリーノートに自動取り込み／<code>published</code> にした原稿を公式サイトへ転載／ローカルAI（Ollama）の常駐</td><td><a href="#sec6-6">6-6</a>・<a href="#sec6-2">6-2</a></td></tr>
+    </tbody>
+  </table>
   <p style="font-size:13px; color: var(--c-muted);">
-    ※LaunchAgent はまだ活用の余地あり。「もっと良くできるところTOP3を改善案と共に提案する」自動化など、今後の拡張候補。
+    ※週次レビュー（<code>/weekly-review</code>・日曜21:00・15分）だけは手動。「閉じる儀式」は自分でやると決めています（<a href="#sec6-13">6-13</a>）。<br>
+    ※無人で動く分も、APIキーは使わず、いつもの Claude Max プランの枠で回しています（従量課金に転ばないように、わざと鍵を持たせていない）。
   </p>
 
-  <h3>5-11. 公開AI：NotebookLM <span class="badge stage-a">A</span></h3>
+  <h3 id="sec6-11">6-11. 公開AI：NotebookLM <span class="badge stage-a">A</span></h3>
   <p>
     Google の <strong>NotebookLM</strong>（ノートブック・エルエム）に、僕の note 記事をすべて読み込ませてあります。<br>
-    僕のフォロワーの方は、それを"<strong>いっちー専用AI</strong>"として使って、僕の考え・過去の話を質問できる状態にしています。
+    僕のフォロワーの方は、それを"<strong>いっちー専用AI</strong>"として使って、僕の考え・過去の話を質問できる状態にしています。元データは毎朝4:00に自動で作り直されます。<br>
+    → <a href="https://notebooklm.google.com/notebook/d1217e51-8352-4733-9311-d410ad584356">NotebookLM 公開版</a>
   </p>
 
-  <h3>5-12. 段階Aを1枚で：1日のタイムライン</h3>
+  <h3 id="sec6-12">6-12. 段階Aを1枚で：1日のタイムライン（2026年9月版）</h3>
 
   <ul class="timeline">
-    <li><span class="time">06:55</span><span class="what">Mac 自動起動（LaunchAgent）</span></li>
-    <li><span class="time">朝</span><span class="what"><code>/good-morning</code>：習慣チェック＋気分入力＋今日のプラン提案</span><span class="note">→ 昨日のログ・Notion・Calendar・Daily から提案 → OKで3箇所に自動書き込み</span></li>
-    <li><span class="time">日中</span><span class="what">タスクの開始/終了を タイムログと Notion（セカンドブレイン）に記録</span><span class="note">→ 画面右上に「いま取り組んでいるタスク」が常時表示され、シングルタスクに引き戻される工夫</span></li>
-    <li><span class="time">夕方</span><span class="what"><code>/ni</code>（インタビュー）→ <code>/note</code>（執筆）：素材集め→本文化</span></li>
+    <li><span class="time">06:30</span><span class="what">LINE に「今日の提案」が届く</span><span class="note">→ 布団の中で読んで、番号を返信。今日の一点（センターピン）が Notion に立つ</span></li>
+    <li><span class="time">06:55</span><span class="what">Mac 自動起動。Screenpipe の日次分析が走る</span></li>
+    <li><span class="time">朝</span><span class="what"><code>/good-morning</code>：LINE の提案の続きから</span><span class="note">→ 棚卸し・出発時刻の計算・OKで Notion／カレンダー／デイリーノートに自動書き込み</span></li>
+    <li><span class="time">日中</span><span class="what">⌘⌥T でタスクを選ぶ → タイムログと Notion に記録</span><span class="note">→ 画面右上に「いま取り組んでいるタスク」が常時表示され、シングルタスクに引き戻される工夫</span></li>
+    <li><span class="time">移動前</span><span class="what">iPhone のリマインダーが「出発合図」を鳴らす</span><span class="note">→ 移動時間表から逆算した時刻。Mac が寝ていても鳴る</span></li>
+    <li><span class="time">夕方</span><span class="what"><code>/ni</code>（インタビュー）→ <code>/note</code>（執筆）：書く日は素材集め→本文化</span></li>
     <li><span class="time">公開時</span><span class="what">AIが <code>/note-publish</code> を自動発火 ＋ ChatGPT 画像生成でサムネ作成</span></li>
-    <li><span class="time">夜</span><span class="what">ジャーナリング／意思決定が必要なら <code>/6lens</code></span></li>
-    <li><span class="time">23:00</span><span class="what">就寝目標</span></li>
-    <li><span class="time">24:10</span><span class="what">Mac 自動スリープ（LaunchAgent）</span></li>
-    <li><span class="time">常時</span><span class="what">Screenpipe（画面録画・第二の記憶）</span><span class="note">→ 翌日の分析レポートに自動反映</span></li>
-    <li><span class="time">毎週日</span><span class="what"><code>/research-mining</code>：来週のネタ3案を21時に自動生成</span></li>
+    <li><span class="time">21:30</span><span class="what">LINE に夜の振り返り質問が届く → ジャーナリング。迷いがあれば <code>/6lens</code></span></li>
+    <li><span class="time">23:15</span><span class="what">LINE に就寝前の一言</span></li>
+    <li><span class="time">23:58</span><span class="what">進行中タスクを自動クローズ</span></li>
+    <li><span class="time">00:10</span><span class="what">Mac 自動スリープ（LaunchAgent）</span></li>
+    <li><span class="time">常時</span><span class="what">Screenpipe（画面録画）／ボイスメモの文字起こし／ダウンロードの整理</span></li>
+    <li><span class="time">毎週日</span><span class="what">21:00 <code>/research-mining</code> が来週のネタ3案を Slack へ。同じ時間に <code>/weekly-review</code>（手動・15分）で今週を閉じる</span></li>
   </ul>
 
-  <h2 id="sec6"><span class="num">6.</span>段階B：壁打ち相手としてのAI</h2>
+  <h3 id="sec6-13">6-13. 4ヶ月で増えた、その他の手足 <span class="badge stage-a">A</span> <span class="badge new">NEW</span></h3>
+
+  <div class="skill-grid">
+    <div class="skill-card">
+      <div class="skill-cmd">/nichiji</div>
+      <div class="skill-title">日程調整</div>
+      <div class="skill-desc">
+        相手の LINE やメールの文を貼って「候補出して」と言うと、Google カレンダーと、カレンダーに載っていない事情（稽古・公演・移動時間・活動同士の優先順位）を読んで、候補日と返信文を作る。送るのは僕。確定したらカレンダーに登録。
+      </div>
+      <div class="skill-scene">
+        <strong>場面：</strong>「〇日か△日、どちらが空いていますか？」→ <code>/nichiji</code> → 候補と返信文 → 僕が LINE で送る
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cmd">/weekly-review</div>
+      <div class="skill-title">週次レビュー（閉じる儀式）</div>
+      <div class="skill-desc">
+        毎週日曜21時・15分。期限が過ぎたタスクを閉じ、振り返り日が来たプロジェクトを判定し、アイデア帳から3つ差し出し、来週の3つを決める。9月の全件棚卸し（約140件）で「器は揃っていて、無いのは閉じる儀式だった」とわかって作った。
+      </div>
+      <div class="skill-scene">
+        <strong>場面：</strong>日曜21時 → <code>/weekly-review</code> → 15分で「今週閉じたもの」と「来週の3つ」が決まる
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cmd">ボイスメモ</div>
+      <div class="skill-title">自動文字起こし＋振り分け</div>
+      <div class="skill-desc">
+        iPhone のボイスメモに吹き込むと、15分以内に Mac が文字起こしする（完全ローカル・クラウドに送らない）。第一声が「タスク」なら Notion のインボックスへ、「アイデア」ならアイデア帳へ。種類が判定できない時は、勝手に振り分けず僕に聞く。
+      </div>
+      <div class="skill-scene">
+        <strong>場面：</strong>「タスク、〇〇の返信」と吹き込む → 15分後には Notion のインボックスに1行入っている
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cmd">⌘⌥T</div>
+      <div class="skill-title">タスクピッカー（Hammerspoon）</div>
+      <div class="skill-desc">
+        キー1つで Notion のタスク一覧が出て、選ぶとタイムログと Notion に開始が記録され、画面右上に「いま取り組んでいるタスク」が常時表示される。23:58 に進行中を全件クローズ。
+      </div>
+      <div class="skill-scene">
+        <strong>場面：</strong>⌘⌥T → 一覧から選ぶ → 右上に表示 → 終わったらもう一度 ⌘⌥T
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cmd">/bookclip</div>
+      <div class="skill-title">Kindle ハイライト同期</div>
+      <div class="skill-desc">
+        iPhone の Kindle でハイライトするだけ。Amazon の「メモとハイライト」ページを読み取って、Notion の本のデータベースに差分だけ保存。毎朝7:00に"復習便"がメールで届く。
+      </div>
+      <div class="skill-scene">
+        <strong>場面：</strong>寝る前に Kindle で線を引く → 翌朝、Notion に入っている
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cmd">LINE アーカイブ</div>
+      <div class="skill-title">トークの自動保存</div>
+      <div class="skill-desc">
+        Mac で開いていた LINE の画面を、Screenpipe の文字起こしから日別に Vault へ（毎朝7:20）。トーク履歴のエクスポートを所定の場所に置けば、全文も取り込む。
+      </div>
+      <div class="skill-scene">
+        <strong>場面：</strong>「あの件、LINEで何て言ってたっけ」→ Vault 内を検索するだけで出てくる
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cmd">/yt</div>
+      <div class="skill-title">YouTube 動画の取り込み</div>
+      <div class="skill-desc">
+        URL を渡すと、動画の文字起こしを取り込んで要約し、司令塔や Wiki に接続する候補を出す。
+      </div>
+      <div class="skill-scene">
+        <strong>場面：</strong>気になった講演動画 → <code>/yt URL</code> → 要約と「Wikiのどこに繋がるか」の提案
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cmd">/x-stock</div>
+      <div class="skill-title">過去記事を X に</div>
+      <div class="skill-desc">
+        反応の良かった過去の note 記事を選んで、X に再投稿する（半自動）。新規公開時の X 投稿は <code>/note-publish</code> の中。
+      </div>
+      <div class="skill-scene">
+        <strong>場面：</strong>「過去記事を X に」→ 候補が出る → 選んで投稿
+      </div>
+    </div>
+  </div>
+
+  <h2 id="sec7"><span class="num">7.</span>段階B：壁打ち相手としてのAI</h2>
 
   <div class="section-lead">
     <strong>この章の目的</strong>：AIが"手足"から"脳の拡張"に進化した瞬間の話。実例3つ。
@@ -1082,7 +1346,7 @@
 
   <h3>実例1：「観測される自分／ただ在る自分」の発見</h3>
   <p>
-    2026年5月。Screenpipe（後述する、画面を録画して記録するツール）を "第2の記憶" として育てる作業を、AIと一緒に進めていました。<br>
+    2026年5月。Screenpipe（<a href="#sec6-6">6-6</a>で触れた、画面を録画して記録するツール）を "第2の記憶" として育てる作業を、AIと一緒に進めていました。<br>
     その対話の流れの中で、こういう構造が立ち上がってきました。
   </p>
   <p>
@@ -1126,6 +1390,12 @@
     一方的に道具として使うんじゃなくて、<strong>AIに対しても「こう関わって」と伝える</strong>段階に来ています。
   </p>
 
+  <h3>4ヶ月で足された仕組み</h3>
+  <p>
+    壁打ちで出てきた本人の言葉は、司令塔の「応答ログ」に原文ママで溜まります（<a href="#sec6-7">6-7</a>）。要約ではなく原文で残すのは、あとで読み返した時に、その時の自分の声がそのまま出てくるようにするため。<br>
+    「まだ確定じゃない信念」は<strong>信念候補</strong>として1週間〜1ヶ月"熟成"させ、期限が来たらAIが「これ昇格させる？」と聞いてくる。この仕組みが7月に初めて一周して、最初の信念候補が正式な信念になりました。
+  </p>
+
   <h3>段階Bが効く場面</h3>
   <table>
     <thead><tr><th>場面</th><th>AIにやってもらうこと</th></tr></thead>
@@ -1134,25 +1404,35 @@
       <tr><td>意思決定で迷う</td><td><code>/6lens</code> で6視点並列分析</td></tr>
       <tr><td>noteの構成が決まらない</td><td>素材を全部投げて「3つの構成案」を出してもらう</td></tr>
       <tr><td>過去の自分の発言と矛盾してる気がする</td><td>Wiki層を横断検索して矛盾を炙り出してもらう</td></tr>
+      <tr><td>「やること」が頭の中で渋滞している</td><td>全件を並べて、今週・今月・棚上げ（振り返り日つき）・閉じる、に仕分けてもらう（9月に約140件）</td></tr>
     </tbody>
   </table>
 
-  <h2 id="sec7"><span class="num">7.</span>段階C：人生のパートナー（未来形）</h2>
+  <h2 id="sec8"><span class="num">8.</span>段階C：人生のパートナー（一歩目が動いた）</h2>
 
   <div class="section-lead">
-    <strong>この章の目的</strong>：まだ実現してない、3年後に目指してる姿の話。<br>
+    <strong>この章の目的</strong>：3年後に目指してる姿と、2026年9月に動き出した一歩目の話。<br>
     「ここまでやるんだ」と笑ってもらえれば十分です。
   </div>
 
   <p>
     段階A・Bは Mac の前で起きていることです。<br>
-    段階Cは、<strong>Macを開いていない時間にも、AIが僕の人生と関わる</strong>段階。
+    段階Cは、<strong>Macを開いていない時間にも、AIが僕の人生と関わる</strong>段階。5月版では「まだ実現していない」と書きました。9月、一歩目だけ動きました。
   </p>
 
-  <h3>目指している姿</h3>
+  <h3>2026年9月時点で、動いているもの <span class="badge new">NEW</span></h3>
+  <ul>
+    <li><strong>朝6:30</strong>、Mac を開く前に LINE へ「今日の提案」が届く。番号を返すだけで今日の一点が決まる（受け取り役は Cloudflare 上。Mac が寝ていても動く）</li>
+    <li><strong>出発の合図</strong>が iPhone と Apple Watch で鳴る。移動時間表から逆算した時刻で、朝の採用時に自動登録される</li>
+    <li><strong>夜21:30</strong>の振り返り質問と、<strong>23:15</strong>の就寝前の一言が LINE に届く</li>
+    <li>吹き込んだ<strong>ボイスメモ</strong>が15分以内に文字になり、第一声が「タスク」なら Notion のインボックスに入る</li>
+    <li>2時間続けて画面を見ていると、<strong>「休め」の LINE</strong> が来る</li>
+  </ul>
+
+  <h3>まだ、これから</h3>
   <ul>
     <li><strong>全人格的な記録</strong>：好み／時間の使い方／睡眠／食事／運動／人間関係／悩み／精神状態が、全部AIと共有されている</li>
-    <li><strong>簡単アクセス</strong>：スマホ・Apple Watch・パソコンを開かなくても、声でAIに話しかけられる</li>
+    <li><strong>声で話しかける</strong>：スマホ・Apple Watch・パソコンを開かなくても、声でAIに話しかけられる（いまは LINE の文字）</li>
     <li><strong>フィジカルAI連携</strong>：家事・連絡などの作業も、ロボットやスマート家電と連携して進む</li>
     <li><strong>判断パートナー</strong>：俳優としての方向性・体調管理・人間関係の調整まで、AIと相談する</li>
   </ul>
@@ -1166,10 +1446,69 @@
     これは "AIに人生を預ける" ではなく、<strong>"AIにルーチンを預けて、人生の本番に集中する"</strong> という考え方です。
   </p>
 
-  <h2 id="sec8"><span class="num">8.</span>設計原則（読み飛ばし可）</h2>
+  <h2 id="sec9"><span class="num">9.</span>4ヶ月で起きた失敗と復旧 <span class="badge new">NEW</span></h2>
 
   <div class="section-lead">
-    <strong>この章の目的</strong>：技術寄りの裏側。<strong>仕組みづくりに興味がある人だけ</strong>でOKです。
+    <strong>この章の目的</strong>：うまくいった話だけだと嘘になるので。自動化が壊れた3回と、そこから決めたこと。
+  </div>
+
+  <p>
+    「自動化して終わり」ではありませんでした。4ヶ月で3回、わりと派手に壊れています。<br>
+    3回とも、直したのはAIとの対話です。壊した側にもAIがいましたが。
+  </p>
+
+  <div class="incident">
+    <h4>① 6月：無人のAIが、人間用の設定を読んでしまった</h4>
+    <p>
+      毎朝 Slack に届く日次レポートが、5月30日から「と」や朝の挨拶だけになっていた。<br>
+      原因は、無人で動かすAIが、人間が使う時用の設定（対話の開始時に走る自動処理や、設定ファイルの「保存しろ」という指示）まで読み込んで、出力を乗っ取られていたこと。
+    </p>
+    <div class="lesson"><strong>決めたこと：</strong>無人で動くAIには、人間用の設定を読ませない。いま朝の提案を作るスクリプトは、設定ファイルの無い空のフォルダでAIを起動する。</div>
+  </div>
+
+  <div class="incident">
+    <h4>② 7月：36日間、黙って止まっていた</h4>
+    <p>
+      西野さんの記事の日次取得が、6月19日を最後に36日間止まっていた。<br>
+      macOS の更新後、OS がジョブの起動そのものを拒否していて、スクリプトは1バイトも実行されず、ログも残らない。ジョブの内側からは、絶対に検知できない壊れ方。
+    </p>
+    <div class="lesson"><strong>決めたこと：</strong>自動化は「外から」見張る。毎朝9:00のヘルスチェックが生まれた。全ジョブの登録状態を確認して自己修復し、前回失敗したジョブを拾い、成果物が何日更新されていないかを見て、デイリーノート・Mac通知・朝のLINEに出す。</div>
+  </div>
+
+  <div class="incident">
+    <h4>③ 9月：AIが、自分のnote原稿を消していた</h4>
+    <p>
+      9月21日の朝、LINE の提案の冒頭に「⚠️ 止まっている自動化 7件」と出ました。東京でオーディションを受ける日で、台風でした。
+    </p>
+    <p>
+      調べると、7件のうち5件は前夜の Mac の電池切れ、2件はいつもの常習犯。本当に止まっていたのは別で、<strong>Vault の日次バックアップが9月17日から止まっていた</strong>（156ファイルが未保存）。
+    </p>
+    <p>
+      原因をたどると、AIとの対話を始めるたびに走る自動処理（フック）が、note の連載ナビを作るスクリプトを毎回・全168本に対して走らせていた。9月16日だけで23回。iCloud 上でまだ実体化していないファイルを「空」として読み、<strong>2本の原稿の本文を消していた</strong>。バックアップ側の安全装置が「原稿が縮んでいる」と検知して、止めてくれていた。
+    </p>
+    <p>
+      復旧は、その場でAIに頼みました。原稿299本を全部実体化 → 消えた2本を git の履歴から復元 → ナビ生成を1回だけ正しく実行（62本のリンクが復旧）→ 縮んだファイルがゼロなのを検算 → 日次バックアップを手動で実行して5日分・96ファイルを取り込み。原因のフックは撤去して、同じ処理は「note を公開した直後に1回だけ」に移しました。
+    </p>
+    <div class="quote" style="margin:12px 0 4px;">
+      自分の原稿消しちゃったりとかしていたんですけれども、そういった面でもやっぱり復旧もAIに聞けばやってくれるっていうのもあるので。そういうことがあっても、僕は任せてよかったなと、いまだに思っております。<br>
+      <span style="font-size:12px; font-style:normal;">（2026-09-21・勉強会での発言）</span>
+    </div>
+    <div class="lesson"><strong>決めたこと：</strong>ファイルを書き戻す処理を「対話の開始」に置かない。置くなら「公開直後に1回」。そして、全部 git（履歴つきの保存）に入れておく。消えても戻せる。</div>
+  </div>
+
+  <h3>3回から決めたこと（まとめ）</h3>
+  <ol>
+    <li><strong>無人で動くAIに、人間用の設定を読ませない</strong>（空のフォルダで起動する）</li>
+    <li><strong>自動化は「外から」見張る</strong>。ジョブの内側では検知できない壊れ方がある</li>
+    <li><strong>書き戻す処理を「対話の開始」に置かない</strong>。置くなら「公開直後に1回」</li>
+    <li><strong>全部 git に入れておく</strong>。消えても戻せる。5月版に書いた「記憶喪失耐性原則」が、実際に効いた</li>
+    <li><strong>安全装置は「縮んだら止める」</strong>。止まってくれたから気づけた。止まらない自動化のほうが怖い</li>
+  </ol>
+
+  <h2 id="sec10"><span class="num">10.</span>設計原則（読み飛ばし可）</h2>
+
+  <div class="section-lead">
+    <strong>この章の目的</strong>：技術寄りの裏側。<strong>仕組みづくりに興味がある人だけ</strong>でOKです。5月版の①〜⑥はそのまま、⑦は更新、⑧〜⑫は4ヶ月で足したもの。
   </div>
 
   <div class="principle-card">
@@ -1219,14 +1558,49 @@
   </div>
 
   <div class="principle-card">
-    <h4>⑦ 段階的火力配分（強火3／中火6）</h4>
+    <h4>⑦ 火力配分 v2（強火3／中火／棚上げ）<span class="badge new">更新</span></h4>
     <p>
-      9つの同時並行戦線を「強火3／中火6」に振り分けて温度管理。
-      強火＝全力ダッシュ、中火＝外の声を聞ける余白。AIにも「今これは強火、これは中火」を伝えて優先度を判断させる。
+      5月は「強火3／中火6」でした。9月の棚卸しで、約140件の「やること・やろうとしていること」を全部並べて、<strong>強火3（俳優キャリア／年末のチャリティ公演「みんながサンタ！」／note）・中火・棚上げ</strong>に振り分け直した。
+      ルールは3つ。<strong>棚上げには必ず振り返り日を付ける／過去日付の未完了は日曜に閉じる／声の領域は台帳に入れない</strong>。AIにも「今これは強火」を伝えて優先度を判断させる。
     </p>
   </div>
 
-  <h2 id="sec9"><span class="num">9.</span>3年後の地図</h2>
+  <div class="principle-card">
+    <h4>⑧ 質 ＞ 速度（声の領域） <span class="badge new">NEW</span></h4>
+    <p>
+      5月版には「note執筆が30分以内に完成する」を段階Aの卒業基準として書いていました。6月に撤回。note は声の領域なので、速度で測らない。速くなること自体を目標にしない。
+    </p>
+  </div>
+
+  <div class="principle-card">
+    <h4>⑨ 3点セット（要約＋原典＋原文ママ） <span class="badge new">NEW</span></h4>
+    <p>
+      別のAI（サブエージェント）に検索を任せた時、返答は<strong>要約・原典のパスと行番号・原文ママの引用</strong>の3つが揃って初めて使う。要約だけで本文を書かない。引用の時は必ず原典を開いて読む。
+    </p>
+  </div>
+
+  <div class="principle-card">
+    <h4>⑩ 自動化は外から見張る <span class="badge new">NEW</span></h4>
+    <p>
+      ジョブの内側では検知できない壊れ方がある（9章②）。だから、全ジョブを外から見るヘルスチェックを毎朝走らせ、結果を朝のLINEにも載せる。「動いているはず」を信じない。
+    </p>
+  </div>
+
+  <div class="principle-card">
+    <h4>⑪ 毎回読ませるものは、軽く保つ <span class="badge new">NEW</span></h4>
+    <p>
+      司令塔の応答ログを分離（116KB→65KB）、判断ログを設定ファイルから分離。「毎回読むファイル」が太ると、全対話が重くなる。育つファイルは、太りすぎたら分ける。
+    </p>
+  </div>
+
+  <div class="principle-card">
+    <h4>⑫ 脱・過剰指示 <span class="badge new">NEW</span></h4>
+    <p>
+      今のモデルは、細かい手順書や「必ず」「絶対」の連打より、<strong>目標・理由・制約</strong>で動く。命令を強くすると、やりすぎ・考えすぎが起きる。Anthropic の公式ガイドの黄金律は「文脈の薄い同僚にそのプロンプトを見せて、迷わず実行できるか」。9月、自分の設定ファイルとスキルを、この方向で見直す方針にした。
+    </p>
+  </div>
+
+  <h2 id="sec11"><span class="num">11.</span>3年後の地図</h2>
 
   <div class="section-lead">
     <strong>この章の目的</strong>：「で、結局AIで何がしたいの？」への答え。
@@ -1240,7 +1614,7 @@
       <tr><td>noteとして</td><td>読者2〜3万人。noteからの収益で生活費の一部が成立。</td></tr>
       <tr><td>医学として</td><td>俳優8 ／ 医療2 の二刀流。演劇と医療の橋渡し役。</td></tr>
       <tr><td>経済</td><td>役者・note収入だけで生活できる（月20〜30万円）。理想は「やりたいことに制限がない」状態。</td></tr>
-      <tr><td>AI活用</td><td>段階Cが完成。スマホ・Watchから常時アクセス可能なパートナー化。</td></tr>
+      <tr><td>AI活用</td><td>段階Cが完成。スマホ・Watchから常時アクセス可能なパートナー化（2026年9月：LINEとリマインダーで一歩目）。</td></tr>
     </tbody>
   </table>
 
@@ -1274,8 +1648,11 @@
       </ul>
     </div>
   </div>
+  <p style="font-size:13px; color: var(--c-muted);">
+    ※この2列は、<a href="#sec5">5章</a>の一問「これを自動化したら、本人の声が死ぬか？」で引き直すと、そのまま出てきます。
+  </p>
 
-  <h2 id="sec10"><span class="num">10.</span>よくある質問（FAQ）</h2>
+  <h2 id="sec12"><span class="num">12.</span>よくある質問（FAQ）</h2>
 
   <div class="glossary">
     <details>
@@ -1287,7 +1664,7 @@
     <details>
       <summary>Q2. どのAIを使ってるんですか？</summary>
       <div class="gloss-body">
-        メインは <strong>Claude</strong>（Anthropic社のAI）です。具体的には Claude Code というターミナル環境を使っています。サブで ChatGPT、Gemini（NotebookLMの中身）、ローカルAI（gemma:26b）も並行。
+        メインは <strong>Claude</strong>（Anthropic社のAI）で、Claude Code というターミナル環境から使っています。2026年9月時点では、判断は Fable 5.1、創作と対話は Opus 5、作業は Sonnet 5、仕分けは Haiku 4.5 と使い分け（<a href="#sec5">5章</a>）。サブで ChatGPT（サムネ画像）、Gemini（NotebookLMの中身・デイリーノートの要約）、Mac の中で動くローカルの意味検索と文字起こし。
       </div>
     </details>
     <details>
@@ -1300,19 +1677,19 @@
       <summary>Q4. 費用はかかってますか？</summary>
       <div class="gloss-body">
         メインは <strong>Claude の Max プラン</strong> に課金中（のめり込み過ぎて上位プランに上げた、というのが正直なところ）。<strong>Claude の Pro プランでも</strong>、note運営1本だけ／下書き作り／小さめのWiki構築くらいなら十分回ります。<br>
-        その他は <strong>Notion 学割（無料・継続中）</strong>、<strong>Google Gemini 学割（Proプラン15ヶ月無料）</strong> を活用中。クラウドAIの従量課金はゼロ（Maxプランの定額枠で完結）。ローカルAIは電気代だけ。
+        その他は <strong>Notion 学割（無料・継続中）</strong>、<strong>Google Gemini 学割（Proプラン15ヶ月無料）</strong> を活用中。Claude の利用は、無人で動く分（朝の提案・週次ネタ発掘）も含めて Max プランの定額枠で完結。従量課金に転ばないように、無人のスクリプトにはわざと API の鍵を持たせていません。ローカルAIは電気代だけ。
       </div>
     </details>
     <details>
       <summary>Q5. AIに僕の個人情報を全部渡して大丈夫？</summary>
       <div class="gloss-body">
-        ここは慎重に設計しています。<strong>機密性が高い情報はローカルAI</strong>（クラウドに送らないAI）で処理／<strong>公開しないファイルは Vault 内に保存し、note には出さない（3層公開設計）</strong>／<strong>SNS情報や他人のプライバシーは AI に学習させない</strong>。
+        ここは慎重に設計しています。<strong>機密性が高い情報はローカルAI</strong>（クラウドに送らないAI）で処理／<strong>公開しないファイルは Vault 内に保存し、note には出さない（3層公開設計）</strong>／<strong>SNS情報や他人のプライバシーは AI に学習させない</strong>。ボイスメモの文字起こしと分類も、クラウドには送りません。
       </div>
     </details>
     <details>
       <summary>Q6. 「AI使ってる」と「AI任せ」の違いは？</summary>
       <div class="gloss-body">
-        僕の中の線引きは「<strong>誰の声で書いてあるか</strong>」です。AIに下書きさせても、最終的に <strong>「いっちーの声」で公開できる状態</strong> まで自分が編集する。声を譲った瞬間にそれは "AI任せ" で、僕の表現じゃなくなる。
+        僕の中の線引きは「<strong>誰の声で書いてあるか</strong>」です。AIに下書きさせても、最終的に <strong>「いっちーの声」で公開できる状態</strong> まで自分が編集する。声を譲った瞬間にそれは "AI任せ" で、僕の表現じゃなくなる。<a href="#sec5">5章</a>の「声の領域／事務の領域」は、この線引きを仕組みにしたものです。
       </div>
     </details>
     <details>
@@ -1321,9 +1698,33 @@
         まず <strong>「司令塔ファイル"もどき"」をテキストで1枚作る</strong> ことをおすすめします。「私は何者か／何を目指してるか／何を譲れないか」を箇条書きで1ページ。それを毎回 ChatGPT / Claude の最初に貼り付けるだけで、返ってくる答えの精度が劇的に変わります。
       </div>
     </details>
+    <details>
+      <summary>Q8. 自動化が壊れたらどうしてるの？ <span class="badge new">NEW</span></summary>
+      <div class="gloss-body">
+        4ヶ月で3回壊れました（<a href="#sec9">9章</a>）。いまは毎朝9:00のヘルスチェックが全ジョブを外から見張って、止まっていれば朝のLINEの冒頭に「⚠️」が出ます。直すのもAIとの対話。原因の調査から復旧の手順、再発防止の設計まで、その場で頼みます。
+      </div>
+    </details>
+    <details>
+      <summary>Q9. スマホからも使えるの？ <span class="badge new">NEW</span></summary>
+      <div class="gloss-body">
+        日常の入口は LINE です。朝の提案が届く、番号で返す、夜の振り返り質問が届く、出発の合図が鳴る、ボイスメモが文字になる。Claude Code 自体も、スマホから Mac を遠隔で動かすことも、Mac なしでクラウド上で動かすこともできます（Vault を GitHub に置いてあるので）。
+      </div>
+    </details>
+    <details>
+      <summary>Q10. AIモデルの使い分けって、そこまで必要？ <span class="badge new">NEW</span></summary>
+      <div class="gloss-body">
+        迷ったら Opus で十分です。使い分けの一問は「本人が消えたら価値も消えるか？」。消えない作業（同期・分類・事後処理）を安いモデルに回すと、値段も速度も楽になる。ただ、実測してわかったのは、重いのはモデルより「毎回読ませている文脈の量」でした（<a href="#sec5">5章</a>・<a href="#sec6-7">6-7</a>）。
+      </div>
+    </details>
+    <details>
+      <summary>Q11. AIに「必ず〜して」と強く書けば言うことを聞く？ <span class="badge new">NEW</span></summary>
+      <div class="gloss-body">
+        今のモデルは、逆効果になることがあります。細かい手順書や「必ず」「絶対」の連打より、<strong>目標・理由・制約</strong>を書いたほうが動く。Anthropic の公式ガイドの黄金律は「文脈の薄い同僚にそのプロンプトを見せて、迷わず実行できるか」。僕も9月に、自分の設定ファイルをこの方向で見直す方針にしました（<a href="#sec10">10章</a>⑫）。
+      </div>
+    </details>
   </div>
 
-  <h2 id="sec11"><span class="num">11.</span>用語集</h2>
+  <h2 id="sec13"><span class="num">13.</span>用語集</h2>
 
   <div class="section-lead">
     <strong>この章の目的</strong>：本文に出てきた言葉を、まとめてやさしく解説。気になったものだけ開いて読んでください。
@@ -1352,13 +1753,19 @@
     <details>
       <summary>コンテキスト</summary>
       <div class="gloss-body">
-        AIに渡している情報の塊。<strong>"AIに今読ませているもの全部"</strong>と思えばOK。長く話してると古い話を忘れていく仕組みでもある。
+        AIに渡している情報の塊。<strong>"AIに今読ませているもの全部"</strong>と思えばOK。長く話してると古い話を忘れていく仕組みでもある。太ると重くなる（<a href="#sec6-7">6-7</a>）。
       </div>
     </details>
     <details>
       <summary>スキル／カスタムコマンド</summary>
       <div class="gloss-body">
         AIに対する<strong>"よく使う指示のテンプレ"</strong>。<code>/note</code> と打つだけで「いつものnote執筆のお願い」が一気に発動する、みたいな仕組み。
+      </div>
+    </details>
+    <details>
+      <summary>サブエージェント</summary>
+      <div class="gloss-body">
+        メインのAIが、<strong>別のAIを"部下"として起動して仕事を振る</strong>仕組み。僕の場合は絞り込み係。安いモデルに重い検索をさせ、精読と引用はメインが原典を開いてやる。
       </div>
     </details>
     <details>
@@ -1374,9 +1781,9 @@
       </div>
     </details>
     <details>
-      <summary>ローカルAI／ローカルLLM</summary>
+      <summary>ローカルAI／ローカルLLM／Ollama</summary>
       <div class="gloss-body">
-        クラウドに送らず、<strong>自分のパソコンの中だけで動くAI</strong>。プライバシーが守れる／オフラインで動く／費用ゼロ、が利点。性能はクラウド最強モデルよりは劣る。
+        クラウドに送らず、<strong>自分のパソコンの中だけで動くAI</strong>。プライバシーが守れる／オフラインで動く／費用ゼロ、が利点。性能はクラウド最強モデルよりは劣る。Ollama（オラマ）は、それを Mac で動かすための土台ソフト。
       </div>
     </details>
     <details>
@@ -1404,6 +1811,36 @@
       </div>
     </details>
     <details>
+      <summary>Fable／Opus／Sonnet／Haiku</summary>
+      <div class="gloss-body">
+        Claude のモデルの名前。上から順に、賢くて高い→速くて安い。僕は <strong>判断／創作と対話／作業／仕分け</strong> で使い分けている（<a href="#sec5">5章</a>）。
+      </div>
+    </details>
+    <details>
+      <summary>フック（hook）</summary>
+      <div class="gloss-body">
+        「AIとの対話が始まった時」「ファイルを保存した時」のような<strong>きっかけに合わせて自動で走る処理</strong>。便利だが、置き場所を間違えると9章③のようなことが起きる。
+      </div>
+    </details>
+    <details>
+      <summary>git／GitHub／PR</summary>
+      <div class="gloss-body">
+        git は<strong>ファイルの変更履歴を全部残す仕組み</strong>。GitHub はそれをクラウドに置く場所。PR（プルリクエスト）は「この変更を取り込んでください」というひとまとまり。僕の Vault は毎朝7:05に自動で PR が作られ、取り込まれる。消えた原稿もここから戻せた。
+      </div>
+    </details>
+    <details>
+      <summary>Cloudflare Workers</summary>
+      <div class="gloss-body">
+        小さなプログラムをクラウドに置いて、<strong>自分のパソコンが寝ていても動かせる</strong>仕組み。LINE の返信を受け取って Notion に書く係が、ここにいる。
+      </div>
+    </details>
+    <details>
+      <summary>Whisper（文字起こしAI）</summary>
+      <div class="gloss-body">
+        音声を文字にするAI。僕は Mac の中で動く版を使っていて、<strong>ボイスメモをクラウドに送らずに文字起こし</strong>している。
+      </div>
+    </details>
+    <details>
       <summary>NotebookLM（ノートブック・エルエム）</summary>
       <div class="gloss-body">
         Googleが作った<strong>"自分の資料を学習させて対話できるAIノート"</strong>。僕は note 記事を全部読ませて「いっちー専用AI」を作っています。
@@ -1412,7 +1849,13 @@
     <details>
       <summary>LaunchAgent（ローンチエージェント）</summary>
       <div class="gloss-body">
-        macOS の標準機能で、<strong>「毎日何時に自動でこれを実行する」</strong>を仕込む仕組み。タイマー予約の上位互換。
+        macOS の標準機能で、<strong>「毎日何時に自動でこれを実行する」</strong>を仕込む仕組み。タイマー予約の上位互換。いま30本前後（<a href="#sec6-10">6-10</a>）。
+      </div>
+    </details>
+    <details>
+      <summary>Hammerspoon（ハンマースプーン）</summary>
+      <div class="gloss-body">
+        Mac の操作をキー1つで自動化するためのソフト。⌘⌥T のタスクピッカーと、画面右上の「いま取り組んでいるタスク」表示はこれで作っている。
       </div>
     </details>
     <details>
@@ -1438,9 +1881,21 @@
   <h3>いっちー用語（独自に作った言葉）</h3>
   <div class="glossary">
     <details>
+      <summary>声の領域／事務の領域 <span class="badge new">NEW</span></summary>
+      <div class="gloss-body">
+        <strong>本人が消えたら価値も消える領域（声）と、誰がやっても同じ領域（事務）</strong>。声はAIが増幅まで、事務は本人を外してよい。判断の一問は「これを自動化したら、本人の声が死ぬか？」（<a href="#sec5">5章</a>）。
+      </div>
+    </details>
+    <details>
       <summary>司令塔ファイル</summary>
       <div class="gloss-body">
         <strong>AI対話のすべての起点になる1枚のMarkdownファイル</strong>。「いっちーは何者か」「目指してる地点」「譲れない信念」を集約。AIは毎回これを読んでから返答する。
+      </div>
+    </details>
+    <details>
+      <summary>応答ログ <span class="badge new">NEW</span></summary>
+      <div class="gloss-body">
+        AIとの対話から拾った<strong>本人の言葉を、原文ママで時系列に溜める別ファイル</strong>。司令塔が太りすぎたので9月に分離した（<a href="#sec6-7">6-7</a>）。
       </div>
     </details>
     <details>
@@ -1452,7 +1907,7 @@
     <details>
       <summary>段階A／B／C（AI活用の3段階）</summary>
       <div class="gloss-body">
-        <strong>A＝タスク代行（手足）／B＝脳の拡張（壁打ち）／C＝人生のパートナー</strong>。AIとの関わり方の進化モデル。いまは A 中心、B 走り始め、C 未来形。
+        <strong>A＝タスク代行（手足）／B＝脳の拡張（壁打ち）／C＝人生のパートナー</strong>。AIとの関わり方の進化モデル。いまは A 中心、B は走っている、C は一歩目が動いた。
       </div>
     </details>
     <details>
@@ -1474,9 +1929,39 @@
       </div>
     </details>
     <details>
-      <summary>強火3／中火6（火力配分）</summary>
+      <summary>火力配分 v2（強火3／中火／棚上げ）</summary>
       <div class="gloss-body">
-        9つの同時並行戦線を、<strong>強火3つ（全力ダッシュ）と中火6つ（外の声を聞ける余白）に振り分ける温度管理</strong>。AIにも優先度判断に使ってもらう。
+        同時並行の戦線を、<strong>強火3つ（全力）・中火（外の声を聞ける余白）・棚上げ（必ず振り返り日つき）に振り分ける温度管理</strong>。5月は「強火3／中火6」。9月の棚卸しで組み直した。
+      </div>
+    </details>
+    <details>
+      <summary>開いた輪／閉じる儀式 <span class="badge new">NEW</span></summary>
+      <div class="gloss-body">
+        <strong>開いた輪＝始めたまま終わっていない「やること・やろうとしていること」</strong>。9月に約140件を全部並べた。<strong>閉じる儀式＝毎週日曜21時の週次レビュー</strong>で、輪を閉じるか、日付をつけて棚に上げる。
+      </div>
+    </details>
+    <details>
+      <summary>センターピン <span class="badge new">NEW</span></summary>
+      <div class="gloss-body">
+        <strong>「今日これだけは」の一点</strong>。朝の提案に番号で返信すると Notion に立つ。倒せば他のピンも倒れる、ボウリングの先頭ピンのイメージ。
+      </div>
+    </details>
+    <details>
+      <summary>3点セット <span class="badge new">NEW</span></summary>
+      <div class="gloss-body">
+        サブエージェントの返答に必ず求める3つ。<strong>要約＋原典のパスと行番号＋原文ママの引用</strong>。揃っていない返答は使わない。
+      </div>
+    </details>
+    <details>
+      <summary>ヘルスチェック（外から見張る） <span class="badge new">NEW</span></summary>
+      <div class="gloss-body">
+        毎朝9:00に全自動化ジョブを<strong>外から点検する仕組み</strong>。登録状態の自己修復・失敗の検知・成果物の鮮度チェック。7月の「36日間サイレント停止」から生まれた（<a href="#sec9">9章</a>）。
+      </div>
+    </details>
+    <details>
+      <summary>LINE秘書 <span class="badge new">NEW</span></summary>
+      <div class="gloss-body">
+        LINE の公式アカウントの仕組みを使った、<strong>自分専用のAI窓口</strong>。朝の提案・夜の振り返り・自動化の警告がここに届き、番号の返信でセンターピンが立つ。
       </div>
     </details>
     <details>
@@ -1488,7 +1973,7 @@
     <details>
       <summary>記憶喪失耐性原則</summary>
       <div class="gloss-body">
-        <strong>「いつ忘れても戻ってこれる」</strong>を最優先する設計思想。ツールが変わってもデータが残るように、すべての記録はプレーンなMarkdownで持つ。
+        <strong>「いつ忘れても戻ってこれる」</strong>を最優先する設計思想。ツールが変わってもデータが残るように、すべての記録はプレーンなMarkdownで持つ。9月、消えた原稿が git から戻って、実際に効いた。
       </div>
     </details>
     <details>
@@ -1506,7 +1991,7 @@
     <details>
       <summary>信念候補</summary>
       <div class="gloss-body">
-        <strong>「まだ確定じゃない信念」</strong>を1〜4週間"熟成"させて、本人が再確認したら正式信念に昇格させる仕組み。熟成期限が来たらAIが「これ昇格させる？」と聞いてくる。
+        <strong>「まだ確定じゃない信念」</strong>を1〜4週間"熟成"させて、本人が再確認したら正式信念に昇格させる仕組み。熟成期限が来たらAIが「これ昇格させる？」と聞いてくる。7月に最初の1件が昇格した。
       </div>
     </details>
     <details>
@@ -1522,6 +2007,11 @@
   <p>
     ここまで読んでくださって、本当にありがとうございます。<br>
     全部を真似する必要はありません。「面白いな」「これだけは試してみたいな」と思える1つがあれば、十分です。
+  </p>
+
+  <p>
+    この4ヶ月で一番大きかったのは、道具が増えたことより、<a href="#sec5">5章</a>の線引きが言葉になったことです。<br>
+    何をAIに渡して、何を渡さないか。それが決まると、道具は勝手に増えていきます。壊れても、直せます。
   </p>
 
   <p>
@@ -1549,7 +2039,7 @@
       <a href="https://shunichi-ito-2003.github.io/">公式サイト</a>
     </div>
     <div class="footer-meta">
-      最終更新：2026-05-28
+      最終更新：2026-09-22（初版 2026-05-28）
     </div>
   </footer>
 
